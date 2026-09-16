@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions | PhD in Business Administration | OSB, AUB</title>
+  <meta name="description"
+    content="Admission requirements, application materials, financial support, and FAQs for the PhD in Business Administration at OSB, AUB — Fall 2027.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ---- Page-specific styles: Admissions ---- */
+
+    .admissions-jump {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .admissions-jump a {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1.5px solid var(--color-border);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .admissions-jump a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .materials-list {
+      counter-reset: mat;
+      display: grid;
+      gap: 0;
+    }
+
+    .materials-list li {
+      counter-increment: mat;
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .materials-list li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .materials-list li::before {
+      content: counter(mat, decimal-leading-zero);
+      flex: none;
+      font-weight: 900;
+      color: var(--color-primary);
+      font-size: 1rem;
+      width: 34px;
+    }
+
+    .materials-list li p {
+      margin: 0;
+    }
+
+    .materials-list li strong {
+      display: block;
+      color: var(--color-ink);
+      margin-bottom: 4px;
+    }
+
+    .funding-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-primary-line);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    .funding-card .stat-num {
+      font-size: 2rem;
+    }
+
+    .portal-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      margin-top: 40px;
+    }
+
+    .portal-note p {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--color-muted);
+      max-width: 58ch;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================== HEADER =========================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M22 9L12 5 2 9l10 4 10-4z" />
+            <path d="M4 11v5c0 1 3.5 3 8 3s8-2 8-3v-5" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Olayan School of Business</strong>
+          <span>PhD in Business Administration · AUB</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="site-nav">
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="program.html">Program</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="admissions.html" class="active">Admissions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="#eligibility" class="btn btn-primary">Apply Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================== PAGE HERO =========================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> / Admissions</div>
+        <span class="eyebrow">Admissions — Fall 2027</span>
+        <h1>A highly selective, fully funded doctoral program</h1>
+        <p class="lede">
+          Admission is based on a holistic assessment of academic preparation,
+          research potential, fit with OSB's areas of faculty expertise, and
+          readiness for doctoral study. Applicants must satisfy the general
+          admission requirements of the AUB Graduate Council in addition to the
+          program-specific requirements below.
+        </p>
+        <div class="admissions-jump">
+          <a href="#eligibility">Eligibility</a>
+          <a href="#application-materials">Application Materials</a>
+          <a href="#financial-support">Financial Support</a>
+          <a href="#faqs">FAQs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== ELIGIBILITY =========================== -->
+    <section class="section" id="eligibility">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Eligibility</span>
+          <h2>Who should apply</h2>
+          <p>
+            The program seeks outstanding applicants with exceptional academic
+            achievement, intellectual curiosity, strong analytical ability, research
+            motivation, and clear potential to develop into independent scholars.
+          </p>
+          <p style="font-size:.92rem; color:var(--color-muted);">
+            Applicants may come from business and related fields — economics,
+            finance, accounting, management, marketing, business analytics,
+            operations research, engineering, computer science, statistics,
+            mathematics, information systems, health sciences, and other relevant
+            disciplines. Applicants from other fields may also be considered when
+            they demonstrate strong potential for doctoral research; preparatory
+            coursework may be required on a case-by-case basis and does not count
+            toward degree requirements.
+          </p>
+        </div>
+
+        <ul class="check-list">
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            A bachelor's and master's degree in business administration or a related discipline for the regular track.
+            Exceptionally qualified bachelor's-degree holders may be considered for the accelerated track.
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            A minimum GPA of 3.7/4.0, or equivalent, in the most recent degree — exceptional candidates with outstanding
+            research potential may be considered even if slightly below this threshold.
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            Competitive GMAT or GRE scores, obtained within the period accepted by AUB and program regulations.
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            English-language proficiency meeting AUB requirements.
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            Evidence of research potential, intellectual maturity, and strong alignment with the research strengths of
+            OSB.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =========================== APPLICATION MATERIALS =========================== -->
+    <section class="section section--surface" id="application-materials">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How to Apply</span>
+          <h2>Application materials</h2>
+          <p class="lede">Applications are submitted through the AUB online graduate application system and should
+            include:</p>
+        </div>
+
+        <ol class="materials-list">
+          <li>
+            <p><strong>Online AUB graduate application</strong>Submitted through the official AUB graduate application
+              system.</p>
+          </li>
+          <li>
+            <p><strong>Official transcripts</strong>From all postsecondary institutions attended.</p>
+          </li>
+          <li>
+            <p><strong>Curriculum vitae</strong>Highlighting education, research experience, publications or
+              presentations, teaching, professional experience, awards, and scholarships.</p>
+          </li>
+          <li>
+            <p><strong>Statement of purpose</strong>Explaining academic background, research interests, motivation for
+              doctoral study, career goals, and fit with OSB faculty expertise.</p>
+          </li>
+          <li>
+            <p><strong>Research statement (2–4 pages)</strong>Describing the proposed research area, its significance,
+              preliminary questions, and potential methodological approach.</p>
+          </li>
+          <li>
+            <p><strong>Academic writing sample</strong>Such as a thesis chapter, research paper, working paper, or
+              publication.</p>
+          </li>
+          <li>
+            <p><strong>Three academic letters of recommendation</strong>Addressing the applicant's research potential
+              and readiness for doctoral study.</p>
+          </li>
+          <li>
+            <p><strong>Official GMAT or GRE scores</strong>And proof of English-language proficiency, as required.</p>
+          </li>
+        </ol>
+
+        <p style="margin-top:28px; font-size:.95rem;">
+          Shortlisted applicants will be invited for an interview, during which they
+          will present their proposed research and discuss their academic interests
+          with the admissions committee.
+        </p>
+
+        <div class="portal-note">
+          <p>Application deadlines, English-language requirements, and the official
+            application portal are maintained by AUB Graduate Admissions and should
+            always be confirmed there directly.</p>
+          <a href="#" class="btn btn-primary">AUB Graduate Admissions Portal &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== FINANCIAL SUPPORT =========================== -->
+    <section class="section" id="financial-support">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Financial Support</span>
+          <h2>A fully funded doctoral program</h2>
+          <p>
+            The PhD in Business Administration is planned as a fully funded,
+            full-time doctoral program. In line with AUB doctoral funding
+            arrangements and program requirements, admitted students are expected
+            to receive tuition support and a monthly stipend in connection with
+            graduate teaching and/or research responsibilities, subject to
+            satisfactory academic progress and the terms of the applicable
+            doctoral appointment.
+          </p>
+          <p style="font-size:.92rem; color:var(--color-muted);">
+            Additional competitive support may be available for conference
+            participation, research activities, and approved international
+            research experiences.
+          </p>
+        </div>
+
+        <div class="funding-card">
+          <div class="stat-card" style="margin-bottom:24px;">
+            <div class="stat-num">Tuition</div>
+            <div class="stat-label">Covered for admitted full-time doctoral students</div>
+          </div>
+          <div class="stat-card" style="margin-bottom:24px;">
+            <div class="stat-num">Stipend</div>
+            <div class="stat-label">Monthly, linked to teaching and/or research duties</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">+ Travel</div>
+            <div class="stat-label">Competitive support for conferences and approved international research</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== FAQ =========================== -->
+    <section class="section section--surface" id="faqs">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">FAQs</span>
+          <h2>Frequently asked questions</h2>
+        </div>
+
+        <div class="accordion">
+
+          <div class="accordion-item open">
+            <button class="accordion-trigger" aria-expanded="true">
+              What degree will I earn?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel" style="max-height:500px;">
+              <div class="accordion-panel-inner">
+                The degree is a PhD in Business Administration. Students pursue one
+                of three doctoral tracks: Business Analytics, Finance, or Management.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Is the program full time?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                Yes. The PhD is designed as a full-time, research-intensive program
+                requiring sustained participation in coursework, research,
+                teaching-related activities, seminars, and dissertation work.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              How long does the program take?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                The regular track is designed around approximately four years of
+                full-time study, although completion time is governed by AUB
+                doctoral regulations and the student's research progress.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Do I need the GMAT or GRE?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                The program proposal supports GMAT or GRE scores. The applicable
+                test policy for the Fall 2027 admission cycle will be confirmed
+                here, with a link to AUB Admissions for current requirements.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              How should I identify a research fit?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                Review the three doctoral tracks and faculty research profiles, then
+                use your statement of purpose and research statement to explain your
+                alignment with relevant OSB faculty expertise.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Is financial support available?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                The program is planned as fully funded for admitted full-time
+                doctoral students, with tuition support and a monthly stipend
+                linked to teaching and/or research responsibilities, subject to
+                applicable university and program conditions.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Will I teach during the PhD?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                Doctoral students complete AUB teaching-development requirements and
+                are expected to contribute to teaching as part of their
+                assistantship and professional preparation.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              Can I study or conduct research abroad?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                The program is designed to encourage international research
+                engagement, including conferences, collaboration, and a possible
+                approved semester at a partner institution, subject to academic and
+                funding arrangements.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              When can I apply for Fall 2027?
+              <span class="plus"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                Application dates will be published once the Fall 2027 AUB graduate
+                admissions calendar is finalized. This page will link directly to
+                the official AUB graduate admissions portal and deadlines.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== CTA =========================== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Have a question we haven't answered?</h2>
+            <p>Reach the program office directly, or request more information about Fall 2027 admissions.</p>
+          </div>
+          <div class="btn-row">
+            <a href="contact.html" class="btn btn-primary">Contact the Program</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================== FOOTER =========================== -->
+  <div id="footer-placeholder"></div>
+  <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
+  <!-- <script src="https://www.aub.edu.lb/osb/AUB_OSB_shared_components/footer-load-V.js"></script> -->
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

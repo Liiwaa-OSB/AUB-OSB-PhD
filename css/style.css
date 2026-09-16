@@ -1,0 +1,1192 @@
+/* =========================================================================
+   OSB — PhD in Business Administration
+   GLOBAL STYLESHEET
+   American University of Beirut · Suliman S. Olayan School of Business
+
+   This file holds the design tokens (colors, type, spacing) and every
+   component shared across pages: header, footer, buttons, hero, feature
+   grid, track cards, timeline, accordion, faculty grid, forms.
+
+   Each page also carries a small <style> block in its own <head> for
+   layout tweaks specific to that page only.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   ------------------------------------------------------------------------- */
+:root {
+  /* Brand */
+  --color-primary: #840132;
+  --color-primary-dark: #6a132c;
+  --color-primary-tint: #f7e9ed;
+  /* pale rose wash for section backgrounds */
+  --color-primary-line: #e6c9d1;
+  /* hairline on rose backgrounds */
+
+  /* Neutrals */
+  --color-ink: #241f22;
+  /* headings / body copy */
+  --color-text: #4c464b;
+  /* running text */
+  --color-muted: #7a747a;
+  /* captions, meta */
+  --color-border: #e6e2e3;
+  --color-surface: #f7f5f4;
+  /* light gray section band */
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-base: "Roboto", sans-serif;
+  --lh-tight: 1.15;
+  --lh-normal: 1.7;
+
+  /* Layout */
+  --container-max-width: 1280px;
+  --container: 1280px;
+  --container-narrow: 760px;
+  --gutter: 24px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --header-h: 84px;
+
+  /* Motion */
+  --ease: cubic-bezier(.4, 0, .2, 1);
+
+}
+
+/* -------------------------------------------------------------------------
+   2. RESET
+   ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   ------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-base);
+  color: var(--color-ink);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  margin: 0 0 16px;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 1.6rem + 2vw, 3.1rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 1.35rem + 1.1vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.lede {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  max-width: 46em;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.eyebrow--on-dark {
+  color: #f0c6d3;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+
+.section-head.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   4. LAYOUT HELPERS
+   ------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding: 88px 0;
+}
+
+.section--sm {
+  padding: 56px 0;
+}
+
+.section--surface {
+  background: var(--color-surface);
+}
+
+.section--tint {
+  background: var(--color-primary-tint);
+}
+
+.section--dark {
+  background: var(--color-primary);
+  color: #f6e3e9;
+}
+
+.section--dark h2,
+.section--dark h3 {
+  color: var(--color-white);
+}
+
+.section--border-top {
+  border-top: 1px solid var(--color-border);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gutter);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.split.reverse .split-media {
+  order: 2;
+}
+
+@media (max-width: 900px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split.reverse .split-media {
+    order: 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   5. BUTTONS
+   ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-outline-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, .55);
+  color: var(--color-white);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: var(--color-white);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--color-primary);
+  border-bottom: 1.5px solid var(--color-primary);
+  padding-bottom: 2px;
+}
+
+.btn-link:hover {
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------------------------
+   7. HERO
+   ------------------------------------------------------------------------- */
+.hero {
+  padding: 64px 0 0;
+  overflow: hidden;
+}
+
+.hero .split {
+  align-items: center;
+}
+
+.hero-copy .eyebrow {
+  margin-bottom: 14px;
+}
+
+.hero-copy h1 {
+  margin-bottom: 20px;
+}
+
+.hero-copy p {
+  margin-bottom: 30px;
+}
+
+.hero-media {
+  position: relative;
+}
+
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3.3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  bottom: -22px;
+  width: 46%;
+  height: 58%;
+  background: var(--color-primary-dark);
+  opacity: .9;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+}
+
+.hero-media::before {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -34px;
+  width: 22%;
+  height: 74%;
+  background: var(--color-primary-dark);
+  opacity: .8;
+  border-radius: var(--radius-sm);
+  z-index: 9998;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 48px;
+  }
+
+  .hero-media::after,
+  .hero-media::before {
+    display: none;
+  }
+}
+
+/* Page header (non-home pages) */
+.page-hero {
+  padding: 56px 0 64px;
+  background: var(--color-primary-tint);
+  border-bottom: 1px solid var(--color-primary-line);
+}
+
+.page-hero h1 {
+  margin-bottom: 14px;
+}
+
+.page-hero .lede {
+  margin-bottom: 0;
+}
+
+.breadcrumb {
+  font-size: .82rem;
+  color: var(--color-muted);
+  margin-bottom: 18px;
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------
+   8. FEATURE / ICON GRID
+   ------------------------------------------------------------------------- */
+.icon-feature {
+  padding: 20px 0;
+}
+
+.icon-feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.icon-feature-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.icon-feature h4 {
+  margin-bottom: 8px;
+}
+
+.icon-feature p {
+  font-size: .93rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.feature-row .grid-4>.icon-feature:not(:last-child) {
+  border-right: 1px solid var(--color-border);
+  padding-right: 28px;
+}
+
+@media (max-width: 900px) {
+  .feature-row .grid-4>.icon-feature {
+    border-right: none !important;
+    padding-right: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   9. CARDS (generic, tracks, faculty)
+   ------------------------------------------------------------------------- */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 30px;
+}
+
+.track-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+
+.track-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 28px rgba(132, 1, 50, .08);
+}
+
+.track-card .icon-feature-icon {
+  margin-bottom: 22px;
+}
+
+.track-card h3 {
+  margin-bottom: 10px;
+}
+
+.track-card>p {
+  color: var(--color-muted);
+  margin-bottom: 20px;
+}
+
+.track-card ul {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.track-card ul li {
+  font-size: .92rem;
+  color: var(--color-text);
+  padding-left: 18px;
+  position: relative;
+}
+
+.track-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.stat-card {
+  text-align: left;
+}
+
+.stat-card .stat-num {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-card .stat-label {
+  font-size: .9rem;
+  color: var(--color-muted);
+}
+
+/* -------------------------------------------------------------------------
+   10. IMAGE + TEXT SPLIT MEDIA
+   ------------------------------------------------------------------------- */
+.split-media {
+  position: relative;
+}
+
+.split-media img {
+  width: 100%;
+  aspect-ratio: 4/3.6;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 2;
+}
+
+.split-media::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: -18px;
+  width: 24%;
+  height: 46%;
+  background: var(--color-primary-dark);
+  opacity: .85;
+  border-radius: var(--radius-sm);
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------------------
+   11. QUOTE / MISSION BAND
+   ------------------------------------------------------------------------- */
+.mission-band {
+  background: var(--color-primary);
+  color: #f7e6ec;
+}
+
+.mission-band .split {
+  align-items: start;
+  gap: 72px;
+}
+
+.mission-band h2 {
+  color: var(--color-white);
+}
+
+.mission-band p {
+  color: #f0c9d5;
+}
+
+.quote {
+  position: relative;
+  padding-left: 34px;
+}
+
+.quote-mark {
+  font-size: 3.4rem;
+  font-family: Georgia, serif;
+  line-height: 1;
+  color: rgba(255, 255, 255, .55);
+  position: absolute;
+  left: 0;
+  top: -10px;
+}
+
+.quote blockquote {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-white);
+  line-height: 1.55;
+}
+
+.quote cite {
+  font-style: normal;
+  font-size: .9rem;
+  color: #f0c9d5;
+}
+
+@media (max-width: 900px) {
+  .mission-band .split {
+    gap: 32px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   12. TIMELINE / STEPPER (program journey)
+   ------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 28px;
+  padding: 30px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.timeline-item:first-child {
+  border-top: none;
+}
+
+.timeline-year {
+  font-weight: 800;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.timeline-year span {
+  display: block;
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+.timeline-body h4 {
+  margin-bottom: 8px;
+}
+
+.timeline-body p {
+  color: var(--color-muted);
+  margin-bottom: 10px;
+  font-size: .95rem;
+}
+
+.timeline-milestones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+  border: 1px solid var(--color-primary-line);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+@media (max-width: 640px) {
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   13. CHECKLISTS (eligibility, materials, outcomes)
+   ------------------------------------------------------------------------- */
+.check-list {
+  display: grid;
+  gap: 16px;
+}
+
+.check-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: .98rem;
+}
+
+.check-list li .tick {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.check-list li .tick svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* -------------------------------------------------------------------------
+   14. ACCORDION (FAQ)
+   ------------------------------------------------------------------------- */
+.accordion {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 4px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.accordion-trigger .plus {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.accordion-trigger .plus::before,
+.accordion-trigger .plus::after {
+  content: "";
+  position: absolute;
+  background: var(--color-primary);
+  transition: transform .2s var(--ease), opacity .2s var(--ease);
+}
+
+.accordion-trigger .plus::before {
+  width: 10px;
+  height: 1.6px;
+}
+
+.accordion-trigger .plus::after {
+  width: 1.6px;
+  height: 10px;
+}
+
+.accordion-item.open .accordion-trigger .plus::after {
+  transform: scaleY(0);
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s var(--ease);
+}
+
+.accordion-panel-inner {
+  padding: 0 4px 24px;
+  color: var(--color-text);
+  max-width: 68ch;
+}
+
+/* -------------------------------------------------------------------------
+   15. FACULTY GRID + FILTER
+   ------------------------------------------------------------------------- */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.filter-btn {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-white);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: all .15s var(--ease);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.faculty-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow .18s var(--ease), border-color .18s var(--ease);
+}
+
+.faculty-card:hover {
+  box-shadow: 0 10px 28px rgba(132, 1, 50, .08);
+  border-color: var(--color-primary-line);
+}
+
+.faculty-photo {
+  aspect-ratio: 4/3.4;
+  background: var(--color-primary-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.faculty-photo svg {
+  width: 44px;
+  height: 44px;
+}
+
+.faculty-body {
+  padding: 22px;
+}
+
+.faculty-track {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.faculty-body h4 {
+  margin-bottom: 4px;
+}
+
+.faculty-role {
+  font-size: .85rem;
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+
+.faculty-body p {
+  font-size: .9rem;
+  margin-bottom: 14px;
+}
+
+.faculty-links {
+  display: flex;
+  gap: 14px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.placeholder-note {
+  font-size: .85rem;
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin-bottom: 40px;
+}
+
+/* -------------------------------------------------------------------------
+   16. FORMS (contact)
+   ------------------------------------------------------------------------- */
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  background: var(--color-white);
+  transition: border-color .15s var(--ease);
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.form-note {
+  font-size: .82rem;
+  color: var(--color-muted);
+  margin-top: 18px;
+}
+
+.form-status {
+  font-size: .9rem;
+  font-weight: 600;
+  margin-top: 16px;
+  display: none;
+}
+
+.form-status.show {
+  display: block;
+}
+
+.form-status.success {
+  color: #1e7a3e;
+}
+
+/* -------------------------------------------------------------------------
+   17. CONTACT / INFO CARDS
+   ------------------------------------------------------------------------- */
+.info-card {
+  display: flex;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.info-card:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.info-card .icon-feature-icon {
+  margin-bottom: 0;
+}
+
+.info-card h4 {
+  margin-bottom: 4px;
+}
+
+.info-card p {
+  color: var(--color-muted);
+  font-size: .93rem;
+}
+
+.info-card a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.map-frame {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16/10;
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* -------------------------------------------------------------------------
+   18. CTA BAND
+   ------------------------------------------------------------------------- */
+.cta-band {
+  background: var(--color-ink);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-band h2 {
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+
+.cta-band p {
+  color: #cfc9cb;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   19. FOOTER
+   ------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--color-ink);
+  color: #cfc7ca;
+  padding: 64px 0 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.footer-brand .brand-text strong {
+  color: var(--color-white);
+}
+
+.footer-brand .brand-text span {
+  color: #a89ea1;
+}
+
+.footer-brand p {
+  margin-top: 16px;
+  font-size: .88rem;
+  color: #a89ea1;
+  max-width: 30ch;
+}
+
+.footer-col h4 {
+  color: var(--color-white);
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: 18px;
+}
+
+.footer-col ul {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-col a {
+  font-size: .92rem;
+  color: #cfc7ca;
+}
+
+.footer-col a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  font-size: .82rem;
+  color: #a89ea1;
+}
+
+.footer-bottom .socials {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-bottom .socials a {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-bottom .socials svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-band {
+    padding: 36px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
