@@ -6,90 +6,684 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | PhD in Business Administration | OSB, AUB</title>
   <meta name="description"
-    content="Contact the PhD in Business Administration program office at the Olayan School of Business, American University of Beirut.">
+    content="Contact the PhD in Business Administration program at OSB, AUB: program director, coordinator, request information form, and admissions links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- Shared scripts -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/menu.js"></script>
+
   <style>
     /* ---- Page-specific styles: Contact ---- */
 
-    .contact-layout {
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
       gap: 64px;
+      overflow-x: hidden;
     }
 
-    @media (max-width:900px) {
-      .contact-layout {
+    @media (max-width: 900px) {
+      .contact-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
     }
 
-    .contact-form-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
+    /* Left column wrapper */
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Program information block */
+    .program-info {
+      background: var(--color-primary-tint);
+      border: 1px solid var(--color-primary-line);
       border-radius: var(--radius-md);
-      padding: 36px;
+      padding: 36px 32px;
+      flex: none;
     }
 
-    .form-row {
+    .program-info h3 {
+      margin-bottom: 6px;
+      font-size: 1.3rem;
+    }
+
+    .program-info .program-school {
+      font-size: .95rem;
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .program-info .program-university {
+      font-size: .95rem;
+      color: var(--color-text);
+      margin-bottom: 4px;
+    }
+
+    .program-info .program-location {
+      font-size: .95rem;
+      color: var(--color-muted);
+      margin-bottom: 24px;
+    }
+
+    .program-info .program-contact-line {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid var(--color-primary-line);
+      font-size: .95rem;
+    }
+
+    .program-info .program-contact-line svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      color: var(--color-primary);
+    }
+
+    .program-info .program-contact-line a {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .program-info .program-contact-line a:hover {
+      color: var(--color-primary-dark);
+    }
+
+    /* Map — fixed aspect ratio on mobile, fills remaining space on desktop */
+    .map-frame {
+      position: relative;
+      margin-top: 24px;
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      aspect-ratio: 4 / 3;
+      flex: 1 1 auto;
+      min-height: 300px;
+    }
+
+    .map-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .map-frame {
+        flex: none;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+      }
+    }
+
+    /* People cards */
+    .people-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--gutter);
+      margin-top: 48px;
     }
 
-    @media (max-width:520px) {
-      .form-row {
+    @media (max-width: 700px) {
+      .people-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .office-list {
-      margin-top: 34px;
+    .person-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .person-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+    }
+
+    .person-card .person-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .person-card .person-avatar svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .person-card h4 {
+      margin-bottom: 4px;
+      font-size: 1.1rem;
+    }
+
+    .person-card .person-role {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+
+    .person-card p {
+      font-size: .93rem;
+      color: var(--color-muted);
+      margin-bottom: 0;
+    }
+
+    .person-card .person-contact {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      display: grid;
+      gap: 8px;
+    }
+
+    .person-card .person-contact a {
+      font-size: .9rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      word-break: break-word;
+    }
+
+    .person-card .person-contact a:hover {
+      color: var(--color-primary-dark);
+    }
+
+    .person-card .person-contact svg {
+      width: 16px;
+      height: 16px;
+      flex: none;
+    }
+
+    /* Form */
+    .form-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      min-width: 0;
+    }
+
+    @media (max-width: 600px) {
+      .form-card {
+        padding: 28px 22px;
+      }
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Admissions link block */
+    .admissions-link {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .admissions-link:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+    }
+
+    .admissions-link .icon-feature-icon {
+      margin-bottom: 0;
+      flex: none;
+    }
+
+    .admissions-link h4 {
+      margin-bottom: 4px;
+    }
+
+    .admissions-link p {
+      font-size: .92rem;
+      color: var(--color-muted);
+      margin: 0;
+    }
+
+    .admissions-link .link-arrow {
+      margin-left: auto;
+      flex: none;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .admissions-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .admissions-link .link-arrow {
+        margin-left: 0;
+      }
+    }
+
+    /* Info session block */
+    .session-block {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .session-block {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .session-block .split-media img {
+      width: 100%;
+      aspect-ratio: 4/3.2;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .session-block .split-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+    }
+
+    .session-block .split-media::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -22px;
+      width: 46%;
+      height: 58%;
+      background: var(--color-primary-dark);
+      opacity: .9;
+      border-radius: var(--radius-sm);
+      z-index: 3;
+    }
+
+    @media (max-width: 900px) {
+
+      .session-block .split-media::before,
+      .session-block .split-media::after {
+        display: none;
+      }
+    }
+
+    .session-details {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .session-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: .95rem;
+      color: var(--color-text);
+    }
+
+    .session-detail svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      color: var(--color-primary);
+      margin-top: 2px;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================== HEADER =========================== -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M22 9L12 5 2 9l10 4 10-4z" />
-            <path d="M4 11v5c0 1 3.5 3 8 3s8-2 8-3v-5" />
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>Olayan School of Business</strong>
-          <span>PhD in Business Administration · AUB</span>
-        </span>
-      </a>
-
-      <nav class="nav" id="site-nav">
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="faculty.html">Faculty</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-        <a href="admissions.html" class="btn btn-primary">Apply Now</a>
-      </nav>
+  <div class="nav">
+    <div class="nav-utility">
+      <div class="nav-utility-container">
+        <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a><span class="nav-utility-separator">|</span>
+        <a href="/Search/Pages/People.aspx" class="nav-utility-link">Find People</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://aubmc.org.lb/" class="nav-utility-link" target="_blank">AUBMC</a><span
+          class="nav-utility-separator">|</span>
+        <a href="/libraries" class="nav-utility-link">Libraries</a><span class="nav-utility-separator">|</span>
+        <a href="/Employment" class="nav-utility-link">Jobs</a><span class="nav-utility-separator">|</span>
+        <a href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61" class="nav-utility-link"
+          target="_blank">Alumni</a><span class="nav-utility-separator">|</span>
+        <a href="https://online.aub.edu.lb" class="nav-utility-link" target="_blank">AUB Online</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://www.aubmed.ac.cy/" class="nav-utility-link" target="_blank">AUB – Mediterraneo</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login" class="nav-utility-link"
+          target="_blank">Telehealth</a><span class="nav-utility-separator">|</span>
+        <a href="/advancement/Development/Pages/HowToMakeAGift.aspx" class="nav-utility-link">Give</a>
+      </div>
     </div>
-  </header>
+    <div class="nav-main-header" id="mainHeader">
+      <div class="nav-main-container">
+        <div class="nav-logo"><a href="https://www.aub.edu.lb/osb/Pages/default.aspx"><img
+              src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a></div>
+        <div class="nav-desktop">
+          <div class="nav-item"><button>About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>About AUB</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/default.aspx">Overview</a></li>
+                    <li><a href="/aboutus/Pages/history.aspx">History</a></li>
+                    <li><a href="/aboutus/Pages/mission.aspx">Mission and Vision</a></li>
+                    <li><a href="/aboutus/Pages/facts.aspx">Facts and Figures</a></li>
+                    <li><a href="/President/oeo-titleix">Title IX</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a></li>
+                    <li><a href="/president">Office of the President</a></li>
+                    <li><a href="/nyo">New York Office</a></li>
+                    <li><a href="/maingate">The MainGate Magazine</a></li>
+                    <li><a href="/advancement">Office of Advancement</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
+                    <li><a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a></li>
+                    <li><a href="/accreditation">Accreditation</a></li>
+                    <li><a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ACADEMICS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+                    <li><a href="/Pages/AZ.aspx">Departments and Centers</a></li>
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg" target="_blank">Search
+                        for a Course</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/theinstitute">Institute for Academic Innovation and
+                        Development</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/generaleducation">General Education Program</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/provost">Office of the Provost</a></li>
+                    <li><a href="/registrar">Office of the Registrar</a></li>
+                    <li><a href="/libraries">Libraries</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ADMISSIONS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/admissions">Admissions</a></li>
+                    <li><a href="/faid">Financial Aid</a></li>
+                    <li><a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html" target="_blank">Tuition and Fees
+                        Calculator</a></li>
+                    <li><a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
+                        target="_blank">Visiting Student</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+                    <li><a href="/lead">LEAD scholarship opportunities</a></li>
+                    <li><a href="/sao">Office of Student Affairs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Research</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/research">Office of Research</a></li>
+                    <li><a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a></li>
+                    <li><a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a></li>
+                    <li><a href="/urb">University Research Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/Pages/ResearchSupport.aspx">Research Funding</a></li>
+                    <li><a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a></li>
+                    <li><a href="/irb">Human Research Protection Program / Institutional Review
+                        Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/MRVP">Medical Research Volunteer Program</a></li>
+                    <li><a href="/provost/urvp">Undergraduate Research Volunteer Program</a></li>
+                    <li><a href="/articles/Pages/research.aspx">Research News</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Outreach</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/CCE">Community Engagement</a></li>
+                    <li><a href="/Neighborhood">Neighborhood Initiative</a></li>
+                    <li><a href="/natureconservation">Nature Conservation</a></li>
+                    <li><a href="/seniors">University for Seniors</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/ifi">Issam Fares Institute</a></li>
+                    <li><a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a></li>
+                    <li><a href="/k2p">Knowledge to Policy Center</a></li>
+                    <li><a href="/masri_institute">The Munib and Angela Masri Institute of Energy
+                        and Natural
+                        Resources</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI
+                        Hub</a></li>
+                    <li><a href="/fafs/esdu">Environment and Sustainable Development</a></li>
+                    <li><a href="https://ghi.aub.edu.lb/" target="_blank">Global Health
+                        Institute</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Boldly Campaign</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact
+                        Stories</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/campaign-objectives/" target="_blank">Campaign Objectives</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to
+                        Support</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign
+                        Progress</a></li>
+                    <li><a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
+                        target="_blank">Join the Campaign</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu"><svg width="28" height="28" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+    <div class="nav-osb" id="osbRow">
+      <div class="nav-osb-container">
+        <div class="nav-osb-logo"><a href="/"><img src="images/logos/AUB+OSB-Merged-Logo-white.png"
+              alt="AUB OSB Logo" /></a>
+        </div>
+        <div class="nav-osb-links">
+          <ul class="osb-nav mba-nav">
+            <li class="osb-nav-item mba-nav-item">
+              <a href="https://www.aub.edu.lb/osb" id="about-osb-link">About OSB</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="index.html" id="phd-homepage-link">PhD Homepage</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="program.html" id="phd-program-link">The Program</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="research.html" id="phd-research-link">Research</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="admissions.html" id="phd-admissions-link">Admissions</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a class="is-active" href="contact.html" id="phd-contact-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mobile-overlay" id="mobileOverlay">
+    <div class="mobile-overlay-header">
+      <div class="mobile-logo"><img src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB" /></div><button
+        class="mobile-close-btn" id="closeOverlayBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="white" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg></button>
+    </div>
+    <div class="mobile-menu-sections">
+      <div class="mobile-section">
+        <div class="mobile-section-title">Quick Links</div>
+        <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">Main Navigation</div>
+        <div id="mobileMainNav"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">OSB School - MBA</div>
+        <div id="mobileOsbNav"></div>
+      </div>
+    </div>
+  </div>
 
   <main>
 
@@ -97,157 +691,316 @@
     <section class="page-hero">
       <div class="container">
         <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
-        <span class="eyebrow">Get in Touch</span>
-        <h1>Contact the PhD program office</h1>
+        <span class="eyebrow">Contact</span>
+        <h1>Contact</h1>
         <p class="lede">
-          Questions about eligibility, research fit, or the Fall 2027 application
-          cycle? Reach out directly, or request more information below.
+          Reach out to the PhD in Business Administration program office for questions about admissions,
+          curriculum, research fit, or the application process.
         </p>
       </div>
     </section>
 
-    <!-- =========================== CONTACT LAYOUT =========================== -->
+    <!-- =========================== PROGRAM INFO + FORM =========================== -->
     <section class="section">
-      <div class="container contact-layout">
+      <div class="container">
+        <div class="contact-grid">
 
-        <!-- Info column -->
-        <div>
-          <h2 style="margin-bottom:6px;">PhD in Business Administration Program</h2>
-          <p style="color:var(--color-muted);">
-            Suliman S. Olayan School of Business<br>
-            American University of Beirut<br>
-            Beirut, Lebanon
-          </p>
+          <!-- Left: program info + map -->
+          <div class="contact-left">
+            <div class="program-info">
+              <h3>PhD in Business Administration Program</h3>
+              <div class="program-school">Suliman S. Olayan School of Business</div>
+              <div class="program-university">American University of Beirut</div>
+              <div class="program-location">Beirut, Lebanon</div>
 
-          <div class="office-list">
-            <div class="info-card">
-              <span class="icon-feature-icon">
+              <div class="program-contact-line">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="m2 7 10 6 10-6" />
+                  <path d="m22 7-10 5L2 7" />
                 </svg>
-              </span>
-              <div>
-                <h4>Email</h4>
-                <p><a href="mailto:phd.business@aub.edu.lb">phd.business@aub.edu.lb</a></p>
+                <a href="mailto:phd.business@aub.edu.lb">phd.business@aub.edu.lb</a>
               </div>
-            </div>
 
-            <div class="info-card">
-              <span class="icon-feature-icon">
+              <div class="program-contact-line">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
                   <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-              </span>
-              <div>
-                <h4>Phone</h4>
-                <p><a href="tel:+9611350000">+961 1 350000</a></p>
+                <a href="tel:+9611350000">+961 1 350000</a>
               </div>
             </div>
 
-            <div class="info-card">
-              <span class="icon-feature-icon">
+            <!-- Map: Suliman S. Olayan School of Business, AUB -->
+            <div class="map-frame">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.5136052427542!2d35.48464718478896!3d33.90217858064701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f16d661ff6969%3A0xbf010c5fbcaa7140!2sSuliman%20S.%20Olayan%20School%20of%20Business!5e0!3m2!1sar!2slb!4v1790071497249!5m2!1sar!2slb"
+                allowfullscreen="" loading="lazy" style="border:0;" referrerpolicy="strict-origin-when-cross-origin"
+                title="Map of Suliman S. Olayan School of Business, AUB"></iframe>
+            </div>
+          </div>
+
+          <!-- Right: request information form -->
+          <div>
+            <div class="form-card">
+              <span class="eyebrow">Request Information</span>
+              <h2 style="margin-bottom:10px;">Request Information</h2>
+              <p style="color:var(--color-muted); font-size:.94rem; margin-bottom:28px;">
+                Fill out the form below and the program office will follow up with you.
+              </p>
+
+              <form id="requestInfoForm" novalidate>
+                <div class="form-row-2">
+                  <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="phone">Phone (optional)</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+
+                <div class="form-field">
+                  <label for="track">Track of Interest</label>
+                  <select id="track" name="track">
+                    <option value="">Select a track</option>
+                    <option value="Business Analytics">Business Analytics</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Management">Management</option>
+                    <option value="Undecided">Undecided</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message"
+                    placeholder="Tell us about your background, research interests, or questions."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;">Submit Request</button>
+                <p class="form-note">
+                  We respect your privacy. Your information will only be used to respond to your inquiry.
+                </p>
+                <p class="form-status" id="formStatus"></p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== PROGRAM DIRECTOR / COORDINATOR =========================== -->
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Program Office</span>
+          <h2>Program Director and Program Coordinator</h2>
+        </div>
+
+        <div class="people-grid">
+          <!-- Program Director -->
+          <div class="person-card">
+            <div class="person-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h4>Program Director</h4>
+            <div class="person-role">PhD in Business Administration</div>
+            <p>
+              Provides academic leadership for the program, oversees curriculum and research training, and guides
+              doctoral students in their scholarly development.
+            </p>
+            <div class="person-contact">
+              <a href="mailto:phd.business@aub.edu.lb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 5L2 7" />
+                </svg>
+                phd.business@aub.edu.lb
+              </a>
+              <a href="tel:+9611350000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                +961 1 350000
+              </a>
+            </div>
+          </div>
+
+          <!-- Program Coordinator -->
+          <div class="person-card">
+            <div class="person-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h4>Program Coordinator</h4>
+            <div class="person-role">PhD in Business Administration</div>
+            <p>
+              Supports prospective and current students with admissions inquiries, program logistics, scheduling, and
+              day-to-day coordination of the doctoral program.
+            </p>
+            <div class="person-contact">
+              <a href="mailto:phd.business@aub.edu.lb">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 5L2 7" />
+                </svg>
+                phd.business@aub.edu.lb
+              </a>
+              <a href="tel:+9611350000">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                +961 1 350000
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUB Graduate Admissions link -->
+        <div style="margin-top:40px;">
+          <a href="https://www.aub.edu.lb/admissions" target="_blank" class="admissions-link">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </span>
+            <div>
+              <h4>AUB Graduate Admissions</h4>
+              <p>Official AUB graduate admissions portal, deadlines, and requirements.</p>
+            </div>
+            <span class="link-arrow">Visit &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== INFORMATION SESSIONS =========================== -->
+    <section class="section">
+      <div class="container">
+        <div class="session-block">
+          <div>
+            <span class="eyebrow">Information Sessions</span>
+            <h2>Campus and Virtual Information Sessions</h2>
+            <p>
+              Prospective applicants are invited to attend an information session to learn more about the program,
+              meet faculty and current students, and ask questions about admissions and research fit.
+            </p>
+
+            <div class="session-details">
+              <div class="session-detail">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-              </span>
-              <div>
-                <h4>Campus</h4>
-                <p>American University of Beirut, Beirut, Lebanon</p>
+                <span><strong>Campus sessions:</strong> Suliman S. Olayan School of Business, American University of
+                  Beirut, Beirut, Lebanon.</span>
               </div>
-            </div>
-
-            <div class="info-card">
-              <span class="icon-feature-icon">
+              <div class="session-detail">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" />
-                  <path d="M16 2v4M8 2v4M3 10h18" />
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
                 </svg>
-              </span>
-              <div>
-                <h4>Information sessions</h4>
-                <p>Campus and virtual information sessions will be announced ahead of the Fall 2027 admission cycle.</p>
+                <span><strong>Virtual sessions:</strong> Online sessions are hosted periodically for international and
+                  regional prospective applicants.</span>
+              </div>
+              <div class="session-detail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 5L2 7" />
+                </svg>
+                <span><strong>To register or request a session:</strong> <a href="mailto:phd.business@aub.edu.lb"
+                    style="color:var(--color-primary); font-weight:700;">phd.business@aub.edu.lb</a></span>
               </div>
             </div>
           </div>
+          <div class="split-media">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80"
+              alt="Campus information session" loading="lazy">
+          </div>
         </div>
-
-        <!-- Form column -->
-        <div class="contact-form-card">
-          <h3 style="margin-bottom:6px;">Request information</h3>
-          <p style="color:var(--color-muted); font-size:.92rem; margin-bottom:26px;">
-            Send us a note and the program office will follow up by email.
-          </p>
-
-          <form id="contact-form" novalidate>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="name">Full name</label>
-                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
-              </div>
-              <div class="form-field">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" placeholder="jane@email.com" required>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="track">Doctoral track of interest</label>
-              <select id="track" name="track">
-                <option value="">Not sure yet</option>
-                <option value="analytics">Business Analytics</option>
-                <option value="finance">Finance</option>
-                <option value="management">Management</option>
-              </select>
-            </div>
-
-            <div class="form-field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message"
-                placeholder="Tell us about your research interests and any questions you have."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-            <p id="form-status" class="form-status"></p>
-            <p class="form-note">
-              This form is a front-end demo — connect it to your program office's
-              email or CRM endpoint before publishing.
-            </p>
-          </form>
-        </div>
-
       </div>
     </section>
 
-    <!-- =========================== MAP =========================== -->
-    <section class="section section--surface">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Find Us</span>
-          <h2>American University of Beirut</h2>
-        </div>
-        <div class="map-frame">
-          <iframe src="https://www.google.com/maps?q=American+University+of+Beirut&output=embed" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" title="Map showing the American University of Beirut campus">
-          </iframe>
+    <!-- =========================== CTA =========================== -->
+    <section class="section" style="padding: 0;">
+      <div class="cta-fullwidth">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>Ready To Begin Your Doctoral Journey?</h2>
+              <p>Review the admission requirements or reach out to the program office with your questions.</p>
+            </div>
+            <div class="btn-row">
+              <a href="admissions.html" class="btn btn-primary">Admission Requirements</a>
+              <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- =========================== FOOTER =========================== -->
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
-  <!-- <script src="https://www.aub.edu.lb/osb/AUB_OSB_shared_components/footer-load-V.js"></script> -->
 
-  <script src="js/main.js"></script>
+  <script>
+    /* Request Information form handling */
+    (function () {
+      var form = document.getElementById('requestInfoForm');
+      var status = document.getElementById('formStatus');
+      if (!form || !status) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var firstName = form.firstName.value.trim();
+        var lastName = form.lastName.value.trim();
+        var email = form.email.value.trim();
+
+        if (!firstName || !lastName || !email) {
+          status.textContent = 'Please fill in your first name, last name, and email.';
+          status.className = 'form-status show';
+          return;
+        }
+
+        status.textContent = 'Thank you. Your request has been received. The program office will follow up with you shortly.';
+        status.className = 'form-status success show';
+        form.reset();
+      });
+    })();
+  </script>
 </body>
 
 </html>

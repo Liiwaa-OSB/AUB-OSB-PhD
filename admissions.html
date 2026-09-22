@@ -6,142 +6,582 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admissions | PhD in Business Administration | OSB, AUB</title>
   <meta name="description"
-    content="Admission requirements, application materials, financial support, and FAQs for the PhD in Business Administration at OSB, AUB — Fall 2027.">
+    content="Admissions to the PhD in Business Administration at OSB, AUB: eligibility, application materials, financial support, faculty and research fit, and frequently asked questions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Site styles -->
+  <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Shared scripts -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/menu.js"></script>
 
   <style>
     /* ---- Page-specific styles: Admissions ---- */
 
-    .admissions-jump {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .admissions-jump a {
-      padding: 9px 18px;
-      border-radius: 999px;
-      border: 1.5px solid var(--color-border);
-      font-size: .88rem;
-      font-weight: 600;
-    }
-
-    .admissions-jump a:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-    }
-
-    .materials-list {
-      counter-reset: mat;
-      display: grid;
-      gap: 0;
-    }
-
-    .materials-list li {
-      counter-increment: mat;
-      display: flex;
-      gap: 18px;
-      padding: 20px 0;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .materials-list li:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .materials-list li::before {
-      content: counter(mat, decimal-leading-zero);
-      flex: none;
-      font-weight: 900;
-      color: var(--color-primary);
-      font-size: 1rem;
-      width: 34px;
-    }
-
-    .materials-list li p {
-      margin: 0;
-    }
-
-    .materials-list li strong {
-      display: block;
-      color: var(--color-ink);
-      margin-bottom: 4px;
-    }
-
-    .funding-card {
-      background: var(--color-white);
+    .eligibility-note {
+      background: var(--color-primary-tint);
       border: 1px solid var(--color-primary-line);
       border-radius: var(--radius-md);
-      padding: 32px;
+      padding: 28px 32px;
+      margin-top: 32px;
     }
 
-    .funding-card .stat-num {
-      font-size: 2rem;
+    .eligibility-note p {
+      font-size: .95rem;
+      color: var(--color-text);
+      margin: 0;
     }
 
-    .portal-note {
+    .eligibility-note p+p {
+      margin-top: 14px;
+    }
+
+    /* Application materials */
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gutter);
+    }
+
+    @media (max-width: 700px) {
+      .materials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .material-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 26px 24px;
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .material-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+    }
+
+    .material-card .material-icon {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      background: var(--color-surface);
-      border-radius: var(--radius-md);
-      padding: 24px 28px;
-      margin-top: 40px;
+      justify-content: center;
     }
 
-    .portal-note p {
+    .material-card .material-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .material-card p {
       margin: 0;
-      font-size: .92rem;
+      font-size: .94rem;
+      color: var(--color-text);
+      line-height: 1.6;
+      padding-top: 10px;
+    }
+
+    /* Financial support */
+    .funding-block {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .funding-block {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .funding-block .split-media {
+        order: -1;
+      }
+    }
+
+    .funding-block .split-media img {
+      width: 100%;
+      aspect-ratio: 4/3.2;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .funding-block .split-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+    }
+
+    .funding-block .split-media::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -22px;
+      width: 46%;
+      height: 58%;
+      background: var(--color-primary-dark);
+      opacity: .9;
+      border-radius: var(--radius-sm);
+      z-index: 3;
+    }
+
+    @media (max-width: 900px) {
+
+      .funding-block .split-media::before,
+      .funding-block .split-media::after {
+        display: none;
+      }
+    }
+
+    /* Faculty and research fit */
+    .fit-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .fit-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: .97rem;
+      line-height: 1.65;
+    }
+
+    .fit-list .tick {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+    }
+
+    .fit-list .tick svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .fit-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .fit-block {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .fit-block .split-media img {
+      width: 100%;
+      aspect-ratio: 4/3.2;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .fit-block .split-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+    }
+
+    .fit-block .split-media::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -22px;
+      width: 46%;
+      height: 58%;
+      background: var(--color-primary-dark);
+      opacity: .9;
+      border-radius: var(--radius-sm);
+      z-index: 3;
+    }
+
+    @media (max-width: 900px) {
+
+      .fit-block .split-media::before,
+      .fit-block .split-media::after {
+        display: none;
+      }
+    }
+
+    .website-note {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin-top: 32px;
+    }
+
+    .website-note .icon-feature-icon {
+      margin-bottom: 0;
+      flex: none;
+      background: var(--color-primary-tint);
+      width: 40px;
+      height: 40px;
+    }
+
+    .website-note .icon-feature-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .website-note p {
+      font-size: .88rem;
       color: var(--color-muted);
-      max-width: 58ch;
+      margin: 0;
+      padding-top: 8px;
+    }
+
+    .website-note p strong {
+      color: var(--color-primary);
     }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================== HEADER =========================== -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M22 9L12 5 2 9l10 4 10-4z" />
-            <path d="M4 11v5c0 1 3.5 3 8 3s8-2 8-3v-5" />
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>Olayan School of Business</strong>
-          <span>PhD in Business Administration · AUB</span>
-        </span>
-      </a>
-
-      <nav class="nav" id="site-nav">
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="faculty.html">Faculty</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="admissions.html" class="active">Admissions</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <a href="#eligibility" class="btn btn-primary">Apply Now</a>
-      </nav>
+  <div class="nav">
+    <div class="nav-utility">
+      <div class="nav-utility-container">
+        <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a><span class="nav-utility-separator">|</span>
+        <a href="/Search/Pages/People.aspx" class="nav-utility-link">Find People</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://aubmc.org.lb/" class="nav-utility-link" target="_blank">AUBMC</a><span
+          class="nav-utility-separator">|</span>
+        <a href="/libraries" class="nav-utility-link">Libraries</a><span class="nav-utility-separator">|</span>
+        <a href="/Employment" class="nav-utility-link">Jobs</a><span class="nav-utility-separator">|</span>
+        <a href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61" class="nav-utility-link"
+          target="_blank">Alumni</a><span class="nav-utility-separator">|</span>
+        <a href="https://online.aub.edu.lb" class="nav-utility-link" target="_blank">AUB Online</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://www.aubmed.ac.cy/" class="nav-utility-link" target="_blank">AUB – Mediterraneo</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login" class="nav-utility-link"
+          target="_blank">Telehealth</a><span class="nav-utility-separator">|</span>
+        <a href="/advancement/Development/Pages/HowToMakeAGift.aspx" class="nav-utility-link">Give</a>
+      </div>
     </div>
-  </header>
+    <div class="nav-main-header" id="mainHeader">
+      <div class="nav-main-container">
+        <div class="nav-logo"><a href="https://www.aub.edu.lb/osb/Pages/default.aspx"><img
+              src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a></div>
+        <div class="nav-desktop">
+          <div class="nav-item"><button>About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>About AUB</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/default.aspx">Overview</a></li>
+                    <li><a href="/aboutus/Pages/history.aspx">History</a></li>
+                    <li><a href="/aboutus/Pages/mission.aspx">Mission and Vision</a></li>
+                    <li><a href="/aboutus/Pages/facts.aspx">Facts and Figures</a></li>
+                    <li><a href="/President/oeo-titleix">Title IX</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a></li>
+                    <li><a href="/president">Office of the President</a></li>
+                    <li><a href="/nyo">New York Office</a></li>
+                    <li><a href="/maingate">The MainGate Magazine</a></li>
+                    <li><a href="/advancement">Office of Advancement</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
+                    <li><a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a></li>
+                    <li><a href="/accreditation">Accreditation</a></li>
+                    <li><a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ACADEMICS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+                    <li><a href="/Pages/AZ.aspx">Departments and Centers</a></li>
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg" target="_blank">Search
+                        for a Course</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/theinstitute">Institute for Academic Innovation and
+                        Development</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/generaleducation">General Education Program</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/provost">Office of the Provost</a></li>
+                    <li><a href="/registrar">Office of the Registrar</a></li>
+                    <li><a href="/libraries">Libraries</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ADMISSIONS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/admissions">Admissions</a></li>
+                    <li><a href="/faid">Financial Aid</a></li>
+                    <li><a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html" target="_blank">Tuition and Fees
+                        Calculator</a></li>
+                    <li><a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
+                        target="_blank">Visiting Student</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+                    <li><a href="/lead">LEAD scholarship opportunities</a></li>
+                    <li><a href="/sao">Office of Student Affairs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Research</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/research">Office of Research</a></li>
+                    <li><a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a></li>
+                    <li><a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a></li>
+                    <li><a href="/urb">University Research Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/Pages/ResearchSupport.aspx">Research Funding</a></li>
+                    <li><a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a></li>
+                    <li><a href="/irb">Human Research Protection Program / Institutional Review
+                        Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/MRVP">Medical Research Volunteer Program</a></li>
+                    <li><a href="/provost/urvp">Undergraduate Research Volunteer Program</a></li>
+                    <li><a href="/articles/Pages/research.aspx">Research News</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Outreach</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/CCE">Community Engagement</a></li>
+                    <li><a href="/Neighborhood">Neighborhood Initiative</a></li>
+                    <li><a href="/natureconservation">Nature Conservation</a></li>
+                    <li><a href="/seniors">University for Seniors</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/ifi">Issam Fares Institute</a></li>
+                    <li><a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a></li>
+                    <li><a href="/k2p">Knowledge to Policy Center</a></li>
+                    <li><a href="/masri_institute">The Munib and Angela Masri Institute of Energy
+                        and Natural
+                        Resources</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI
+                        Hub</a></li>
+                    <li><a href="/fafs/esdu">Environment and Sustainable Development</a></li>
+                    <li><a href="https://ghi.aub.edu.lb/" target="_blank">Global Health
+                        Institute</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Boldly Campaign</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact
+                        Stories</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/campaign-objectives/" target="_blank">Campaign Objectives</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to
+                        Support</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign
+                        Progress</a></li>
+                    <li><a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
+                        target="_blank">Join the Campaign</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu"><svg width="28" height="28" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+    <div class="nav-osb" id="osbRow">
+      <div class="nav-osb-container">
+        <div class="nav-osb-logo"><a href="/"><img src="images/logos/AUB+OSB-Merged-Logo-white.png"
+              alt="AUB OSB Logo" /></a>
+        </div>
+        <div class="nav-osb-links">
+          <ul class="osb-nav mba-nav">
+            <li class="osb-nav-item mba-nav-item">
+              <a href="https://www.aub.edu.lb/osb" id="about-osb-link">About OSB</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="index.html" id="phd-homepage-link">PhD Homepage</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="program.html" id="phd-program-link">The Program</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="research.html" id="phd-research-link">Research</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a class="is-active" href="admissions.html" id="phd-admissions-link">Admissions</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="contact.html" id="phd-contact-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mobile-overlay" id="mobileOverlay">
+    <div class="mobile-overlay-header">
+      <div class="mobile-logo"><img src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB" /></div><button
+        class="mobile-close-btn" id="closeOverlayBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="white" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg></button>
+    </div>
+    <div class="mobile-menu-sections">
+      <div class="mobile-section">
+        <div class="mobile-section-title">Quick Links</div>
+        <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">Main Navigation</div>
+        <div id="mobileMainNav"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">OSB School - MBA</div>
+        <div id="mobileOsbNav"></div>
+      </div>
+    </div>
+  </div>
 
   <main>
 
@@ -149,320 +589,445 @@
     <section class="page-hero">
       <div class="container">
         <div class="breadcrumb"><a href="index.html">Home</a> / Admissions</div>
-        <span class="eyebrow">Admissions — Fall 2027</span>
-        <h1>A highly selective, fully funded doctoral program</h1>
+        <span class="eyebrow">Admissions</span>
+        <h1>Admissions</h1>
         <p class="lede">
-          Admission is based on a holistic assessment of academic preparation,
-          research potential, fit with OSB's areas of faculty expertise, and
-          readiness for doctoral study. Applicants must satisfy the general
-          admission requirements of the AUB Graduate Council in addition to the
-          program-specific requirements below.
+          Admission to the PhD in Business Administration is highly selective. The program seeks outstanding applicants
+          with exceptional academic achievement, intellectual curiosity, strong analytical ability, research
+          motivation, and clear potential to develop into independent scholars. Decisions are based on a holistic
+          assessment of academic preparation, research potential, fit with OSB’s areas of faculty expertise, and
+          readiness for doctoral study. Applicants must satisfy the general admission requirements of the American
+          University of Beirut (AUB) Graduate Council in addition to the program-specific requirements.
         </p>
-        <div class="admissions-jump">
-          <a href="#eligibility">Eligibility</a>
-          <a href="#application-materials">Application Materials</a>
-          <a href="#financial-support">Financial Support</a>
-          <a href="#faqs">FAQs</a>
-        </div>
       </div>
     </section>
 
     <!-- =========================== ELIGIBILITY =========================== -->
-    <section class="section" id="eligibility">
+    <section class="section">
       <div class="container split">
         <div>
           <span class="eyebrow">Eligibility</span>
-          <h2>Who should apply</h2>
+          <h2>Eligibility</h2>
+          <ul class="check-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>A bachelor’s and master’s degree in business administration or a related discipline from a
+              recognized institution for the regular track. Exceptionally qualified applicants holding a bachelor’s
+              degree may be considered for the accelerated track in accordance with AUB regulations.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>A minimum GPA of 3.7/4.0, or equivalent, in the most recent degree, subject to AUB and
+              program admissions policies. Exceptional candidates with outstanding research potential may be considered
+              even if they fall slightly below this threshold.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>Competitive GMAT or GRE scores obtained within the period accepted by AUB/program
+              regulations.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>English-language proficiency meeting AUB requirements.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>Evidence of research potential, intellectual maturity, and strong alignment with the
+              research strengths of OSB.</li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80"
+            alt="Prospective doctoral students on campus" loading="lazy">
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="eligibility-note">
           <p>
-            The program seeks outstanding applicants with exceptional academic
-            achievement, intellectual curiosity, strong analytical ability, research
-            motivation, and clear potential to develop into independent scholars.
-          </p>
-          <p style="font-size:.92rem; color:var(--color-muted);">
-            Applicants may come from business and related fields — economics,
-            finance, accounting, management, marketing, business analytics,
-            operations research, engineering, computer science, statistics,
-            mathematics, information systems, health sciences, and other relevant
-            disciplines. Applicants from other fields may also be considered when
-            they demonstrate strong potential for doctoral research; preparatory
-            coursework may be required on a case-by-case basis and does not count
-            toward degree requirements.
+            Applicants may come from business and related fields including economics, finance, accounting, management,
+            marketing, business analytics, operations research, engineering, computer science, statistics,
+            mathematics, information systems, health sciences, and other relevant disciplines. Applicants from other
+            fields may also be considered when they demonstrate strong potential for doctoral research. Preparatory
+            coursework may be required on a case-by-case basis and does not count toward degree requirements.
           </p>
         </div>
-
-        <ul class="check-list">
-          <li>
-            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></span>
-            A bachelor's and master's degree in business administration or a related discipline for the regular track.
-            Exceptionally qualified bachelor's-degree holders may be considered for the accelerated track.
-          </li>
-          <li>
-            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></span>
-            A minimum GPA of 3.7/4.0, or equivalent, in the most recent degree — exceptional candidates with outstanding
-            research potential may be considered even if slightly below this threshold.
-          </li>
-          <li>
-            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></span>
-            Competitive GMAT or GRE scores, obtained within the period accepted by AUB and program regulations.
-          </li>
-          <li>
-            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></span>
-            English-language proficiency meeting AUB requirements.
-          </li>
-          <li>
-            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg></span>
-            Evidence of research potential, intellectual maturity, and strong alignment with the research strengths of
-            OSB.
-          </li>
-        </ul>
       </div>
     </section>
 
     <!-- =========================== APPLICATION MATERIALS =========================== -->
-    <section class="section section--surface" id="application-materials">
+    <section class="section section--surface">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">How to Apply</span>
-          <h2>Application materials</h2>
-          <p class="lede">Applications are submitted through the AUB online graduate application system and should
-            include:</p>
+          <span class="eyebrow">Application</span>
+          <h2>Application Materials</h2>
+          <p class="lede">
+            Applications are submitted through the AUB online graduate application system and should include:
+          </p>
         </div>
 
-        <ol class="materials-list">
-          <li>
-            <p><strong>Online AUB graduate application</strong>Submitted through the official AUB graduate application
-              system.</p>
-          </li>
-          <li>
-            <p><strong>Official transcripts</strong>From all postsecondary institutions attended.</p>
-          </li>
-          <li>
-            <p><strong>Curriculum vitae</strong>Highlighting education, research experience, publications or
-              presentations, teaching, professional experience, awards, and scholarships.</p>
-          </li>
-          <li>
-            <p><strong>Statement of purpose</strong>Explaining academic background, research interests, motivation for
-              doctoral study, career goals, and fit with OSB faculty expertise.</p>
-          </li>
-          <li>
-            <p><strong>Research statement (2–4 pages)</strong>Describing the proposed research area, its significance,
-              preliminary questions, and potential methodological approach.</p>
-          </li>
-          <li>
-            <p><strong>Academic writing sample</strong>Such as a thesis chapter, research paper, working paper, or
-              publication.</p>
-          </li>
-          <li>
-            <p><strong>Three academic letters of recommendation</strong>Addressing the applicant's research potential
-              and readiness for doctoral study.</p>
-          </li>
-          <li>
-            <p><strong>Official GMAT or GRE scores</strong>And proof of English-language proficiency, as required.</p>
-          </li>
-        </ol>
+        <div class="materials-grid">
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M9 9h6M9 13h6M9 17h3" />
+              </svg>
+            </span>
+            <p>Online AUB graduate application.</p>
+          </div>
 
-        <p style="margin-top:28px; font-size:.95rem;">
-          Shortlisted applicants will be invited for an interview, during which they
-          will present their proposed research and discuss their academic interests
-          with the admissions committee.
-        </p>
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <path d="M9 15h6M9 11h2" />
+              </svg>
+            </span>
+            <p>Official transcripts from all postsecondary institutions attended.</p>
+          </div>
 
-        <div class="portal-note">
-          <p>Application deadlines, English-language requirements, and the official
-            application portal are maintained by AUB Graduate Admissions and should
-            always be confirmed there directly.</p>
-          <a href="#" class="btn btn-primary">AUB Graduate Admissions Portal &rarr;</a>
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </span>
+            <p>Curriculum vitae highlighting education, research experience, publications or presentations, teaching,
+              professional experience, awards, and scholarships.</p>
+          </div>
+
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+              </svg>
+            </span>
+            <p>Statement of purpose explaining academic background, research interests, motivation for doctoral study,
+              career goals, and fit with OSB faculty expertise.</p>
+          </div>
+
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </span>
+            <p>Research statement (2-4 pages) describing the proposed research area, its significance, preliminary
+              questions, and potential methodological approach.</p>
+          </div>
+
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </span>
+            <p>Academic writing sample, such as a thesis chapter, research paper, working paper, or publication.</p>
+          </div>
+
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </span>
+            <p>Three academic letters of recommendation addressing the applicant’s research potential and readiness for
+              doctoral study.</p>
+          </div>
+
+          <div class="material-card">
+            <span class="material-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </span>
+            <p>Official GMAT or GRE scores and proof of English-language proficiency, as required.</p>
+          </div>
+        </div>
+
+        <div class="website-note">
+          <span class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+          </span>
+          <p>Shortlisted applicants will be invited for an interview, during which they will present their proposed
+            research and discuss their academic interests with the admissions committee.</p>
+        </div>
+
+        <div class="website-note" style="margin-top:20px;">
+          <span class="icon-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+            </svg>
+          </span>
+          <p><strong>Website note:</strong> Link the application deadline, English-language requirements, and official
+            application portal directly to AUB Admissions so that time-sensitive university requirements remain
+            current.</p>
         </div>
       </div>
     </section>
 
     <!-- =========================== FINANCIAL SUPPORT =========================== -->
-    <section class="section" id="financial-support">
-      <div class="container split">
-        <div>
-          <span class="eyebrow">Financial Support</span>
-          <h2>A fully funded doctoral program</h2>
-          <p>
-            The PhD in Business Administration is planned as a fully funded,
-            full-time doctoral program. In line with AUB doctoral funding
-            arrangements and program requirements, admitted students are expected
-            to receive tuition support and a monthly stipend in connection with
-            graduate teaching and/or research responsibilities, subject to
-            satisfactory academic progress and the terms of the applicable
-            doctoral appointment.
-          </p>
-          <p style="font-size:.92rem; color:var(--color-muted);">
-            Additional competitive support may be available for conference
-            participation, research activities, and approved international
-            research experiences.
-          </p>
+    <section class="section">
+      <div class="container">
+        <div class="funding-block">
+          <div>
+            <span class="eyebrow">Funding</span>
+            <h2>Financial Support</h2>
+            <p>
+              The PhD in Business Administration is planned as a fully funded, full-time doctoral program. In line with
+              AUB doctoral funding arrangements and program requirements, admitted students are expected to receive
+              tuition support and a monthly stipend in connection with graduate teaching and/or research
+              responsibilities, subject to satisfactory academic progress and the terms of the applicable doctoral
+              appointment.
+            </p>
+            <p>
+              Additional competitive support may be available for conference participation, research activities, and
+              approved international research experiences.
+            </p>
+          </div>
+          <div class="split-media">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80"
+              alt="Financial support for doctoral students" loading="lazy">
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="funding-card">
-          <div class="stat-card" style="margin-bottom:24px;">
-            <div class="stat-num">Tuition</div>
-            <div class="stat-label">Covered for admitted full-time doctoral students</div>
+    <!-- =========================== FACULTY AND RESEARCH =========================== -->
+    <section class="section section--surface">
+      <div class="container">
+        <div class="fit-block">
+          <div>
+            <span class="eyebrow">Faculty &amp; Research</span>
+            <h2>Faculty and Research</h2>
+            <p>
+              The program is supported by OSB faculty whose research spans the three doctoral tracks and a wide range
+              of interdisciplinary topics. The website should allow prospective students to identify potential research
+              fit before applying.
+            </p>
+            <ul class="fit-list" style="margin-top:24px;">
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Filter faculty by doctoral track.
+              </li>
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Display a concise biography, research interests, selected recent publications, and methodological
+                expertise.
+              </li>
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Link to the faculty member’s full AUB profile, Google Scholar/ORCID where appropriate.
+              </li>
+            </ul>
           </div>
-          <div class="stat-card" style="margin-bottom:24px;">
-            <div class="stat-num">Stipend</div>
-            <div class="stat-label">Monthly, linked to teaching and/or research duties</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">+ Travel</div>
-            <div class="stat-label">Competitive support for conferences and approved international research</div>
+          <div class="split-media">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
+              alt="Faculty and research fit" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================== FAQ =========================== -->
-    <section class="section section--surface" id="faqs">
+    <section class="section">
       <div class="container container--narrow">
-        <div class="section-head">
-          <span class="eyebrow">FAQs</span>
-          <h2>Frequently asked questions</h2>
+        <div class="section-head center">
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
         </div>
 
         <div class="accordion">
-
-          <div class="accordion-item open">
-            <button class="accordion-trigger" aria-expanded="true">
-              What degree will I earn?
-              <span class="plus"></span>
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What degree will I earn?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
-            <div class="accordion-panel" style="max-height:500px;">
+            <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                The degree is a PhD in Business Administration. Students pursue one
-                of three doctoral tracks: Business Analytics, Finance, or Management.
+                <p>The degree is a PhD in Business Administration. ...</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What degree will I earn?</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                <p>The degree is a PhD in Business Administration. ...</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What degree will I earn?</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                <p>The degree is a PhD in Business Administration. ...</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>What degree will I earn?</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-panel-inner">
+                <p>The degree is a PhD in Business Administration. Students pursue one of three doctoral tracks:
+                  Business Analytics, Finance, or Management.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              Is the program full time?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Is the program full time?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                Yes. The PhD is designed as a full-time, research-intensive program
-                requiring sustained participation in coursework, research,
-                teaching-related activities, seminars, and dissertation work.
+                <p>Yes. The PhD is designed as a full-time, research-intensive program requiring sustained participation
+                  in coursework, research, teaching-related activities, seminars, and dissertation work.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              How long does the program take?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>How long does the program take?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                The regular track is designed around approximately four years of
-                full-time study, although completion time is governed by AUB
-                doctoral regulations and the student's research progress.
+                <p>The regular track is designed around approximately four years of full-time study, although completion
+                  time is governed by AUB doctoral regulations and the student’s research progress.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              Do I need the GMAT or GRE?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Do I need the GMAT or GRE?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                The program proposal supports GMAT or GRE scores. The applicable
-                test policy for the Fall 2027 admission cycle will be confirmed
-                here, with a link to AUB Admissions for current requirements.
+                <p>The program proposal supports GMAT or GRE scores. The website should state the test policy applicable
+                  to the Fall 2027 admission cycle once formally confirmed and link to AUB Admissions for current
+                  requirements.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              How should I identify a research fit?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>How should I identify a research fit?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                Review the three doctoral tracks and faculty research profiles, then
-                use your statement of purpose and research statement to explain your
-                alignment with relevant OSB faculty expertise.
+                <p>Applicants should review the three doctoral tracks and faculty research profiles and use the
+                  statement of purpose and research statement to explain alignment with relevant OSB faculty expertise.
+                </p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              Is financial support available?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Is financial support available?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                The program is planned as fully funded for admitted full-time
-                doctoral students, with tuition support and a monthly stipend
-                linked to teaching and/or research responsibilities, subject to
-                applicable university and program conditions.
+                <p>The program is planned as fully funded for admitted full-time doctoral students, with tuition support
+                  and a monthly stipend linked to teaching and/or research responsibilities, subject to applicable
+                  university and program conditions.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              Will I teach during the PhD?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Will I teach during the PhD?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                Doctoral students complete AUB teaching-development requirements and
-                are expected to contribute to teaching as part of their
-                assistantship and professional preparation.
+                <p>Doctoral students complete AUB teaching-development requirements and are expected to contribute to
+                  teaching as part of their assistantship and professional preparation.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              Can I study or conduct research abroad?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>Can I study or conduct research abroad?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                The program is designed to encourage international research
-                engagement, including conferences, collaboration, and a possible
-                approved semester at a partner institution, subject to academic and
-                funding arrangements.
+                <p>The program is designed to encourage international research engagement, including conferences,
+                  collaboration, and a possible approved semester at a partner institution, subject to academic and
+                  funding arrangements.</p>
               </div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-trigger" aria-expanded="false">
-              When can I apply for Fall 2027?
-              <span class="plus"></span>
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>When can I apply for Fall 2027?</span>
+              <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="accordion-panel">
               <div class="accordion-panel-inner">
-                Application dates will be published once the Fall 2027 AUB graduate
-                admissions calendar is finalized. This page will link directly to
-                the official AUB graduate admissions portal and deadlines.
+                <p>Application dates should be published once the Fall 2027 AUB graduate admissions calendar is
+                  finalized. The website should link directly to the official AUB graduate admissions portal and
+                  deadlines page.</p>
               </div>
             </div>
           </div>
@@ -472,28 +1037,26 @@
     </section>
 
     <!-- =========================== CTA =========================== -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-band">
-          <div>
-            <h2>Have a question we haven't answered?</h2>
-            <p>Reach the program office directly, or request more information about Fall 2027 admissions.</p>
-          </div>
-          <div class="btn-row">
-            <a href="contact.html" class="btn btn-primary">Contact the Program</a>
+    <section class="section" style="padding: 0;">
+      <!-- FULL-WIDTH CTA BAND -->
+      <div class="cta-fullwidth">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>Ready To Begin Your Doctoral Journey?</h2>
+              <p>Review the admission requirements or reach out to the program office with your questions.</p>
+            </div>
+            <div class="btn-row">
+              <a href="admissions.html" class="btn btn-primary">Admission Requirements</a>
+              <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
-
-  <!-- =========================== FOOTER =========================== -->
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
-  <!-- <script src="https://www.aub.edu.lb/osb/AUB_OSB_shared_components/footer-load-V.js"></script> -->
-
-  <script src="js/main.js"></script>
 </body>
 
 </html>

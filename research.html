@@ -4,328 +4,599 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research Areas | PhD in Business Administration | OSB, AUB</title>
+  <title>Research | PhD in Business Administration | OSB, AUB</title>
   <meta name="description"
-    content="The three doctoral tracks of the PhD in Business Administration: Business Analytics, Finance, and Management.">
+    content="Research areas and doctoral tracks in the PhD in Business Administration at OSB, AUB: Business Analytics, Finance, and Management.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+    <!-- Site styles -->
+  <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- Shared scripts -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/menu.js"></script>
+
   <style>
-    /* ---- Page-specific styles: Research Areas ---- */
-
-    .track-jump {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .track-jump a {
-      padding: 9px 18px;
-      border-radius: 999px;
-      border: 1.5px solid var(--color-border);
-      font-size: .88rem;
-      font-weight: 600;
-    }
-
-    .track-jump a:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-    }
+    /* ---- Page-specific styles: Research ---- */
 
     .track-section {
-      scroll-margin-top: 100px;
-    }
-
-    .track-section+.track-section {
       border-top: 1px solid var(--color-border);
     }
 
+    .track-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
     .track-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 44px;
     }
 
-    .track-head .icon-feature-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 0;
+    @media (max-width: 900px) {
+      .track-head {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
     }
 
-    .track-head .icon-feature-icon svg {
-      width: 32px;
-      height: 32px;
+    .track-head .split-media img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 2;
+      width: 100%;
     }
 
-    .topic-grid {
+    .track-head .split-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+    }
+
+    .track-head .split-media::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -22px;
+      width: 46%;
+      height: 58%;
+      background: var(--color-primary-dark);
+      opacity: .9;
+      border-radius: var(--radius-sm);
+      z-index: 3;
+    }
+
+    @media (max-width: 900px) {
+
+      .track-head .split-media::before,
+      .track-head .split-media::after {
+        display: none;
+      }
+    }
+
+    .track-areas {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px 32px;
-      margin-bottom: 36px;
+      gap: 12px 32px;
+      margin-top: 24px;
     }
 
-    @media (max-width:640px) {
-      .topic-grid {
+    @media (max-width: 600px) {
+      .track-areas {
         grid-template-columns: 1fr;
       }
     }
 
-    .topic-grid li {
+    .track-areas li {
       display: flex;
-      align-items: center;
       gap: 12px;
-      font-size: .98rem;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--color-border);
+      align-items: flex-start;
+      font-size: .96rem;
+      color: var(--color-text);
+      padding: 8px 0;
     }
 
-    .topic-grid li::before {
-      content: "";
+    .track-areas li .dot {
       flex: none;
       width: 8px;
       height: 8px;
-      border-radius: 2px;
+      border-radius: 50%;
       background: var(--color-primary);
+      margin-top: 7px;
     }
 
-    .track-feature-note {
+    .feature-note {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
       gap: 16px;
-      background: var(--color-surface);
+      align-items: flex-start;
+      background: var(--color-primary-tint);
+      border: 1px solid var(--color-primary-line);
       border-radius: var(--radius-md);
       padding: 22px 26px;
+      margin-top: 36px;
     }
 
-    .track-feature-note p {
-      margin: 0;
+    .feature-note .icon-feature-icon {
+      margin-bottom: 0;
+      flex: none;
+      background: var(--color-white);
+    }
+
+    .feature-note p {
       font-size: .93rem;
-      color: var(--color-muted);
-      max-width: 56ch;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- =========================== HEADER =========================== -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M22 9L12 5 2 9l10 4 10-4z" />
-            <path d="M4 11v5c0 1 3.5 3 8 3s8-2 8-3v-5" />
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>Olayan School of Business</strong>
-          <span>PhD in Business Administration · AUB</span>
-        </span>
-      </a>
-
-      <nav class="nav" id="site-nav">
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="program.html">Program</a></li>
-          <li><a href="faculty.html">Faculty</a></li>
-          <li><a href="research.html" class="active">Research</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <a href="admissions.html" class="btn btn-primary">Apply Now</a>
-      </nav>
+  <div class="nav">
+    <div class="nav-utility">
+      <div class="nav-utility-container">
+        <a href="/Pages/AZ.aspx" class="nav-utility-link">A - Z</a><span class="nav-utility-separator">|</span>
+        <a href="/Search/Pages/People.aspx" class="nav-utility-link">Find People</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://aubmc.org.lb/" class="nav-utility-link" target="_blank">AUBMC</a><span
+          class="nav-utility-separator">|</span>
+        <a href="/libraries" class="nav-utility-link">Libraries</a><span class="nav-utility-separator">|</span>
+        <a href="/Employment" class="nav-utility-link">Jobs</a><span class="nav-utility-separator">|</span>
+        <a href="http://alumni.aub.edu.lb/s/1716/start.aspx?gid=2&pgid=61" class="nav-utility-link"
+          target="_blank">Alumni</a><span class="nav-utility-separator">|</span>
+        <a href="https://online.aub.edu.lb" class="nav-utility-link" target="_blank">AUB Online</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://www.aubmed.ac.cy/" class="nav-utility-link" target="_blank">AUB – Mediterraneo</a><span
+          class="nav-utility-separator">|</span>
+        <a href="https://myaubhealth.aubmc.org.lb/mychartprd/Authentication/Login" class="nav-utility-link"
+          target="_blank">Telehealth</a><span class="nav-utility-separator">|</span>
+        <a href="/advancement/Development/Pages/HowToMakeAGift.aspx" class="nav-utility-link">Give</a>
+      </div>
     </div>
-  </header>
+    <div class="nav-main-header" id="mainHeader">
+      <div class="nav-main-container">
+        <div class="nav-logo"><a href="https://www.aub.edu.lb/osb/Pages/default.aspx"><img
+              src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" /></a></div>
+        <div class="nav-desktop">
+          <div class="nav-item"><button>About AUB<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>About AUB</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/default.aspx">Overview</a></li>
+                    <li><a href="/aboutus/Pages/history.aspx">History</a></li>
+                    <li><a href="/aboutus/Pages/mission.aspx">Mission and Vision</a></li>
+                    <li><a href="/aboutus/Pages/facts.aspx">Facts and Figures</a></li>
+                    <li><a href="/President/oeo-titleix">Title IX</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/AboutUs/Pages/leadership.aspx">AUB Leadership</a></li>
+                    <li><a href="/president">Office of the President</a></li>
+                    <li><a href="/nyo">New York Office</a></li>
+                    <li><a href="/maingate">The MainGate Magazine</a></li>
+                    <li><a href="/advancement">Office of Advancement</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/aboutus/Pages/campus.aspx">Campus</a></li>
+                    <li><a href="/aboutus/Pages/beirut-lb.aspx">About Beirut and Lebanon</a></li>
+                    <li><a href="/accreditation">Accreditation</a></li>
+                    <li><a href="https://150.aub.edu.lb/" target="_blank">AUB 150</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Academics<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ACADEMICS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/Pages/faculties.aspx">Faculties</a></li>
+                    <li><a href="/Pages/AZ.aspx">Departments and Centers</a></li>
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="https://www-banner.aub.edu.lb/pls/weba/bwckctlg.p_disp_dyn_ctlg" target="_blank">Search
+                        for a Course</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/theinstitute">Institute for Academic Innovation and
+                        Development</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/generaleducation">General Education Program</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/provost">Office of the Provost</a></li>
+                    <li><a href="/registrar">Office of the Registrar</a></li>
+                    <li><a href="/libraries">Libraries</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Admissions<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>ADMISSIONS</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/admissions">Admissions</a></li>
+                    <li><a href="/faid">Financial Aid</a></li>
+                    <li><a href="http://www.aub.edu.lb/admissions/Pages/TC/index.html" target="_blank">Tuition and Fees
+                        Calculator</a></li>
+                    <li><a href="https://www.aub.edu.lb/admissions/applications/Pages/SpecialVisiting.aspx"
+                        target="_blank">Visiting Student</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/faid/Pages/Scholarships.aspx">Scholarships</a></li>
+                    <li><a href="/lead">LEAD scholarship opportunities</a></li>
+                    <li><a href="/sao">Office of Student Affairs</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/academics/pages/majors_programs.aspx">Majors and Programs</a></li>
+                    <li><a href="/graduatecouncil">Graduate Council</a></li>
+                    <li><a href="/oip">Office of International Programs</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Research<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Research</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/research">Office of Research</a></li>
+                    <li><a href="/Pages/ResearchbyFaculty.aspx">Research by Faculty/School</a></li>
+                    <li><a href="/Pages/ResearchCenters.aspx">Interfaculty Research Centers</a></li>
+                    <li><a href="/urb">University Research Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/Pages/ResearchSupport.aspx">Research Funding</a></li>
+                    <li><a href="/urb/Pages/Researchintegrity.aspx">Research Integrity</a></li>
+                    <li><a href="/irb">Human Research Protection Program / Institutional Review
+                        Board</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/MRVP">Medical Research Volunteer Program</a></li>
+                    <li><a href="/provost/urvp">Undergraduate Research Volunteer Program</a></li>
+                    <li><a href="/articles/Pages/research.aspx">Research News</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Outreach<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Outreach</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/CCE">Community Engagement</a></li>
+                    <li><a href="/Neighborhood">Neighborhood Initiative</a></li>
+                    <li><a href="/natureconservation">Nature Conservation</a></li>
+                    <li><a href="/seniors">University for Seniors</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="/ifi">Issam Fares Institute</a></li>
+                    <li><a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a></li>
+                    <li><a href="/k2p">Knowledge to Policy Center</a></li>
+                    <li><a href="/masri_institute">The Munib and Angela Masri Institute of Energy
+                        and Natural
+                        Resources</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="https://www.aub.edu.lb/hub/Pages/default.aspx" target="_blank">AI
+                        Hub</a></li>
+                    <li><a href="/fafs/esdu">Environment and Sustainable Development</a></li>
+                    <li><a href="https://ghi.aub.edu.lb/" target="_blank">Global Health
+                        Institute</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item"><button>Boldly Campaign<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <div class="nav-mega">
+              <h4>Boldly Campaign</h4>
+              <div class="nav-mega-grid">
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/" target="_blank">Campaign Overview</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/impact-stories/" target="_blank">Impact
+                        Stories</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/campaign-objectives/" target="_blank">Campaign Objectives</a>
+                    </li>
+                    <li><a href="http://boldly.aub.edu.lb/ways-to-support/" target="_blank">Ways to
+                        Support</a></li>
+                  </ul>
+                </div>
+                <div class="nav-mega-column">
+                  <ul class="nav-mega-links">
+                    <li><a href="http://boldly.aub.edu.lb/#funding-v2" target="_blank">Campaign
+                        Progress</a></li>
+                    <li><a href="https://secureca.imodules.com/s/1716/interior.aspx?sid=1716&gid=2&pgid=618&cid=2462"
+                        target="_blank">Join the Campaign</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="nav-mobile-btn" id="burgerBtn" aria-label="Menu"><svg width="28" height="28" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg></button>
+      </div>
+    </div>
+    <div class="nav-osb" id="osbRow">
+      <div class="nav-osb-container">
+        <div class="nav-osb-logo"><a href="/"><img src="images/logos/AUB+OSB-Merged-Logo-white.png"
+              alt="AUB OSB Logo" /></a>
+        </div>
+        <div class="nav-osb-links">
+          <ul class="osb-nav mba-nav">
+            <li class="osb-nav-item mba-nav-item">
+              <a href="https://www.aub.edu.lb/osb" id="about-osb-link">About OSB</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="index.html" id="phd-homepage-link">PhD Homepage</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="program.html" id="phd-program-link">The Program</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a class="is-active" href="research.html" id="phd-research-link">Research</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="admissions.html" id="phd-admissions-link">Admissions</a>
+            </li>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="contact.html" id="phd-contact-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mobile-overlay" id="mobileOverlay">
+    <div class="mobile-overlay-header">
+      <div class="mobile-logo"><img src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB" /></div><button
+        class="mobile-close-btn" id="closeOverlayBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="white" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg></button>
+    </div>
+    <div class="mobile-menu-sections">
+      <div class="mobile-section">
+        <div class="mobile-section-title">Quick Links</div>
+        <div class="mobile-utility-grid" id="mobileUtilityGrid"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">Main Navigation</div>
+        <div id="mobileMainNav"></div>
+      </div>
+      <div class="mobile-section">
+        <div class="mobile-section-title">OSB School - MBA</div>
+        <div id="mobileOsbNav"></div>
+      </div>
+    </div>
+  </div>
 
   <main>
 
     <!-- =========================== PAGE HERO =========================== -->
     <section class="page-hero">
       <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> / Research Areas</div>
-        <span class="eyebrow">Research Areas</span>
-        <h1>Three doctoral tracks, one research community</h1>
+        <div class="breadcrumb"><a href="index.html">Home</a> / Research</div>
+        <span class="eyebrow">Research</span>
+        <h1>Research Areas</h1>
         <p class="lede">
-          The PhD is offered as a PhD in Business Administration. Each student pursues
-          one of three doctoral tracks while benefiting from interdisciplinary research
-          opportunities across OSB and the wider university.
+          The PhD is offered as a PhD in Business Administration. Each student pursues one of three doctoral tracks
+          while benefiting from interdisciplinary research opportunities across OSB and the wider university.
         </p>
-        <div class="track-jump">
-          <a href="#business-analytics">Business Analytics</a>
-          <a href="#finance">Finance</a>
-          <a href="#management">Management</a>
-        </div>
       </div>
     </section>
 
-    <!-- =========================== BUSINESS ANALYTICS =========================== -->
-    <section class="section track-section" id="business-analytics">
-      <div class="container container--narrow">
-        <div class="track-head">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M3 3v18h18" />
-              <rect x="7" y="12" width="3" height="6" />
-              <rect x="12" y="8" width="3" height="10" />
-              <rect x="17" y="5" width="3" height="13" />
-            </svg>
-          </span>
-          <div>
-            <h2 style="margin-bottom:6px;">Business Analytics</h2>
-            <p class="lede" style="margin:0;">Data, models, and decision-making at the heart of modern organizations.
-            </p>
-          </div>
-        </div>
-
-        <ul class="topic-grid">
-          <li>Artificial Intelligence and Machine Learning</li>
-          <li>Optimization and Operations Research</li>
-          <li>Supply Chain and Inventory Management</li>
-          <li>Revenue and Pricing Analytics</li>
-          <li>Decision Analytics</li>
-          <li>Big Data and Unstructured Data</li>
-          <li>Information Systems and Digital Transformation</li>
-          <li>Stochastic Modeling, Simulation, and Applied Analytics</li>
-        </ul>
-
-        <div class="track-feature-note">
-          <p>Faculty in this track are shown with their research interests, selected publications, and links to full
-            profiles.</p>
-          <a href="faculty.html?track=analytics" class="btn btn-outline">View Analytics Faculty</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== FINANCE =========================== -->
-    <section class="section track-section" id="finance">
-      <div class="container container--narrow">
-        <div class="track-head">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 7v5l3 3" />
-            </svg>
-          </span>
-          <div>
-            <h2 style="margin-bottom:6px;">Finance</h2>
-            <p class="lede" style="margin:0;">Markets, institutions, and governance across developed and emerging
-              economies.</p>
-          </div>
-        </div>
-
-        <ul class="topic-grid">
-          <li>Corporate Finance</li>
-          <li>Asset Pricing and Investments</li>
-          <li>Banking and Financial Intermediation</li>
-          <li>Corporate Governance</li>
-          <li>Financial Markets</li>
-          <li>Financial Econometrics</li>
-          <li>Financial Reporting and Capital Markets</li>
-          <li>Risk Management and Emerging Markets</li>
-        </ul>
-
-        <div class="track-feature-note">
-          <p>Faculty in this track are shown with their research interests, selected publications, and links to full
-            profiles.</p>
-          <a href="faculty.html?track=finance" class="btn btn-outline">View Finance Faculty</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== MANAGEMENT =========================== -->
-    <section class="section track-section" id="management">
-      <div class="container container--narrow">
-        <div class="track-head">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-              <circle cx="10" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </span>
-          <div>
-            <h2 style="margin-bottom:6px;">Management</h2>
-            <p class="lede" style="margin:0;">Organizations, leadership, and strategy through qualitative and mixed
-              methods.</p>
-          </div>
-        </div>
-
-        <ul class="topic-grid">
-          <li>Organizational Behavior</li>
-          <li>Strategy and Organization Theory</li>
-          <li>Leadership and Human Resource Management</li>
-          <li>Entrepreneurship and Innovation</li>
-          <li>Sustainability and Business for Society</li>
-          <li>Business Ethics</li>
-          <li>Careers, Gender, and Diversity</li>
-          <li>Qualitative and Mixed-Methods Research</li>
-        </ul>
-
-        <div class="track-feature-note">
-          <p>Faculty in this track are shown with their research interests, selected publications, and links to full
-            profiles.</p>
-          <a href="faculty.html?track=management" class="btn btn-outline">View Management Faculty</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== INTERDISCIPLINARY NOTE =========================== -->
-    <section class="section section--tint">
+    <!-- =========================== TRACKS =========================== -->
+    <section class="section">
       <div class="container">
-        <div class="split">
-          <div>
-            <span class="eyebrow">Beyond a Single Track</span>
-            <h2>Interdisciplinary by design</h2>
-            <p>
-              While each student is admitted into one doctoral track, OSB actively
-              encourages research that crosses disciplinary boundaries — between
-              analytics and finance, management and technology, or business and the
-              wider social sciences. Research seminars, workshops, and faculty
-              collaboration are open across all three tracks.
-            </p>
-            <a href="program.html" class="btn btn-primary">See the Doctoral Journey &rarr;</a>
+
+        <!-- Business Analytics -->
+        <div class="track-section">
+          <div class="track-head">
+            <div>
+              <span class="eyebrow">Track 01</span>
+              <h2>Business Analytics</h2>
+              <ul class="track-areas">
+                <li><span class="dot"></span>Artificial Intelligence and Machine Learning</li>
+                <li><span class="dot"></span>Optimization and Operations Research</li>
+                <li><span class="dot"></span>Supply Chain and Inventory Management</li>
+                <li><span class="dot"></span>Revenue and Pricing Analytics</li>
+                <li><span class="dot"></span>Decision Analytics</li>
+                <li><span class="dot"></span>Big Data and Unstructured Data</li>
+                <li><span class="dot"></span>Information Systems and Digital Transformation</li>
+                <li><span class="dot"></span>Stochastic Modeling, Simulation, and Applied Analytics</li>
+              </ul>
+            </div>
+            <div class="split-media">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                alt="Business analytics and data visualization" loading="lazy">
+            </div>
           </div>
-          <div class="card">
-            <h4>Research Mentoring &amp; Community</h4>
-            <p style="color:var(--color-muted); font-size:.95rem; margin-bottom:14px;">
-              Doctoral students are active members of OSB's scholarly community,
-              supported through:
-            </p>
-            <ul class="check-list">
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg></span>Research Seminar Series</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg></span>Research Centers and Initiatives</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg></span>Doctoral Student Research</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg></span>Recent Faculty Publications</li>
-            </ul>
+
+          <div class="feature-note">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                <circle cx="10" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <p>Website feature: display faculty members associated with this track, their research interests, selected
+              publications, and links to individual faculty profiles.</p>
+          </div>
+        </div>
+
+        <!-- Finance -->
+        <div class="track-section">
+          <div class="track-head">
+            <div class="split-media">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
+                alt="Financial markets and analysis" loading="lazy">
+            </div>
+            <div>
+              <span class="eyebrow">Track 02</span>
+              <h2>Finance</h2>
+              <ul class="track-areas">
+                <li><span class="dot"></span>Corporate Finance</li>
+                <li><span class="dot"></span>Asset Pricing and Investments</li>
+                <li><span class="dot"></span>Banking and Financial Intermediation</li>
+                <li><span class="dot"></span>Corporate Governance</li>
+                <li><span class="dot"></span>Financial Markets</li>
+                <li><span class="dot"></span>Financial Econometrics</li>
+                <li><span class="dot"></span>Financial Reporting and Capital Markets</li>
+                <li><span class="dot"></span>Risk Management and Emerging Markets</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-note">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                <circle cx="10" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <p>Website feature: display faculty members associated with this track, their research interests, selected
+              publications, and links to individual faculty profiles.</p>
+          </div>
+        </div>
+
+        <!-- Management -->
+        <div class="track-section">
+          <div class="track-head">
+            <div>
+              <span class="eyebrow">Track 03</span>
+              <h2>Management</h2>
+              <ul class="track-areas">
+                <li><span class="dot"></span>Organizational Behavior</li>
+                <li><span class="dot"></span>Strategy and Organization Theory</li>
+                <li><span class="dot"></span>Leadership and Human Resource Management</li>
+                <li><span class="dot"></span>Entrepreneurship and Innovation</li>
+                <li><span class="dot"></span>Sustainability and Business for Society</li>
+                <li><span class="dot"></span>Business Ethics</li>
+                <li><span class="dot"></span>Careers, Gender, and Diversity</li>
+                <li><span class="dot"></span>Qualitative and Mixed-Methods Research</li>
+              </ul>
+            </div>
+            <div class="split-media">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                alt="Management and organizational research" loading="lazy">
+            </div>
+          </div>
+
+          <div class="feature-note">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                <circle cx="10" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <p>Website feature: display faculty members associated with this track, their research interests, selected
+              publications, and links to individual faculty profiles.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================== CTA =========================== -->
+    <section class="section" style="padding: 0;">
+      <!-- FULL-WIDTH CTA BAND -->
+      <div class="cta-fullwidth">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>Ready To Begin Your Doctoral Journey?</h2>
+              <p>Review the admission requirements or reach out to the program office with your questions.</p>
+            </div>
+            <div class="btn-row">
+              <a href="admissions.html" class="btn btn-primary">Admission Requirements</a>
+              <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+            </div>
           </div>
         </div>
       </div>
@@ -333,12 +604,8 @@
 
   </main>
 
-  <!-- =========================== FOOTER =========================== -->
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
-  <!-- <script src="https://www.aub.edu.lb/osb/AUB_OSB_shared_components/footer-load-V.js"></script> -->
-
-  <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -5,678 +5,543 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PhD in Business Administration | Olayan School of Business, AUB</title>
-  <meta name="description"
-    content="A full-time, research-intensive doctoral program at the Suliman S. Olayan School of Business, American University of Beirut. Three tracks: Business Analytics, Finance, Management. Launching Fall 2027.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <!-- Site styles -->
+  <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/menu.css" rel="stylesheet" />
+
+  <!-- Shared scripts -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/menu.js"></script>
 
   <style>
-    /* ---- Page-specific enhancements — Home ---- */
-
-    /* ----- 1. HERO — more breathing room, refined chips, modern accent ----- */
-    .hero {
-      padding: 72px 0 32px;
-    }
-
-    .hero .split {
-      gap: 64px;
-    }
-
-    .hero-copy .eyebrow {
-      margin-bottom: 8px;
-      letter-spacing: 0.18em;
-      font-size: 0.74rem;
-    }
-
-    .hero-copy h1 {
-      margin-bottom: 24px;
-      max-width: 12em;
-    }
-
-    .hero-copy .lede {
-      max-width: 40em;
-      font-size: 1.1rem;
-      margin-bottom: 28px;
-    }
-
-    .hero-tracks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .hero-tracks .chip {
-      background: var(--color-white);
-      border: 1px solid var(--color-primary-line);
-      font-size: 0.8rem;
-      padding: 6px 16px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .hero-tracks .chip:hover {
-      background: var(--color-primary-tint);
-      border-color: var(--color-primary);
-    }
-
-    .hero-launch {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 20px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero-launch::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      display: inline-block;
-      box-shadow: 0 0 0 4px var(--color-primary-tint);
-      animation: pulse-dot 2.2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 4px var(--color-primary-tint);
-      }
-
-      50% {
-        box-shadow: 0 0 0 8px rgba(132, 1, 50, 0.08);
-      }
-    }
-
-    .hero-media {
+    /* =========================================================================
+       PHD HERO — full-width background, container-aligned content
+       ========================================================================= */
+    .phd-hero {
+      --hero-image: url("images/hero-bg.jpg");
       position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--color-primary-dark);
     }
 
-    .hero-media img {
-      aspect-ratio: 4 / 3.5;
-      box-shadow: 0 24px 48px -16px rgba(36, 31, 34, 0.18);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hero-media img:hover {
-      transform: scale(1.008);
-      box-shadow: 0 32px 56px -16px rgba(36, 31, 34, 0.22);
-    }
-
-    /* ----- 2. FEATURE ROW — 2 cards per row on desktop ----- */
-    .feature-row {
-      padding: 72px 0 64px;
-    }
-
-    .feature-row .grid-4 {
+    /* Full-width grid — the background spans 100% width */
+    .phd-hero__grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      width: 100%;
+      min-height: 640px;
     }
 
-    .feature-row .icon-feature {
-      padding: 28px 24px 28px;
-      background: var(--color-white);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
-      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
-      text-align: left;
+    /* ---- LEFT: light background, content aligned to container ---- */
+    .phd-hero__left {
+      background: #f9f6f7;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      /* align to left */
+    }
+
+    .phd-hero__content {
+      width: 100%;
+      max-width: calc(50vw + var(--container) / 2);
+      /* extend to container's right edge */
+      padding: 64px var(--gutter) 64px max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+      /* left padding = distance to container's left edge + gutter */
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 0;
+    }
+
+    .phd-hero__content-inner {
+      max-width: 700px;
+    }
+
+    /* ---- RIGHT: full-bleed image panel ---- */
+    .phd-hero__right {
       position: relative;
-    }
-
-    .feature-row .icon-feature:hover {
-      border-color: var(--color-primary-line);
-      box-shadow: 0 12px 28px -10px rgba(132, 1, 50, 0.12);
-      transform: translateY(-3px);
-    }
-
-    .feature-row .grid-4>.icon-feature:not(:last-child) {
-      border-right: none;
-      padding-right: 24px;
-    }
-
-    .feature-row .icon-feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--color-primary-tint);
-      margin-bottom: 20px;
-      transition: background 0.25s ease;
-    }
-
-    .feature-row .icon-feature:hover .icon-feature-icon {
-      background: var(--color-primary);
-      color: var(--color-white);
-    }
-
-    .feature-row .icon-feature-icon svg {
-      width: 22px;
-      height: 22px;
-      transition: color 0.25s ease;
-    }
-
-    .feature-row .icon-feature:hover .icon-feature-icon svg {
-      color: var(--color-white);
-    }
-
-    .feature-row .icon-feature h4 {
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-
-    .feature-row .icon-feature p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--color-muted);
-    }
-
-    /* ----- 3. OVERVIEW SPLIT — refined spacing, softer image treatment ----- */
-    .section .split {
-      gap: 72px;
-    }
-
-    .split-media img {
-      aspect-ratio: 4 / 3.5;
-      box-shadow: 0 20px 40px -14px rgba(36, 31, 34, 0.16);
-    }
-
-    .section .split h2 {
-      margin-bottom: 24px;
-      max-width: 12em;
-    }
-
-    .section .split p {
-      font-size: 1.02rem;
-      line-height: 1.75;
-    }
-
-    /* ----- 4. MISSION BAND — deeper padding, refined quote ----- */
-    .mission-band {
-      padding: 96px 0;
-    }
-
-    .mission-band .split {
-      gap: 80px;
-      align-items: start;
-    }
-
-    .mission-band h2 {
-      margin-bottom: 22px;
-    }
-
-    .mission-band p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      max-width: 38em;
-    }
-
-    .quote {
-      padding-left: 38px;
-      margin-top: 8px;
-    }
-
-    .quote blockquote {
-      font-size: 1.25rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .quote-mark {
-      font-size: 3.8rem;
-      top: -16px;
-    }
-
-    /* ----- 5. TRACK CARDS — more modern card design, better hover, cleaner spacing ----- */
-    .section--surface {
-      padding: 96px 0;
-    }
-
-    .section--surface .section-head {
-      margin-bottom: 56px;
-    }
-
-    .section--surface .section-head h2 {
-      margin-bottom: 16px;
-    }
-
-    .section--surface .section-head .lede {
-      font-size: 1.08rem;
-      max-width: 42em;
-    }
-
-    .section--surface .grid-3 {
-      gap: 30px;
-    }
-
-    .track-card {
-      padding: 38px 32px 34px;
-      border-radius: 14px;
-      border: 1px solid var(--color-border);
-      background: var(--color-white);
-      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
       display: flex;
       flex-direction: column;
-      position: relative;
-    }
-
-    .track-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 20px 40px -12px rgba(132, 1, 50, 0.14);
-      transform: translateY(-4px);
-    }
-
-    .track-card .icon-feature-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      background: var(--color-primary-tint);
-      margin-bottom: 24px;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .track-card:hover .icon-feature-icon {
-      background: var(--color-primary);
+      justify-content: space-between;
+      gap: 32px;
+      padding: 56px 48px 56px 64px;
       color: var(--color-white);
+      background-color: var(--color-primary-dark);
+      background-image:
+        linear-gradient(160deg, rgba(106, 19, 44, .78) 0%, rgba(132, 1, 50, .55) 45%, rgba(36, 8, 20, .88) 100%),
+        var(--hero-image),
+        radial-gradient(circle at 20% 15%, var(--color-primary) 0%, transparent 55%),
+        radial-gradient(circle at 85% 90%, var(--color-primary-dark) 0%, transparent 60%);
+      background-size: cover;
+      background-position: center;
     }
 
-    .track-card .icon-feature-icon svg {
-      width: 24px;
-      height: 24px;
-      transition: color 0.25s ease;
-    }
-
-    .track-card:hover .icon-feature-icon svg {
-      color: var(--color-white);
-    }
-
-    .track-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .track-card>p {
-      color: var(--color-muted);
-      font-size: 0.95rem;
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
-
-    .track-card ul {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 28px;
-      flex: 1;
-    }
-
-    .track-card ul li {
-      font-size: 0.92rem;
-      padding-left: 20px;
-      line-height: 1.5;
-    }
-
-    .track-card ul li::before {
-      top: 8px;
-      width: 5px;
-      height: 5px;
-      background: var(--color-primary);
-      border-radius: 50%;
-    }
-
-    .track-card .btn-link {
-      margin-top: auto;
-      align-self: flex-start;
-      font-size: 0.92rem;
-      transition: gap 0.25s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .track-card .btn-link:hover {
-      gap: 12px;
-    }
-
-    .track-links {
-      margin-top: 56px;
-      text-align: center;
-    }
-
-    .track-links .btn-outline {
-      padding: 14px 32px;
-      font-size: 0.98rem;
-      border-radius: 8px;
-      transition: all 0.25s var(--ease);
-    }
-
-    .track-links .btn-outline:hover {
-      background: var(--color-primary);
-      color: var(--color-white);
-      border-color: var(--color-primary);
-    }
-
-    /* ----- 6. STATS + CTA — modern stat cards, refined CTA band ----- */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: 72px;
-    }
-
-    .stat-card {
-      padding: 32px 28px 28px;
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 14px;
-      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::after {
+    /* subtle dotted texture overlay */
+    .phd-hero__right::before {
       content: "";
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--color-primary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--ease);
-    }
-
-    .stat-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .stat-card:hover {
-      border-color: var(--color-primary-line);
-      box-shadow: 0 12px 28px -10px rgba(132, 1, 50, 0.1);
-      transform: translateY(-3px);
-    }
-
-    .stat-card .stat-num {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--color-primary);
-      line-height: 1.1;
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
-    }
-
-    .stat-card .stat-label {
-      font-size: 0.88rem;
-      color: var(--color-muted);
-      line-height: 1.5;
-      max-width: 16em;
-    }
-
-    .cta-band {
-      padding: 64px 56px;
-      border-radius: 16px;
-      background: var(--color-ink);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 24px 48px -18px rgba(36, 31, 34, 0.35);
-    }
-
-    .cta-band::before {
-      content: "";
-      position: absolute;
-      top: -40%;
-      right: -10%;
-      width: 55%;
-      height: 140%;
-      background: radial-gradient(circle at 30% 50%, rgba(132, 1, 50, 0.15), transparent 70%);
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px),
+        url("images/AUB-OSB-PhD-Hero-Banner.jpg");
+      background-size:
+        22px 22px,
+        cover;
+      background-position:
+        center,
+        center;
+      background-repeat:
+        repeat,
+        no-repeat;
+      mask-image: linear-gradient(to bottom, #000, transparent 70%);
+      -webkit-mask-image: linear-gradient(to bottom, #000, transparent 70%);
       pointer-events: none;
     }
 
-    .cta-band h2 {
-      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    .phd-hero__right>* {
+      position: relative;
+    }
+
+    /* ---- typography ---- */
+    /* .phd-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    } */
+
+    .phd-hero h1 {
+      font-size: clamp(2.4rem, 1.4rem + 2.9vw, 3.7rem);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -.025em;
+      margin-bottom: 26px;
+      max-width: 14em;
+      color: var(--color-ink);
+    }
+
+    .phd-hero__lede {
+      font-size: 1.08rem;
+      color: var(--color-text);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* ---- buttons ---- */
+    .phd-hero__actions {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      gap: 12px;
+    }
+
+    .phd-hero__actions .btn {
+      padding: 15px 26px;
+      border-radius: 999px;
+      font-size: .95rem;
+      justify-content: flex-start;
+    }
+
+    .phd-hero__actions .btn svg {
+      width: 18px;
+      height: 18px;
+      flex: none;
+    }
+
+    .btn--soft {
+      background: var(--color-primary-tint);
+      border-color: var(--color-primary-line);
+      color: var(--color-primary);
+    }
+
+    .btn--soft:hover {
+      background: var(--color-primary-line);
+    }
+
+    .btn--ghost {
+      background: var(--color-white);
+      border-color: var(--color-border);
+      color: var(--color-ink);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .phd-hero__actions .btn-primary {
+      box-shadow: 0 10px 24px -8px rgba(132, 1, 50, .55);
+    }
+
+    .phd-hero__actions .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .phd-hero__actions .btn {
+      transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
+    }
+
+    /* ---- right panel label ---- */
+    .phd-hero__panel-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--color-white);
+    }
+
+    .phd-hero__panel-label svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ---- track cards (glass) ---- */
+    .tracks {
+      display: grid;
+      gap: 14px;
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+
+    .track:hover {
+      transform: translateX(-6px);
+      background: rgba(255, 255, 255, .2);
+    }
+
+    .track__icon {
+      flex: none;
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--color-white);
+      color: var(--color-primary);
+      box-shadow: 0 8px 18px -6px rgba(0, 0, 0, .35);
+    }
+
+    .track__icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .track h3 {
+      margin: 0 0 3px;
+      font-size: 1.15rem;
+      color: var(--color-white);
+    }
+
+    .track p {
+      margin: 0;
+      font-size: .74rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    /* ---- launch card ---- */
+    .launch {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 28px;
+      border-radius: 6px 28px 6px 6px;
+      background: var(--color-white);
+      color: var(--color-ink);
+      box-shadow: 0 24px 40px -16px rgba(0, 0, 0, .5);
+      border-left: 5px solid var(--color-primary);
+    }
+
+    .launch__label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .launch__label svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .launch__date {
+      font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: var(--color-ink);
+    }
+
+    .launch__meta {
+      margin: 0;
+      font-size: .85rem;
+      color: var(--color-muted);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .launch__meta strong {
+      display: block;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* ---- responsive ---- */
+    @media (max-width: 1100px) {
+      .phd-hero__content {
+        padding: 56px 40px 56px 0;
+      }
+
+      .phd-hero__content-inner {
+        /* max-width: 480px; */
+      }
+
+      .phd-hero__right {
+        padding: 48px 40px 48px 48px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .phd-hero__grid {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .phd-hero__left {
+        justify-content: center;
+      }
+
+      .phd-hero__content {
+        max-width: 100%;
+        padding: 56px var(--gutter);
+      }
+
+      .phd-hero__content-inner {
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .phd-hero__right {
+        padding: 48px var(--gutter);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .phd-hero__actions {
+        grid-template-columns: 1fr;
+      }
+
+      .phd-hero__actions .btn {
+        justify-content: center;
+      }
+
+      .launch {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .launch__meta {
+        text-align: left;
+      }
+    }
+
+    .credit-badges {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 26px 0 0;
+    }
+
+    .credit-badge {
+      background: var(--color-white);
+      border: 1px solid var(--color-primary-line);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      min-width: 190px;
+    }
+
+    .credit-badge strong {
+      display: block;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      font-weight: 900;
+    }
+
+    .credit-badge span {
+      font-size: .82rem;
+      color: var(--color-muted);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gutter);
+    }
+
+    @media (max-width:800px) {
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .support-card h4 {
       margin-bottom: 10px;
+    }
+
+    .support-card p {
+      font-size: .94rem;
+      color: var(--color-muted);
+    }
+
+    .outcomes-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .outcomes-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: .98rem;
+      line-height: 1.65;
+    }
+
+    .outcomes-list .tick {
+      flex: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+    }
+
+    .outcomes-list .tick svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .career-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .career-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .career-split .split-media img {
+      aspect-ratio: 4/3.2;
+      object-fit: cover;
+      border-radius: var(--radius-md);
       position: relative;
+      z-index: 2;
+      width: 100%;
     }
 
-    .cta-band p {
-      font-size: 1.02rem;
-      color: #cfc9cb;
-      position: relative;
-      max-width: 42em;
+    .career-split .split-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
     }
 
-    .cta-band .btn-primary {
-      padding: 14px 30px;
-      font-size: 0.96rem;
-      border-radius: 8px;
-      position: relative;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .cta-band .btn-primary:hover {
-      transform: translateY(-2px);
-    }
-
-    .cta-band .btn-outline-light {
-      border-radius: 8px;
-      position: relative;
-      transition: all 0.2s ease;
-    }
-
-    .cta-band .btn-outline-light:hover {
-      transform: translateY(-2px);
-    }
-
-    /* ----- 7. RESPONSIVE TWEAKS ----- */
-    @media (max-width: 1024px) {
-      .hero .split {
-        gap: 48px;
-      }
-
-      .section .split {
-        gap: 48px;
-      }
-
-      .mission-band .split {
-        gap: 48px;
-      }
-
-      .stats-strip {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-row .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gutter);
     }
 
     @media (max-width: 900px) {
-      .hero {
-        padding: 48px 0 24px;
-      }
-
-      .hero-copy h1 {
-        max-width: 100%;
-      }
-
-      .feature-row .grid-4 {
-        gap: 20px;
-      }
-
-      .feature-row .icon-feature {
-        padding: 24px 20px;
-      }
-
-      .section--surface .grid-3 {
-        gap: 24px;
-      }
-
-      .track-card {
-        padding: 30px 24px 28px;
-      }
-
-      .cta-band {
-        padding: 44px 32px;
-      }
-
-      .mission-band {
-        padding: 72px 0;
-      }
-
-      .section--surface {
-        padding: 72px 0;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .stats-strip {
+      .why-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-
-      .stat-card {
-        padding: 24px 20px;
-      }
-
-      .stat-card .stat-num {
-        font-size: 2rem;
-      }
-
-      .cta-band {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 24px;
-      }
-
-      .cta-band .btn-row {
-        justify-content: center;
-        width: 100%;
-      }
-
-      .cta-band .btn-row .btn {
-        flex: 1;
-        min-width: 140px;
-      }
-
-      .hero .split {
-        gap: 36px;
-      }
-
-      .section .split {
-        gap: 40px;
-      }
-
-      .mission-band .split {
-        gap: 36px;
-      }
-
-      .quote {
-        padding-left: 28px;
-      }
-
-      .quote blockquote {
-        font-size: 1.08rem;
-      }
-
-      .quote-mark {
-        font-size: 3rem;
-        top: -10px;
-      }
-
-      .feature-row .grid-4 {
-        grid-template-columns: 1fr;
-        gap: 16px;
       }
     }
 
     @media (max-width: 600px) {
-      .hero {
-        padding: 40px 0 16px;
-      }
-
-      .hero-copy .lede {
-        font-size: 1rem;
-      }
-
-      .feature-row {
-        padding: 48px 0 40px;
-      }
-
-      .feature-row .grid-4 {
+      .why-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
       }
+    }
 
-      .track-card {
-        padding: 28px 22px 24px;
-      }
+    .why-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
 
-      .stats-strip {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-bottom: 48px;
-      }
+    .why-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+    }
 
-      .stat-card {
-        padding: 20px 16px;
-      }
+    .why-card .icon-feature-icon {
+      margin-bottom: 18px;
+    }
 
-      .stat-card .stat-num {
-        font-size: 1.7rem;
-      }
+    .why-card h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
 
-      .stat-card .stat-label {
-        font-size: 0.8rem;
-      }
-
-      .section--surface {
-        padding: 56px 0;
-      }
-
-      .section--surface .section-head {
-        margin-bottom: 36px;
-      }
-
-      .mission-band {
-        padding: 56px 0;
-      }
-
-      .section .split h2 {
-        max-width: 100%;
-      }
-
-      .track-links .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .cta-band {
-        padding: 32px 20px;
-        border-radius: 12px;
-      }
-
-      .cta-band .btn-row {
-        flex-direction: column;
-      }
-
-      .cta-band .btn-row .btn {
-        width: 100%;
-      }
+    .why-card p {
+      font-size: .9rem;
+      color: var(--color-muted);
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
-
   <!-- Navigation (preserved structure) -->
   <div class="nav">
     <div class="nav-utility">
@@ -939,29 +804,24 @@
               <a href="https://www.aub.edu.lb/osb" id="about-osb-link">About OSB</a>
             </li>
 
-            <li class="osb-nav-item mba-nav-item">
-              <a href="index.html" id="mba-homepage-link">MBA Homepage</a>
+            <li class="osb-nav-item phd-nav-item">
+              <a class="is-active" href="index.html" id="phd-homepage-link">PhD Homepage</a>
             </li>
 
-            <li class="osb-nav-item mba-nav-item">
-              <a href="program.html" id="the-program-link">The
-                Program</a>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="program.html" id="phd-program-link">The Program</a>
             </li>
 
-            <li class="osb-nav-item mba-nav-item">
-              <a href="mba-community.html" id="mba-community-link">The MBA Community</a>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="research.html" id="phd-research-link">Research</a>
             </li>
 
-            <li class="osb-nav-item mba-nav-item">
-              <a href="careers-outcomes.html" id="careers-outcomes-link">Careers &amp; Outcomes</a>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="admissions.html" id="phd-admissions-link">Admissions</a>
             </li>
 
-            <li class="osb-nav-item mba-nav-item">
-              <a href="admissions.html" id="admissions-link">Admissions</a>
-            </li>
-
-            <li class="osb-nav-item mba-nav-item">
-              <a href="tuition-fees.html" id="tuition-fees-link">Tuition &amp; Fees</a>
+            <li class="osb-nav-item phd-nav-item">
+              <a href="contact.html" id="phd-contact-link">Contact</a>
             </li>
           </ul>
         </div>
@@ -993,207 +853,202 @@
     </div>
   </div>
 
-
   <main>
     <!-- =========================== HERO =========================== -->
-    <section class="hero">
-      <div class="container split">
-        <div class="hero-copy">
-          <span class="eyebrow">PhD In Business Administration</span>
-          <h1>Shape The Future Of Business Scholarship.</h1>
-          <p class="lede">
-            A full-time, research-intensive doctoral program at the Suliman S. Olayan
-            School of Business preparing exceptional scholars to produce rigorous,
-            relevant, original research — and become the next generation of academic
-            leaders. Advanced methodological training, disciplinary depth, and close
-            faculty mentorship, from a school with regional relevance and global reach.
-          </p>
+    <section class="phd-hero" aria-labelledby="hero-title">
+      <div class="phd-hero__grid">
 
-          <div class="hero-tracks">
-            <span class="chip">Business Analytics</span>
-            <span class="chip">Finance</span>
-            <span class="chip">Management</span>
-          </div>
-          <div class="hero-launch">Planned Launch — Fall 2027</div>
+        <!-- LEFT: light background aligned to container -->
+        <div class="phd-hero__left">
+          <div class="phd-hero__content">
+            <div class="phd-hero__content-inner">
+              <h1 id="hero-title">Shape the future of business scholarship.</h1>
 
-          <div class="btn-row">
-            <a href="research.html" class="btn btn-primary">Explore Research Areas</a>
-            <a href="admissions.html" class="btn btn-outline">Admission Requirements</a>
+              <p class="phd-hero__lede">
+                The PhD in Business Administration at the Suliman S. Olayan School of Business (OSB) is a
+                full-time, research-intensive doctoral program that prepares exceptional scholars to produce
+                rigorous, relevant, and original research and to become future academic leaders. Located at the
+                American University of Beirut, the program offers advanced methodological training, disciplinary
+                depth, close faculty mentorship, and a distinctive platform for studying business questions with
+                regional relevance and global significance.
+              </p>
+
+              <div class="phd-hero__actions">
+                <a href="#research-areas" class="btn btn--soft">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3" />
+                    <path d="M7.5 15h9" />
+                  </svg>
+                  Explore Research Areas
+                </a>
+                <a href="#admission" class="btn btn--ghost">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                    <path d="M14 3v5h5M9 13h6M9 17h6" />
+                  </svg>
+                  Admission Requirements
+                </a>
+                <a href="#faculty" class="btn btn--ghost">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.2a6.5 6.5 0 0 1 3.5 5.8" />
+                  </svg>
+                  Meet Our Faculty
+                </a>
+                <a href="#apply" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" />
+                  </svg>
+                  Apply to AUB
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="hero-media">
-          <img src="images/hero-scholar.png"
-            alt="Illustration representing doctoral research: an open book, a research network, and campus architecture">
-        </div>
+        <!-- RIGHT: full-bleed image panel with tracks + launch card -->
+        <aside class="phd-hero__right" aria-label="Doctoral tracks and launch date">
+          <div>
+            <p class="phd-hero__panel-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m12 2 10 5-10 5L2 7z" />
+                <path d="m2 12 10 5 10-5M2 17l10 5 10-5" />
+              </svg>
+              Three Doctoral Tracks
+            </p>
+
+            <div class="tracks">
+              <a class="track" href="#analytics">
+                <span class="track__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18" />
+                    <path d="m7 15 4-5 3 3 5-6" />
+                  </svg></span>
+                <div>
+                  <h3>Business Analytics</h3>
+                  <p>Data · Models · Decisions</p>
+                </div>
+              </a>
+              <a class="track" href="#finance">
+                <span class="track__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="9" cy="6" rx="6" ry="3" />
+                    <path d="M3 6v4c0 1.7 2.7 3 6 3s6-1.3 6-3V6M3 10v4c0 1.7 2.7 3 6 3M3 14v4c0 1.7 2.7 3 6 3" />
+                    <ellipse cx="17" cy="16" rx="5" ry="2.5" />
+                    <path d="M12 16v3c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-3" />
+                  </svg></span>
+                <div>
+                  <h3>Finance</h3>
+                  <p>Markets · Risk · Valuation</p>
+                </div>
+              </a>
+              <a class="track" href="#management">
+                <span class="track__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="7" r="3" />
+                    <circle cx="5" cy="10" r="2.2" />
+                    <circle cx="19" cy="10" r="2.2" />
+                    <path
+                      d="M6.5 20v-2.5A4.5 4.5 0 0 1 11 13h2a4.5 4.5 0 0 1 4.5 4.5V20zM1.5 18.5V17a3 3 0 0 1 3-3M22.5 18.5V17a3 3 0 0 0-3-3" />
+                  </svg></span>
+                <div>
+                  <h3>Management</h3>
+                  <p>Strategy · Org · Innovation</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="launch">
+            <div>
+              <div class="launch__label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                Planned Launch
+              </div>
+              <div class="launch__date">Fall 2027</div>
+            </div>
+            <p class="launch__meta"><strong>Full-time · Research-intensive</strong>American University of Beirut</p>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- =========================== FEATURE ROW =========================== -->
-    <section class="section section--sm feature-row">
-      <div class="container grid-4">
-
-        <div class="icon-feature">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M9 18h6" />
-              <path d="M10 22h4" />
-              <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
-            </svg>
-          </span>
-          <h4>Research-Intensive Training</h4>
-          <p>Advanced quantitative and qualitative methods grounded in rigorous scholarship.</p>
-        </div>
-
-        <div class="icon-feature">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-          </span>
-          <h4>Three Doctoral Tracks</h4>
-          <p>Business Analytics, Finance, and Management, with room for interdisciplinary work.</p>
-        </div>
-
-        <div class="icon-feature">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M2 12h20" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
-          </span>
-          <h4>Regional &amp; Global Relevance</h4>
-          <p>A distinctive vantage point on organizations, markets, and societies in the MENA region.</p>
-        </div>
-
-        <div class="icon-feature">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M3 3v18h18" />
-              <path d="M18.7 8.7 13 14.4l-3.5-3.5L4 16.3" />
-            </svg>
-          </span>
-          <h4>Career-Ready Scholars</h4>
-          <p>Structured preparation for publication, teaching, and the academic job market.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================== PROGRAM OVERVIEW SPLIT =========================== -->
+    <!-- =========================== OVERVIEW =========================== -->
     <section class="section">
       <div class="container split">
+        <div>
+          <span class="eyebrow">Overview</span>
+          <h2>The PhD in Business Administration</h2>
+          <p>
+            The PhD in Business Administration is designed to prepare the next generation of scholars, educators, and
+            thought leaders in business. Through rigorous coursework, advanced research training, independent inquiry,
+            and sustained faculty mentorship, students develop the methodological expertise, disciplinary depth, and
+            intellectual independence required to make substantive contributions to business knowledge and practice.
+          </p>
+          <p>
+            Students join OSB’s research community from the beginning of the program, working with faculty on research
+            projects, participating in seminars and workshops, and progressively developing their own research agenda.
+            The program encourages interdisciplinary inquiry and provides a strong foundation for scholarly publication,
+            university teaching, international collaboration, and academic career development.
+          </p>
+          <p>
+            Graduates will be prepared primarily for tenure-track faculty and research careers at leading universities,
+            while also possessing the advanced analytical and research capabilities sought by research institutes,
+            policy organizations, international organizations, government agencies, consulting firms, and
+            knowledge-intensive organizations.
+          </p>
+        </div>
         <div class="split-media">
-          <img src="images/campus-arches.png"
-            alt="Illustration of arched university architecture overlooking the coast">
-        </div>
-        <div>
-          <span class="eyebrow">The Program</span>
-          <h2>A Journey Of Discovery And Impact</h2>
-          <p>
-            The PhD in Business Administration prepares the next generation of scholars,
-            educators, and thought leaders in business. Through rigorous coursework,
-            advanced research training, independent inquiry, and sustained faculty
-            mentorship, students develop the methodological expertise, disciplinary
-            depth, and intellectual independence required to make substantive
-            contributions to business knowledge and practice.
-          </p>
-          <p>
-            Students join OSB's research community from day one — working with faculty,
-            participating in seminars and workshops, and progressively developing their
-            own research agenda toward a tenure-track academic career.
-          </p>
-          <a href="about.html" class="btn btn-primary" style="margin-top:8px;">Learn More About The Program &rarr;</a>
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
+            alt="PhD students collaborating in a research seminar" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- =========================== MISSION BAND =========================== -->
-    <section class="section mission-band">
-      <div class="container split">
-        <div>
-          <span class="eyebrow eyebrow--on-dark">Our Mission</span>
-          <h2>Research For A Better Tomorrow</h2>
-          <p>
-            We believe that rigorous, original research is the foundation of business
-            education — advancing knowledge that helps organizations, markets, and
-            societies address the questions that matter, in the MENA region and beyond.
-          </p>
-        </div>
-        <div class="quote">
-          <span class="quote-mark">&ldquo;</span>
-          <blockquote>
-            A distinctive platform for studying business questions with regional
-            relevance and global significance — built on methodological rigor and
-            close faculty mentorship from day one.
-          </blockquote>
-          <cite>— Suliman S. Olayan School of Business</cite>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== TRACKS =========================== -->
+    <!-- =========================== WHY OSB =========================== -->
     <section class="section section--surface">
       <div class="container">
         <div class="section-head center">
-          <span class="eyebrow">Doctoral Tracks</span>
-          <h2>Areas Of Specialization</h2>
-          <p class="lede" style="margin:0 auto;">
-            Tailor your doctoral journey to your research interests across three
-            focused tracks, with opportunities for interdisciplinary work throughout OSB.
-          </p>
+          <span class="eyebrow">Why OSB</span>
+          <h2>Why pursue a PhD in Business at OSB?</h2>
         </div>
 
-        <div class="grid grid-3">
-          <div class="track-card">
+        <div class="why-grid">
+          <div class="why-card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M3 3v18h18" />
-                <rect x="7" y="12" width="3" height="6" />
-                <rect x="12" y="8" width="3" height="10" />
-                <rect x="17" y="5" width="3" height="13" />
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
               </svg>
             </span>
-            <h3>Business Analytics</h3>
-            <p>AI, optimization, and data-driven decision-making for complex business problems.</p>
-            <ul>
-              <li>Artificial Intelligence &amp; Machine Learning</li>
-              <li>Optimization &amp; Operations Research</li>
-              <li>Supply Chain &amp; Inventory Management</li>
-              <li>Big Data &amp; Information Systems</li>
-            </ul>
-            <a href="research.html#business-analytics" class="btn-link">View Track Details</a>
+            <h4>Research-intensive training</h4>
+            <p>Research-intensive training grounded in advanced quantitative and qualitative methods.</p>
           </div>
 
-          <div class="track-card">
+          <div class="why-card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 3" />
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </span>
-            <h3>Finance</h3>
-            <p>Markets, institutions, and governance across established and emerging economies.</p>
-            <ul>
-              <li>Corporate Finance &amp; Governance</li>
-              <li>Asset Pricing &amp; Investments</li>
-              <li>Banking &amp; Financial Intermediation</li>
-              <li>Financial Econometrics</li>
-            </ul>
-            <a href="research.html#finance" class="btn-link">View Track Details</a>
+            <h4>Three focused tracks</h4>
+            <p>Three focused tracks with opportunities for interdisciplinary research across business and related
+              fields.</p>
           </div>
 
-          <div class="track-card">
+          <div class="why-card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -1203,59 +1058,196 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </span>
-            <h3>Management</h3>
-            <p>Organizations, leadership, and strategy through qualitative and mixed methods.</p>
-            <ul>
-              <li>Strategy &amp; Organization Theory</li>
-              <li>Leadership &amp; Human Resource Management</li>
-              <li>Entrepreneurship &amp; Innovation</li>
-              <li>Business Ethics &amp; Sustainability</li>
-            </ul>
-            <a href="research.html#management" class="btn-link">View Track Details</a>
+            <h4>Close mentorship</h4>
+            <p>Close mentorship and early integration into faculty research and the School’s research seminar culture.
+            </p>
           </div>
-        </div>
 
-        <div class="track-links">
-          <a href="research.html" class="btn btn-outline">Explore All Research Areas &rarr;</a>
+          <div class="why-card">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </span>
+            <h4>Distinctive intellectual vantage point</h4>
+            <p>A distinctive intellectual vantage point for research on organizations, markets, technology, and
+              societies in the MENA region and beyond.</p>
+          </div>
+
+          <div class="why-card">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </span>
+            <h4>Structured preparation</h4>
+            <p>Structured preparation for scholarly publication, conference presentation, university teaching, and the
+              academic job market.</p>
+          </div>
+
+          <div class="why-card">
+            <span class="icon-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </span>
+            <h4>International research exposure</h4>
+            <p>Opportunities for international research exposure and collaboration.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================== STATS + CTA =========================== -->
+    <!-- =========================== PROGRAM LEARNING OUTCOMES =========================== -->
     <section class="section">
       <div class="container">
-        <div class="stats-strip">
-          <div class="stat-card">
-            <div class="stat-num">3</div>
-            <div class="stat-label">Doctoral Tracks</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">48+</div>
-            <div class="stat-label">Credits Beyond The Master's Degree</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Funded, With Tuition Support And Stipend</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">2027</div>
-            <div class="stat-label">Planned Launch — Fall Cohort</div>
-          </div>
+        <div class="section-head center">
+          <span class="eyebrow">Learning Outcomes</span>
+          <h2>Program Learning Outcomes</h2>
+          <p class="lede" style="margin:0 auto;">
+            By graduation, PhD candidates are expected to be able to:
+          </p>
         </div>
 
-        <div class="cta-band">
+        <div style="max-width:840px;margin:0 auto;">
+          <ul class="outcomes-list">
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Demonstrate deep theoretical and empirical knowledge in their field of specialization.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Formulate important research questions and design rigorous studies using appropriate quantitative and/or
+              qualitative methodologies.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Conduct independent and interdisciplinary research that generates original contributions to business
+              knowledge.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Use advanced analytical techniques, research tools, and evidence to address complex business questions.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Evaluate the local, regional, and global implications of emerging business research and scientific
+              developments.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Develop the capacity to produce rigorous, original high quality oresearch suitable for publication in
+              leading, high-quality international peer-reviewed journals in their field.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Communicate research effectively through scholarly writing, conference presentations, teaching, and
+              professional engagement.
+            </li>
+            <li>
+              <span class="tick">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              Demonstrate research integrity, ethical responsibility, collaboration, and commitment to lifelong
+              scholarly development.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== CAREER OUTCOMES =========================== -->
+    <section class="section section--surface">
+      <div class="container">
+        <div class="career-split">
           <div>
-            <h2>Ready To Begin Your Doctoral Journey?</h2>
-            <p>Review the admission requirements or reach out to the program office with your questions.</p>
+            <span class="eyebrow">Career Outcomes</span>
+            <h2>Career Outcomes</h2>
+            <p>
+              The program is designed primarily for candidates who aspire to academic and research careers. Graduates
+              will be prepared to compete for tenure-track faculty positions and research appointments at universities
+              and research institutions internationally. The program’s advanced research and analytical training also
+              supports careers in international organizations, government and policy institutions, consulting, and
+              research-intensive industry roles.
+            </p>
+            <p class="placeholder-note" style="margin-top:28px;">
+              Once the first cohorts progress through the program, this section should evolve into a placement page
+              featuring dissertation titles, faculty advisers, publications, awards, first placements, and alumni
+              profiles.
+            </p>
           </div>
-          <div class="btn-row">
-            <a href="admissions.html" class="btn btn-primary">Admission Requirements</a>
-            <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+          <div class="split-media">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
+              alt="Faculty and doctoral students in discussion" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- =========================== CTA =========================== -->
+    <section class="section" style="padding: 0;">
+      <!-- FULL-WIDTH CTA BAND -->
+      <div class="cta-fullwidth">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>Ready To Begin Your Doctoral Journey?</h2>
+              <p>Review the admission requirements or reach out to the program office with your questions.</p>
+            </div>
+            <div class="btn-row">
+              <a href="admissions.html" class="btn btn-primary">Admission Requirements</a>
+              <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- =========================== FOOTER =========================== -->
@@ -1263,8 +1255,6 @@
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
   <!-- <script src="https://www.aub.edu.lb/osb/AUB_OSB_shared_components/footer-load-V.js"></script> -->
-
-  <script src="js/main.js"></script>
 </body>
 
 </html>

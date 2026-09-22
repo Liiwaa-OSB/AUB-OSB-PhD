@@ -416,7 +416,7 @@ p:last-child {
   background: var(--color-primary-dark);
   opacity: .9;
   border-radius: var(--radius-sm);
-  z-index: 9999;
+  z-index: 999;
 }
 
 .hero-media::before {
@@ -429,7 +429,7 @@ p:last-child {
   background: var(--color-primary-dark);
   opacity: .8;
   border-radius: var(--radius-sm);
-  z-index: 9998;
+  z-index: 998;
 }
 
 @media (max-width: 900px) {
@@ -802,6 +802,10 @@ p:last-child {
   font-size: 1.02rem;
   font-weight: 700;
   color: var(--color-ink);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  font-family: inherit;
 }
 
 .accordion-trigger .plus {
@@ -839,10 +843,11 @@ p:last-child {
   transform: scaleY(0);
 }
 
+/* Panel: animated via inline max-height set by JS */
 .accordion-panel {
-  max-height: 0;
   overflow: hidden;
-  transition: max-height .25s var(--ease);
+  max-height: 0;
+  transition: max-height .28s var(--ease);
 }
 
 .accordion-panel-inner {
@@ -1086,6 +1091,126 @@ p:last-child {
 .cta-band p {
   color: #cfc9cb;
   margin: 0;
+}
+
+/* =========================================================================
+       FULL-WIDTH CTA BAND — background spans 100vw, content respects container
+       ========================================================================= */
+.cta-fullwidth {
+  width: 100%;
+  background: var(--color-ink);
+  /* spacing from stats strip */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial accent glow */
+.cta-fullwidth::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 55%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 50%, rgba(132, 1, 50, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+/* The .container inside keeps the 1280px max-width and gutter */
+.cta-fullwidth .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove the old rounded-card styling — now it's a full-width strip */
+.cta-fullwidth .cta-band {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 72px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-fullwidth .cta-band::before {
+  display: none;
+  /* removed — parent now handles the glow */
+}
+
+.cta-fullwidth .cta-band h2 {
+  color: var(--color-white);
+  margin-bottom: 10px;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+}
+
+.cta-fullwidth .cta-band p {
+  color: #cfc9cb;
+  margin: 0;
+  max-width: 42em;
+  font-size: 1.02rem;
+}
+
+.cta-fullwidth .btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cta-fullwidth .btn-primary {
+  padding: 14px 30px;
+  font-size: 0.96rem;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta-fullwidth .btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.cta-fullwidth .btn-outline-light {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.cta-fullwidth .btn-outline-light:hover {
+  transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 700px) {
+  .cta-fullwidth .cta-band {
+    flex-direction: column;
+    text-align: center;
+    padding: 56px 0;
+  }
+
+  .cta-fullwidth .btn-row {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cta-fullwidth .btn-row .btn {
+    flex: 1;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-fullwidth .cta-band {
+    padding: 44px 0;
+  }
+
+  .cta-fullwidth .btn-row {
+    flex-direction: column;
+  }
+
+  .cta-fullwidth .btn-row .btn {
+    width: 100%;
+  }
 }
 
 /* -------------------------------------------------------------------------
