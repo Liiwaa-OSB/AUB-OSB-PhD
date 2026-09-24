@@ -21,8 +21,16 @@
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* ---- Page-specific styles: Program Structure ---- */
+    /* =========================================================================
+     PROGRAM PAGE — page-specific styles only.
+     Global components (buttons, cards, icon-feature, accordion, split-media,
+     eyebrow, section-head, placeholder-note, cta-fullwidth, etc.) are in
+     css/style.css.
+     ========================================================================= */
 
+    /* -------------------------------------------------------------------------
+     STAGE TABLE — year-by-year program stages
+     ------------------------------------------------------------------------- */
     .stage-table {
       width: 100%;
       border-collapse: collapse;
@@ -48,10 +56,15 @@
       vertical-align: top;
       color: var(--color-text);
       line-height: 1.65;
+      transition: background .3s var(--ease);
     }
 
     .stage-table tr:last-child td {
       border-bottom: none;
+    }
+
+    .stage-table tbody tr {
+      transition: background .3s var(--ease);
     }
 
     .stage-table tbody tr:hover {
@@ -62,6 +75,11 @@
       font-weight: 700;
       color: var(--color-ink);
       min-width: 180px;
+      transition: color .25s var(--ease);
+    }
+
+    .stage-table tbody tr:hover .stage-name {
+      color: var(--color-primary);
     }
 
     .stage-table .stage-name span {
@@ -72,6 +90,7 @@
       margin-top: 4px;
     }
 
+    /* ---- Responsive: turn table into stacked cards ---- */
     @media (max-width: 800px) {
       .stage-table thead {
         display: none;
@@ -111,7 +130,9 @@
       }
     }
 
-    /* ---- Degree & Candidacy milestones ---- */
+    /* -------------------------------------------------------------------------
+     DEGREE & CANDIDACY MILESTONES
+     ------------------------------------------------------------------------- */
     .milestones-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -126,21 +147,43 @@
     }
 
     .milestone-card {
+      position: relative;
       display: flex;
       gap: 16px;
       align-items: flex-start;
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      padding: 22px 22px;
-      transition: border-color .18s var(--ease), box-shadow .18s var(--ease),
-        transform .18s var(--ease);
+      padding: 22px;
+      overflow: hidden;
+      transition:
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease),
+        transform .4s var(--ease-out);
+    }
+
+    /* Animated top accent — matches .track-card / .why-card across the site */
+    .milestone-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s var(--ease-out);
     }
 
     .milestone-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
-      transform: translateY(-2px);
+      border-color: var(--color-primary-line);
+      box-shadow: var(--shadow-brand);
+      transform: translateY(-4px);
+    }
+
+    .milestone-card:hover::before {
+      transform: scaleX(1);
     }
 
     .milestone-card .milestone-num {
@@ -155,6 +198,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition:
+        background .3s var(--ease),
+        color .3s var(--ease),
+        transform .4s var(--ease-spring);
+    }
+
+    .milestone-card:hover .milestone-num {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.08) rotate(-4deg);
     }
 
     .milestone-card p {
@@ -165,7 +218,7 @@
       padding-top: 8px;
     }
 
-    /* Accent card for the final milestone */
+    /* Accent card — final milestone */
     .milestone-card--accent {
       background: var(--color-primary-tint);
       border-color: var(--color-primary-line);
@@ -181,70 +234,32 @@
       font-weight: 500;
     }
 
-    /* ----- SUPPORT GRID – full first row, then 2 equal columns ----- */
+    /* -------------------------------------------------------------------------
+     SUPPORT GRID — full-width first card, two equal below
+     (.card and .icon-feature-icon are styled globally.)
+     ------------------------------------------------------------------------- */
     .support-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      /* two equal columns for the second row */
       gap: var(--gutter);
     }
 
-    /* first card spans both columns → full width */
+    /* First card spans both columns → full row */
     .support-card:first-child {
       grid-column: 1 / -1;
-      /* full row width */
     }
 
-    /* ---------- responsive ---------- */
     @media (max-width: 900px) {
       .support-grid {
         grid-template-columns: 1fr;
       }
     }
 
-
-    .split-media img {
-      width: 100%;
-      aspect-ratio: 4/3.4;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-    }
-
-    .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
-    }
-
-    .split-media::after {
-      content: "";
-      position: absolute;
-      right: -18px;
-      bottom: -22px;
-      width: 46%;
-      height: 58%;
-      background: var(--color-primary-dark);
-      opacity: .9;
-      border-radius: var(--radius-sm);
-      z-index: 3;
-    }
-
-    @media (max-width: 900px) {
-
-      .split-media::before,
-      .split-media::after {
-        display: none;
-      }
-    }
+    /* NOTE: The old page-local .split-media rules (both ::before and ::after)
+     were removed. The global stylesheet now handles .split-media with a
+     single ::before accent. If you ever need the double-accent variant here,
+     re-add it under a scoped selector like .split-media--double — do NOT
+     redeclare .split-media globally or you'll override the site-wide style. */
   </style>
 </head>
 

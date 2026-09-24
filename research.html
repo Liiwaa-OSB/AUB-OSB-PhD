@@ -21,17 +21,44 @@
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* ---- Page-specific styles: Research ---- */
+    /* =========================================================================
+     RESEARCH PAGE — page-specific styles only.
+     Global components (eyebrow, section, container, page-hero, split-media,
+     btn, cta-fullwidth, etc.) are in css/style.css.
+     ========================================================================= */
 
+    /* -------------------------------------------------------------------------
+     TRACK SECTION — one section per doctoral track
+     ------------------------------------------------------------------------- */
     .track-section {
       border-top: 1px solid var(--color-border);
+      padding-top: 72px;
+      margin-top: 72px;
     }
 
     .track-section:first-of-type {
       border-top: none;
       padding-top: 0;
+      margin-top: 0;
     }
 
+    /* Remove the extra padding when the section already sits in its own
+     .section wrapper (as the current markup does) */
+    .section>.container>.track-section {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .track-section+.track-section {
+      padding-top: 72px;
+      margin-top: 72px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* -------------------------------------------------------------------------
+     TRACK HEAD — 2-column grid (text | image on odd rows,
+     image | text on even rows via .split-media placement)
+     ------------------------------------------------------------------------- */
     .track-head {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -43,30 +70,18 @@
     @media (max-width: 900px) {
       .track-head {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 32px;
       }
     }
 
+    /* -------------------------------------------------------------------------
+     TRACK-HEAD MEDIA — extends the global .split-media with a second accent
+     block for this page only. The global .split-media already provides the
+     image styling and the left/top accent (::before). Here we add the
+     bottom-right accent (::after) as a page-local enhancement.
+     ------------------------------------------------------------------------- */
     .track-head .split-media img {
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .track-head .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
+      aspect-ratio: 4 / 3;
     }
 
     .track-head .split-media::after {
@@ -80,16 +95,24 @@
       opacity: .9;
       border-radius: var(--radius-sm);
       z-index: 3;
+      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
+    }
+
+    /* Match the hover motion of the global .split-media accents */
+    .track-head .split-media:hover::after {
+      transform: translate(-6px, 6px);
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
-
-      .track-head .split-media::before,
       .track-head .split-media::after {
         display: none;
       }
     }
 
+    /* -------------------------------------------------------------------------
+     TRACK AREAS — bulleted research-area list (2 columns on desktop)
+     ------------------------------------------------------------------------- */
     .track-areas {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -110,6 +133,12 @@
       font-size: .96rem;
       color: var(--color-text);
       padding: 8px 0;
+      transition: transform .3s var(--ease-out), color .25s var(--ease);
+    }
+
+    .track-areas li:hover {
+      transform: translateX(4px);
+      color: var(--color-ink);
     }
 
     .track-areas li .dot {
@@ -119,6 +148,12 @@
       border-radius: 50%;
       background: var(--color-primary);
       margin-top: 7px;
+      transition: transform .35s var(--ease-spring), box-shadow .3s var(--ease);
+    }
+
+    .track-areas li:hover .dot {
+      transform: scale(1.35);
+      box-shadow: 0 0 0 4px rgba(132, 1, 50, .12);
     }
   </style>
 </head>

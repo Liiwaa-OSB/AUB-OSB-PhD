@@ -18,8 +18,16 @@
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* ---- Page-specific styles: Contact ---- */
+    /* =========================================================================
+     CONTACT PAGE — page-specific styles only.
+     Global components (eyebrow, section, container, page-hero, split-media,
+     icon-feature-icon, form-field, form-note, form-status, btn, cta-fullwidth,
+     etc.) are in css/style.css.
+     ========================================================================= */
 
+    /* -------------------------------------------------------------------------
+     CONTACT GRID — info/map on left, form on right
+     ------------------------------------------------------------------------- */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
@@ -34,20 +42,35 @@
       }
     }
 
-    /* Left column wrapper */
     .contact-left {
       display: flex;
       flex-direction: column;
       min-width: 0;
     }
 
-    /* Program information block */
+    /* -------------------------------------------------------------------------
+     PROGRAM INFO — brand-tinted panel with contact lines
+     ------------------------------------------------------------------------- */
     .program-info {
       background: var(--color-primary-tint);
       border: 1px solid var(--color-primary-line);
       border-radius: var(--radius-md);
       padding: 36px 32px;
       flex: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Brand accent bar on the left — matches .eligibility-note / .quote pattern */
+    .program-info::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--color-primary);
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
     }
 
     .program-info h3 {
@@ -81,6 +104,11 @@
       padding: 14px 0;
       border-top: 1px solid var(--color-primary-line);
       font-size: .95rem;
+      transition: padding-left .3s var(--ease-out);
+    }
+
+    .program-info .program-contact-line:hover {
+      padding-left: 6px;
     }
 
     .program-info .program-contact-line svg {
@@ -88,18 +116,28 @@
       width: 20px;
       height: 20px;
       color: var(--color-primary);
+      transition: transform .35s var(--ease-spring);
+    }
+
+    .program-info .program-contact-line:hover svg {
+      transform: scale(1.12);
     }
 
     .program-info .program-contact-line a {
       color: var(--color-primary);
       font-weight: 700;
+      transition: color .2s var(--ease);
     }
 
     .program-info .program-contact-line a:hover {
       color: var(--color-primary-dark);
     }
 
-    /* Map — fixed aspect ratio on mobile, fills remaining space on desktop */
+    /* -------------------------------------------------------------------------
+     MAP FRAME — desktop: fills remaining column height
+     The global .map-frame has a fixed 16/10 aspect-ratio for standalone use.
+     Inside the contact left column we want it to flex, so we re-scope here.
+     ------------------------------------------------------------------------- */
     .map-frame {
       position: relative;
       margin-top: 24px;
@@ -112,6 +150,13 @@
       aspect-ratio: 4 / 3;
       flex: 1 1 auto;
       min-height: 300px;
+      box-shadow: var(--shadow-md);
+      transition: box-shadow .35s var(--ease), transform .35s var(--ease-out);
+    }
+
+    .map-frame:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
     }
 
     .map-frame iframe {
@@ -131,7 +176,9 @@
       }
     }
 
-    /* People cards */
+    /* -------------------------------------------------------------------------
+     PEOPLE CARDS — Program Director & Coordinator
+     ------------------------------------------------------------------------- */
     .people-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -146,16 +193,40 @@
     }
 
     .person-card {
+      position: relative;
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 32px 28px;
-      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+      overflow: hidden;
+      transition:
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease),
+        transform .4s var(--ease-out);
+    }
+
+    /* Animated top accent — matches .track-card, .why-card, .material-card */
+    .person-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s var(--ease-out);
     }
 
     .person-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+      border-color: var(--color-primary-line);
+      box-shadow: var(--shadow-brand);
+      transform: translateY(-4px);
+    }
+
+    .person-card:hover::before {
+      transform: scaleX(1);
     }
 
     .person-card .person-avatar {
@@ -168,16 +239,36 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
+      transition:
+        background .35s var(--ease),
+        color .35s var(--ease),
+        transform .45s var(--ease-spring);
+    }
+
+    .person-card:hover .person-avatar {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.06);
     }
 
     .person-card .person-avatar svg {
       width: 30px;
       height: 30px;
+      transition: transform .4s var(--ease-spring);
+    }
+
+    .person-card:hover .person-avatar svg {
+      transform: scale(1.08);
     }
 
     .person-card h4 {
       margin-bottom: 4px;
       font-size: 1.1rem;
+      transition: color .25s var(--ease);
+    }
+
+    .person-card:hover h4 {
+      color: var(--color-primary);
     }
 
     .person-card .person-role {
@@ -211,10 +302,12 @@
       align-items: center;
       gap: 8px;
       word-break: break-word;
+      transition: color .2s var(--ease), gap .25s var(--ease-out);
     }
 
     .person-card .person-contact a:hover {
       color: var(--color-primary-dark);
+      gap: 12px;
     }
 
     .person-card .person-contact svg {
@@ -223,13 +316,22 @@
       flex: none;
     }
 
-    /* Form */
+    /* -------------------------------------------------------------------------
+     FORM CARD — wrapper around the request-info form
+     (form fields, labels, focus ring, and form-status are all global.)
+     ------------------------------------------------------------------------- */
     .form-card {
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 40px 36px;
       min-width: 0;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .4s var(--ease);
+    }
+
+    .form-card:hover {
+      box-shadow: var(--shadow-md);
     }
 
     @media (max-width: 600px) {
@@ -250,7 +352,9 @@
       }
     }
 
-    /* Admissions link block */
+    /* -------------------------------------------------------------------------
+     ADMISSIONS LINK — full-width clickable card with arrow
+     ------------------------------------------------------------------------- */
     .admissions-link {
       display: flex;
       gap: 20px;
@@ -259,21 +363,42 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 28px 32px;
-      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+      transition:
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease),
+        transform .4s var(--ease-out),
+        background .3s var(--ease);
     }
 
     .admissions-link:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+      border-color: var(--color-primary-line);
+      box-shadow: var(--shadow-brand);
+      transform: translateY(-4px);
+      background: var(--color-white);
     }
 
     .admissions-link .icon-feature-icon {
       margin-bottom: 0;
       flex: none;
+      transition:
+        background .3s var(--ease),
+        color .3s var(--ease),
+        transform .4s var(--ease-spring);
+    }
+
+    .admissions-link:hover .icon-feature-icon {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: rotate(-6deg) scale(1.06);
     }
 
     .admissions-link h4 {
       margin-bottom: 4px;
+      transition: color .25s var(--ease);
+    }
+
+    .admissions-link:hover h4 {
+      color: var(--color-primary);
     }
 
     .admissions-link p {
@@ -289,6 +414,11 @@
       font-weight: 700;
       font-size: .9rem;
       white-space: nowrap;
+      transition: transform .35s var(--ease-out);
+    }
+
+    .admissions-link:hover .link-arrow {
+      transform: translateX(6px);
     }
 
     @media (max-width: 600px) {
@@ -303,7 +433,12 @@
       }
     }
 
-    /* Info session block */
+    /* -------------------------------------------------------------------------
+     INFORMATION SESSIONS — split block with image
+     Uses global .split-media (image + top-left accent + hover motion).
+     Adds the bottom-right accent for the double-accent look, scoped here so
+     it doesn't leak onto the rest of the site.
+     ------------------------------------------------------------------------- */
     .session-block {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -319,25 +454,7 @@
     }
 
     .session-block .split-media img {
-      width: 100%;
-      aspect-ratio: 4/3.2;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-    }
-
-    .session-block .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
+      aspect-ratio: 4 / 3.2;
     }
 
     .session-block .split-media::after {
@@ -351,11 +468,15 @@
       opacity: .9;
       border-radius: var(--radius-sm);
       z-index: 3;
+      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
+    }
+
+    .session-block .split-media:hover::after {
+      transform: translate(-6px, 6px);
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
-
-      .session-block .split-media::before,
       .session-block .split-media::after {
         display: none;
       }
@@ -373,6 +494,11 @@
       align-items: flex-start;
       font-size: .95rem;
       color: var(--color-text);
+      transition: transform .3s var(--ease-out);
+    }
+
+    .session-detail:hover {
+      transform: translateX(4px);
     }
 
     .session-detail svg {
@@ -381,6 +507,11 @@
       height: 20px;
       color: var(--color-primary);
       margin-top: 2px;
+      transition: transform .35s var(--ease-spring);
+    }
+
+    .session-detail:hover svg {
+      transform: scale(1.15);
     }
   </style>
 </head>

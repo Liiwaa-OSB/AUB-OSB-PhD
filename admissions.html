@@ -21,14 +21,36 @@
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* ---- Page-specific styles: Admissions ---- */
+    /* =========================================================================
+     ADMISSIONS PAGE — page-specific styles only.
+     Global components (eyebrow, section, container, page-hero, split-media,
+     check-list, icon-feature-icon, btn, cta-fullwidth, placeholder-note,
+     etc.) are in css/style.css.
+     ========================================================================= */
 
+    /* -------------------------------------------------------------------------
+     ELIGIBILITY NOTE — pale rose callout under the eligibility list
+     ------------------------------------------------------------------------- */
     .eligibility-note {
       background: var(--color-primary-tint);
       border: 1px solid var(--color-primary-line);
       border-radius: var(--radius-md);
       padding: 28px 32px;
       margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle brand accent bar on the left, matching .quote / .milestone pattern */
+    .eligibility-note::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--color-primary);
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
     }
 
     .eligibility-note p {
@@ -41,7 +63,10 @@
       margin-top: 14px;
     }
 
-    /* Application materials */
+    /* -------------------------------------------------------------------------
+     APPLICATION MATERIALS — 2-column card grid
+     (.material-card uses local .material-icon, not the global icon-feature-icon)
+     ------------------------------------------------------------------------- */
     .materials-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -55,6 +80,7 @@
     }
 
     .material-card {
+      position: relative;
       display: flex;
       gap: 20px;
       align-items: flex-start;
@@ -62,12 +88,35 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 26px 24px;
-      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+      overflow: hidden;
+      transition:
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease),
+        transform .4s var(--ease-out);
+    }
+
+    /* Animated top accent — matches .why-card, .track-card, .milestone-card */
+    .material-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s var(--ease-out);
     }
 
     .material-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+      border-color: var(--color-primary-line);
+      box-shadow: var(--shadow-brand);
+      transform: translateY(-4px);
+    }
+
+    .material-card:hover::before {
+      transform: scaleX(1);
     }
 
     .material-card .material-icon {
@@ -80,11 +129,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition:
+        background .3s var(--ease),
+        color .3s var(--ease),
+        transform .4s var(--ease-spring);
+    }
+
+    .material-card:hover .material-icon {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: rotate(-6deg) scale(1.06);
     }
 
     .material-card .material-icon svg {
       width: 22px;
       height: 22px;
+      transition: transform .35s var(--ease-spring);
+    }
+
+    .material-card:hover .material-icon svg {
+      transform: scale(1.08);
     }
 
     .material-card p {
@@ -95,7 +159,11 @@
       padding-top: 10px;
     }
 
-    /* Financial support */
+    /* -------------------------------------------------------------------------
+     FINANCIAL SUPPORT — split block with image (uses global .split-media)
+     Adds a second accent for the double-accent look, scoped here so it does
+     NOT override the global .split-media elsewhere on the site.
+     ------------------------------------------------------------------------- */
     .funding-block {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -115,25 +183,7 @@
     }
 
     .funding-block .split-media img {
-      width: 100%;
-      aspect-ratio: 4/3.2;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-    }
-
-    .funding-block .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
+      aspect-ratio: 4 / 3.2;
     }
 
     .funding-block .split-media::after {
@@ -147,48 +197,23 @@
       opacity: .9;
       border-radius: var(--radius-sm);
       z-index: 3;
+      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
+    }
+
+    .funding-block .split-media:hover::after {
+      transform: translate(-6px, 6px);
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
-
-      .funding-block .split-media::before,
       .funding-block .split-media::after {
         display: none;
       }
     }
 
-    /* Faculty and research fit */
-    .fit-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .fit-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-size: .97rem;
-      line-height: 1.65;
-    }
-
-    .fit-list .tick {
-      flex: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 3px;
-    }
-
-    .fit-list .tick svg {
-      width: 12px;
-      height: 12px;
-    }
-
+    /* -------------------------------------------------------------------------
+     FACULTY & RESEARCH FIT — split block with checklist + image
+     ------------------------------------------------------------------------- */
     .fit-block {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -204,25 +229,7 @@
     }
 
     .fit-block .split-media img {
-      width: 100%;
-      aspect-ratio: 4/3.2;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-    }
-
-    .fit-block .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
+      aspect-ratio: 4 / 3.2;
     }
 
     .fit-block .split-media::after {
@@ -236,16 +243,71 @@
       opacity: .9;
       border-radius: var(--radius-sm);
       z-index: 3;
+      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
+    }
+
+    .fit-block .split-media:hover::after {
+      transform: translate(-6px, 6px);
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
-
-      .fit-block .split-media::before,
       .fit-block .split-media::after {
         display: none;
       }
     }
 
+    /* ---- .fit-list — scoped checklist variant, distinct from global .check-list
+     (this version has a slightly tighter gap and different tick size) ---- */
+    .fit-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .fit-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: .97rem;
+      line-height: 1.65;
+      transition: transform .3s var(--ease-out);
+    }
+
+    .fit-list li:hover {
+      transform: translateX(4px);
+    }
+
+    .fit-list .tick {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      transition:
+        background .3s var(--ease),
+        color .3s var(--ease),
+        transform .35s var(--ease-spring);
+    }
+
+    .fit-list li:hover .tick {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.12);
+    }
+
+    .fit-list .tick svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* -------------------------------------------------------------------------
+     WEBSITE NOTE — informational dashed box
+     ------------------------------------------------------------------------- */
     .website-note {
       display: flex;
       gap: 16px;
@@ -255,8 +317,16 @@
       border-radius: var(--radius-sm);
       padding: 18px 22px;
       margin-top: 32px;
+      transition: border-color .3s var(--ease), background .3s var(--ease);
     }
 
+    .website-note:hover {
+      border-color: var(--color-primary-line);
+      background: #fbf7f8;
+    }
+
+    /* Local override: smaller icon container inside .website-note than the
+     global .icon-feature-icon default (52px → 40px) */
     .website-note .icon-feature-icon {
       margin-bottom: 0;
       flex: none;

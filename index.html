@@ -23,8 +23,14 @@
 
   <style>
     /* =========================================================================
-       PHD HERO — full-width background, container-aligned content
-       ========================================================================= */
+     HOMEPAGE — page-specific layout only.
+     Global components (buttons, icon-feature, split-media, chip, tick,
+     placeholder-note, etc.) are handled in css/style.css.
+     ========================================================================= */
+
+    /* -------------------------------------------------------------------------
+     HERO — full-width background, container-aligned content
+     ------------------------------------------------------------------------- */
     .phd-hero {
       --hero-image: url("images/hero-bg.jpg");
       position: relative;
@@ -33,7 +39,6 @@
       background: var(--color-primary-dark);
     }
 
-    /* Full-width grid — the background spans 100% width */
     .phd-hero__grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -41,21 +46,18 @@
       min-height: 640px;
     }
 
-    /* ---- LEFT: light background, content aligned to container ---- */
+    /* ---- LEFT: light background, container-aligned ---- */
     .phd-hero__left {
       background: #f9f6f7;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      /* align to left */
     }
 
     .phd-hero__content {
       width: 100%;
       max-width: calc(50vw + var(--container) / 2);
-      /* extend to container's right edge */
       padding: 64px var(--gutter) 64px max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
-      /* left padding = distance to container's left edge + gutter */
       display: flex;
       justify-content: flex-start;
       margin-left: 0;
@@ -84,7 +86,6 @@
       background-position: center;
     }
 
-    /* subtle dotted texture overlay */
     .phd-hero__right::before {
       content: "";
       position: absolute;
@@ -92,15 +93,9 @@
       background-image:
         radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px),
         url("images/AUB-OSB-PhD-Hero-Banner.jpg");
-      background-size:
-        22px 22px,
-        cover;
-      background-position:
-        center,
-        center;
-      background-repeat:
-        repeat,
-        no-repeat;
+      background-size: 22px 22px, cover;
+      background-position: center, center;
+      background-repeat: repeat, no-repeat;
       mask-image: linear-gradient(to bottom, #000, transparent 70%);
       -webkit-mask-image: linear-gradient(to bottom, #000, transparent 70%);
       pointer-events: none;
@@ -110,19 +105,7 @@
       position: relative;
     }
 
-    /* ---- typography ---- */
-    /* .phd-hero__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 26px;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-    } */
-
+    /* ---- Hero typography ---- */
     .phd-hero h1 {
       font-size: clamp(2.4rem, 1.4rem + 2.9vw, 3.7rem);
       font-weight: 800;
@@ -140,7 +123,7 @@
       line-height: 1.7;
     }
 
-    /* ---- buttons ---- */
+    /* ---- Hero actions ---- */
     .phd-hero__actions {
       display: grid;
       grid-template-columns: repeat(2, max-content);
@@ -158,8 +141,14 @@
       width: 18px;
       height: 18px;
       flex: none;
+      transition: transform .35s var(--ease-spring);
     }
 
+    .phd-hero__actions .btn:hover svg {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    /* Local button variants (not in global stylesheet) */
     .btn--soft {
       background: var(--color-primary-tint);
       border-color: var(--color-primary-line);
@@ -168,6 +157,8 @@
 
     .btn--soft:hover {
       background: var(--color-primary-line);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(132, 1, 50, .14);
     }
 
     .btn--ghost {
@@ -179,21 +170,15 @@
     .btn--ghost:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(36, 31, 34, .08);
     }
 
     .phd-hero__actions .btn-primary {
       box-shadow: 0 10px 24px -8px rgba(132, 1, 50, .55);
     }
 
-    .phd-hero__actions .btn-primary:hover {
-      transform: translateY(-1px);
-    }
-
-    .phd-hero__actions .btn {
-      transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
-    }
-
-    /* ---- right panel label ---- */
+    /* ---- Right panel label ---- */
     .phd-hero__panel-label {
       display: flex;
       align-items: center;
@@ -211,7 +196,7 @@
       height: 18px;
     }
 
-    /* ---- track cards (glass) ---- */
+    /* ---- Track cards (glass) ---- */
     .tracks {
       display: grid;
       gap: 14px;
@@ -226,12 +211,18 @@
       border: 1px solid rgba(255, 255, 255, .28);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(14px) saturate(140%);
-      transition: transform .25s var(--ease), background .25s var(--ease);
+      transition:
+        transform .35s var(--ease-out),
+        background .3s var(--ease),
+        border-color .3s var(--ease),
+        box-shadow .3s var(--ease);
     }
 
     .track:hover {
       transform: translateX(-6px);
       background: rgba(255, 255, 255, .2);
+      border-color: rgba(255, 255, 255, .55);
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, .45);
     }
 
     .track__icon {
@@ -244,6 +235,13 @@
       background: var(--color-white);
       color: var(--color-primary);
       box-shadow: 0 8px 18px -6px rgba(0, 0, 0, .35);
+      transition: transform .4s var(--ease-spring), background .3s var(--ease), color .3s var(--ease);
+    }
+
+    .track:hover .track__icon {
+      transform: rotate(-6deg) scale(1.08);
+      background: var(--color-primary);
+      color: var(--color-white);
     }
 
     .track__icon svg {
@@ -266,7 +264,7 @@
       color: rgba(255, 255, 255, .78);
     }
 
-    /* ---- launch card ---- */
+    /* ---- Launch card ---- */
     .launch {
       display: flex;
       align-items: center;
@@ -278,6 +276,12 @@
       color: var(--color-ink);
       box-shadow: 0 24px 40px -16px rgba(0, 0, 0, .5);
       border-left: 5px solid var(--color-primary);
+      transition: transform .4s var(--ease-out), box-shadow .4s var(--ease);
+    }
+
+    .launch:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 50px -18px rgba(0, 0, 0, .55);
     }
 
     .launch__label {
@@ -319,14 +323,10 @@
       font-weight: 700;
     }
 
-    /* ---- responsive ---- */
+    /* ---- Hero responsive ---- */
     @media (max-width: 1100px) {
       .phd-hero__content {
         padding: 56px 40px 56px 0;
-      }
-
-      .phd-hero__content-inner {
-        /* max-width: 480px; */
       }
 
       .phd-hero__right {
@@ -378,121 +378,10 @@
       }
     }
 
-    .credit-badges {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 26px 0 0;
-    }
-
-    .credit-badge {
-      background: var(--color-white);
-      border: 1px solid var(--color-primary-line);
-      border-radius: var(--radius-sm);
-      padding: 14px 20px;
-      min-width: 190px;
-    }
-
-    .credit-badge strong {
-      display: block;
-      font-size: 1.3rem;
-      color: var(--color-primary);
-      font-weight: 900;
-    }
-
-    .credit-badge span {
-      font-size: .82rem;
-      color: var(--color-muted);
-    }
-
-    .support-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gutter);
-    }
-
-    @media (max-width:800px) {
-      .support-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .support-card h4 {
-      margin-bottom: 10px;
-    }
-
-    .support-card p {
-      font-size: .94rem;
-      color: var(--color-muted);
-    }
-
-    .outcomes-list {
-      display: grid;
-      gap: 18px;
-    }
-
-    .outcomes-list li {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      font-size: .98rem;
-      line-height: 1.65;
-    }
-
-    .outcomes-list .tick {
-      flex: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 3px;
-    }
-
-    .outcomes-list .tick svg {
-      width: 13px;
-      height: 13px;
-    }
-
-    .career-split {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    @media (max-width: 800px) {
-      .career-split {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    .career-split .split-media img {
-      aspect-ratio: 4/3.2;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .career-split .split-media::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -18px;
-      width: 24%;
-      height: 46%;
-      background: var(--color-primary-dark);
-      opacity: .85;
-      border-radius: var(--radius-sm);
-      z-index: 1;
-    }
-
+    /* -------------------------------------------------------------------------
+     WHY OSB — grid of cards
+     (.icon-feature-icon is styled globally; we only add the card frame.)
+     ------------------------------------------------------------------------- */
     .why-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -512,25 +401,50 @@
     }
 
     .why-card {
+      position: relative;
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 28px 24px;
-      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+      overflow: hidden;
+      transition:
+        transform .4s var(--ease-out),
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease);
+    }
+
+    /* Animated top accent, matching .track-card in the global stylesheet */
+    .why-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s var(--ease-out);
     }
 
     .why-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 10px 28px rgba(132, 1, 50, .07);
+      transform: translateY(-6px);
+      border-color: var(--color-primary-line);
+      box-shadow: var(--shadow-brand);
     }
 
-    .why-card .icon-feature-icon {
-      margin-bottom: 18px;
+    .why-card:hover::before {
+      transform: scaleX(1);
     }
 
     .why-card h4 {
       margin-bottom: 8px;
       font-size: 1rem;
+      transition: color .25s var(--ease);
+    }
+
+    .why-card:hover h4 {
+      color: var(--color-primary);
     }
 
     .why-card p {
@@ -538,6 +452,81 @@
       color: var(--color-muted);
       margin: 0;
     }
+
+    /* -------------------------------------------------------------------------
+     PROGRAM LEARNING OUTCOMES — list uses .outcomes-list (local) + .tick (global)
+     Only the list-level styling lives here.
+     ------------------------------------------------------------------------- */
+    .outcomes-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .outcomes-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: .98rem;
+      line-height: 1.65;
+      transition: transform .3s var(--ease-out);
+    }
+
+    .outcomes-list li:hover {
+      transform: translateX(4px);
+    }
+
+    /* Local bigger tick variant for outcomes (kept distinct from global .check-list) */
+    .outcomes-list .tick {
+      flex: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      transition: all .3s var(--ease-spring);
+    }
+
+    .outcomes-list li:hover .tick {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.12);
+    }
+
+    .outcomes-list .tick svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* -------------------------------------------------------------------------
+     CAREER OUTCOMES — split with image (uses global .split-media)
+     ------------------------------------------------------------------------- */
+    .career-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .career-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Adjust the split-media image ratio specifically for this section */
+    .career-split .split-media img {
+      aspect-ratio: 4 / 3.2;
+    }
+
+    /* -------------------------------------------------------------------------
+     FULL-WIDTH CTA — global stylesheet handles .cta-fullwidth / .cta-band.
+     Nothing page-specific needed here.
+     ------------------------------------------------------------------------- */
   </style>
 </head>
 
