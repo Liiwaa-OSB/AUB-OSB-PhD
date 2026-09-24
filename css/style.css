@@ -227,11 +227,11 @@ p:last-child {
 }
 
 .eyebrow--on-dark {
-  color: #f0c6d3;
+  color: #FFF;
 }
 
 .eyebrow--on-dark::after {
-  background: #f0c6d3;
+  background: #FFF;
 }
 
 .section-head {
@@ -595,6 +595,33 @@ p:last-child {
   margin-bottom: 0;
 }
 
+/* Add to style.css — reusable hero with background image */
+.page-hero--image {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-primary-dark);
+  background-image:
+    linear-gradient(135deg, rgba(106, 19, 44, .82) 0%, rgba(132, 1, 50, .65) 55%, rgba(36, 8, 20, .88) 100%),
+    var(--page-hero-image, url("images/hero-bg.jpg"));
+  background-size: cover;
+  background-position: center;
+  border-bottom: none;
+  padding: 88px 0 96px;
+}
+
+.page-hero--image h1 { color: var(--color-white); }
+.page-hero--image .lede { color: #FFF; }
+.page-hero--image .breadcrumb { color: rgba(255, 255, 255, .72); }
+.page-hero--image .breadcrumb a { color: #FFF; }
+.page-hero--image .breadcrumb a:hover { color: var(--color-white); }
+.page-hero--image .eyebrow { color: #FFF; }
+.page-hero--image .eyebrow::after { background: #FFF; }
+
+.page-hero--image > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .breadcrumb {
   font-size: .82rem;
   color: var(--color-muted);
@@ -865,7 +892,7 @@ p:last-child {
 }
 
 .mission-band p {
-  color: #f0c9d5;
+  color: #FFF;
 }
 
 .quote {
@@ -900,7 +927,7 @@ p:last-child {
 .quote cite {
   font-style: normal;
   font-size: .9rem;
-  color: #f0c9d5;
+  color: #FFF;
 }
 
 @media (max-width: 900px) {
