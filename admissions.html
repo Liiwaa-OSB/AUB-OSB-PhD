@@ -11,69 +11,251 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Site styles -->
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Shared scripts -->
   <script defer src="js/main.js"></script>
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* =========================================================================
-     ADMISSIONS PAGE — page-specific styles only.
-     Global components (eyebrow, section, container, page-hero, split-media,
-     check-list, icon-feature-icon, btn, cta-fullwidth, placeholder-note,
-     etc.) are in css/style.css.
-     ========================================================================= */
-
-    /* -------------------------------------------------------------------------
-     ELIGIBILITY NOTE — pale rose callout under the eligibility list
-     ------------------------------------------------------------------------- */
-    .eligibility-note {
-      background: var(--color-primary-tint);
-      border: 1px solid var(--color-primary-line);
-      border-radius: var(--radius-md);
-      padding: 28px 32px;
-      margin-top: 32px;
+    .admissions-hero {
       position: relative;
+      width: 100%;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #1a1a1a;
+      background-image:
+        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
+        url("images/AUB-OSB-PhD-Contact-banner.jpg");
+      background-size: cover;
+      background-position: center;
       overflow: hidden;
     }
 
-    /* Subtle brand accent bar on the left, matching .quote / .milestone pattern */
-    .eligibility-note::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--color-primary);
-      border-radius: var(--radius-md) 0 0 var(--radius-md);
+    .admissions-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px var(--gutter) 56px;
     }
 
-    .eligibility-note p {
-      font-size: .95rem;
+    .admissions-hero .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: 18px;
+    }
+
+    .admissions-hero .breadcrumb a {
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      transition: color .2s var(--ease);
+    }
+
+    .admissions-hero .breadcrumb a:hover {
+      color: var(--color-white);
+    }
+
+    .admissions-hero h1 {
+      color: var(--color-white);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.022em;
+      margin: 0;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
+    }
+
+    @media (max-width: 700px) {
+      .admissions-hero {
+        min-height: 300px;
+      }
+
+      .admissions-hero__content {
+        padding: 32px var(--gutter) 40px;
+      }
+    }
+
+    .admissions-intro {
+      background: var(--color-white);
+      padding: 72px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .admissions-intro p {
+      font-size: 1.08rem;
+      line-height: 1.8;
       color: var(--color-text);
       margin: 0;
     }
 
-    .eligibility-note p+p {
-      margin-top: 14px;
+    .eligibility-band {
+      position: relative;
+      background-color: #808080;
+      background-image:
+        linear-gradient(180deg, rgba(128, 128, 128, .94), rgba(128, 128, 128, .94)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      padding: 88px 0;
+      overflow: hidden;
     }
 
-    /* -------------------------------------------------------------------------
-     APPLICATION MATERIALS — 2-column card grid
-     (.material-card uses local .material-icon, not the global icon-feature-icon)
-     ------------------------------------------------------------------------- */
-    .materials-grid {
+    .eligibility-band .section-head h2 {
+      color: var(--color-white);
+    }
+
+    .eligibility-band .section-head .eyebrow {
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .eligibility-band .section-head .eyebrow::after {
+      background: rgba(255, 255, 255, .9);
+    }
+
+    .eligibility-row {
       display: grid;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .eligibility-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .eligibility-row--two {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--gutter);
+    }
+
+    .eligibility-row--three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      .eligibility-row--three {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 700px) {
+
+      .eligibility-row--two,
+      .eligibility-row--three {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .eligibility-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 24px 26px;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: var(--radius-md);
+      transition:
+        background .3s var(--ease),
+        border-color .3s var(--ease),
+        transform .35s var(--ease-out);
+    }
+
+    .eligibility-card:hover {
+      background: rgba(255, 255, 255, .18);
+      border-color: rgba(255, 255, 255, .42);
+      transform: translateY(-3px);
+    }
+
+    .eligibility-card .tick {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--color-white);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      transition: transform .35s var(--ease-spring), background .3s var(--ease), color .3s var(--ease);
+    }
+
+    .eligibility-card:hover .tick {
+      transform: scale(1.1) rotate(-6deg);
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .eligibility-card .tick svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .eligibility-card p {
+      margin: 0;
+      font-size: .96rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, .95);
+    }
+
+    .who-should-apply {
+      background: var(--color-white);
+      padding: 72px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .who-should-apply__inner {
+      max-width: 900px;
+    }
+
+    .who-should-apply p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .application-band {
+      position: relative;
+      background-color: #111;
+      background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .78) 50%, rgba(0, 0, 0, .85) 100%),
+        url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .application-band .section-head h2 {
+      color: var(--color-white);
+    }
+
+    .application-band .section-head .eyebrow {
+      color: var(--color-secondary);
+    }
+
+    .application-band .section-head .eyebrow::after {
+      background: var(--color-secondary);
+    }
+
+    .application-band .section-head .lede {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 800px) {
       .materials-grid {
         grid-template-columns: 1fr;
       }
@@ -84,18 +266,20 @@
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .16);
       border-radius: var(--radius-md);
-      padding: 26px 24px;
+      padding: 26px 26px 26px 24px;
       overflow: hidden;
       transition:
+        background .3s var(--ease),
         border-color .3s var(--ease),
         box-shadow .4s var(--ease),
         transform .4s var(--ease-out);
     }
 
-    /* Animated top accent — matches .why-card, .track-card, .milestone-card */
     .material-card::before {
       content: "";
       position: absolute;
@@ -103,15 +287,16 @@
       left: 0;
       height: 3px;
       width: 100%;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+      background: linear-gradient(90deg, var(--color-secondary), #b0b0b0);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .45s var(--ease-out);
     }
 
     .material-card:hover {
-      border-color: var(--color-primary-line);
-      box-shadow: var(--shadow-brand);
+      background: rgba(255, 255, 255, .14);
+      border-color: var(--color-secondary);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .5);
       transform: translateY(-4px);
     }
 
@@ -119,51 +304,113 @@
       transform: scaleX(1);
     }
 
-    .material-card .material-icon {
+    .material-icon {
       flex: none;
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: var(--color-secondary);
+      color: var(--color-white);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition:
-        background .3s var(--ease),
-        color .3s var(--ease),
-        transform .4s var(--ease-spring);
+      transition: transform .4s var(--ease-spring), background .3s var(--ease);
     }
 
     .material-card:hover .material-icon {
-      background: var(--color-primary);
-      color: var(--color-white);
       transform: rotate(-6deg) scale(1.06);
+      background: #9a9a9a;
     }
 
-    .material-card .material-icon svg {
+    .material-icon svg {
       width: 22px;
       height: 22px;
-      transition: transform .35s var(--ease-spring);
     }
 
-    .material-card:hover .material-icon svg {
-      transform: scale(1.08);
+    .material-body {
+      flex: 1;
     }
 
-    .material-card p {
+    .material-body h4 {
+      font-size: .98rem;
+      color: var(--color-white);
+      margin: 0 0 6px;
+      line-height: 1.35;
+      letter-spacing: -.005em;
+    }
+
+    .material-body p {
       margin: 0;
-      font-size: .94rem;
-      color: var(--color-text);
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .78);
       line-height: 1.6;
-      padding-top: 10px;
     }
 
-    /* -------------------------------------------------------------------------
-     FINANCIAL SUPPORT — split block with image (uses global .split-media)
-     Adds a second accent for the double-accent look, scoped here so it does
-     NOT override the global .split-media elsewhere on the site.
-     ------------------------------------------------------------------------- */
+    .application-notes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .application-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .application-band {
+        background-attachment: scroll;
+      }
+    }
+
+    .application-note {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-left: 4px solid var(--color-secondary);
+      border-radius: var(--radius-sm);
+      padding: 22px 24px;
+      transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease-out);
+    }
+
+    .application-note:hover {
+      background: rgba(255, 255, 255, .14);
+      transform: translateY(-2px);
+    }
+
+    .application-note .application-note-icon {
+      flex: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--color-secondary);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .application-note .application-note-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .application-note p {
+      margin: 0;
+      font-size: .92rem;
+      color: rgba(255, 255, 255, .82);
+      line-height: 1.65;
+      padding-top: 6px;
+    }
+
+    .application-note p strong {
+      color: var(--color-white);
+    }
+
     .funding-block {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -209,146 +456,6 @@
       .funding-block .split-media::after {
         display: none;
       }
-    }
-
-    /* -------------------------------------------------------------------------
-     FACULTY & RESEARCH FIT — split block with checklist + image
-     ------------------------------------------------------------------------- */
-    .fit-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .fit-block {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    .fit-block .split-media img {
-      aspect-ratio: 4 / 3.2;
-    }
-
-    .fit-block .split-media::after {
-      content: "";
-      position: absolute;
-      right: -18px;
-      bottom: -22px;
-      width: 46%;
-      height: 58%;
-      background: var(--color-primary-dark);
-      opacity: .9;
-      border-radius: var(--radius-sm);
-      z-index: 3;
-      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
-    }
-
-    .fit-block .split-media:hover::after {
-      transform: translate(-6px, 6px);
-      opacity: 1;
-    }
-
-    @media (max-width: 900px) {
-      .fit-block .split-media::after {
-        display: none;
-      }
-    }
-
-    /* ---- .fit-list — scoped checklist variant, distinct from global .check-list
-     (this version has a slightly tighter gap and different tick size) ---- */
-    .fit-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .fit-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-size: .97rem;
-      line-height: 1.65;
-      transition: transform .3s var(--ease-out);
-    }
-
-    .fit-list li:hover {
-      transform: translateX(4px);
-    }
-
-    .fit-list .tick {
-      flex: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 3px;
-      transition:
-        background .3s var(--ease),
-        color .3s var(--ease),
-        transform .35s var(--ease-spring);
-    }
-
-    .fit-list li:hover .tick {
-      background: var(--color-primary);
-      color: var(--color-white);
-      transform: scale(1.12);
-    }
-
-    .fit-list .tick svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    /* -------------------------------------------------------------------------
-     WEBSITE NOTE — informational dashed box
-     ------------------------------------------------------------------------- */
-    .website-note {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      background: var(--color-surface);
-      border: 1px dashed var(--color-border);
-      border-radius: var(--radius-sm);
-      padding: 18px 22px;
-      margin-top: 32px;
-      transition: border-color .3s var(--ease), background .3s var(--ease);
-    }
-
-    .website-note:hover {
-      border-color: var(--color-primary-line);
-      background: #fbf7f8;
-    }
-
-    /* Local override: smaller icon container inside .website-note than the
-     global .icon-feature-icon default (52px → 40px) */
-    .website-note .icon-feature-icon {
-      margin-bottom: 0;
-      flex: none;
-      background: var(--color-primary-tint);
-      width: 40px;
-      height: 40px;
-    }
-
-    .website-note .icon-feature-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .website-note p {
-      font-size: .88rem;
-      color: var(--color-muted);
-      margin: 0;
-      padding-top: 8px;
-    }
-
-    .website-note p strong {
-      color: var(--color-primary);
     }
   </style>
 </head>
@@ -655,13 +762,18 @@
 
   <main>
 
-    <!-- =========================== PAGE HERO =========================== -->
-<section class="page-hero page-hero--image" style="background-image: linear-gradient(135deg, rgba(106, 19, 44, .65) 0%, rgba(132, 1, 50, .05) 55%, rgba(36, 8, 20, 0.35) 100%),
-  url('images/AUB-OSB-PhD-Contact-banner.jpg');">      <div class="container">
+    <section class="admissions-hero">
+      <div class="admissions-hero__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / Admissions</div>
-        <span class="eyebrow">Admissions</span>
         <h1>Admissions</h1>
-        <p class="lede">
+      </div>
+    </section>
+
+    <section class="admissions-intro">
+      <div class="container">
+        <span class="eyebrow">Admissions</span>
+        <h2>Admissions</h2>
+        <p>
           Admission to the PhD in Business Administration is highly selective. The program seeks outstanding applicants
           with exceptional academic achievement, intellectual curiosity, strong analytical ability, research
           motivation, and clear potential to develop into independent scholars. Decisions are based on a holistic
@@ -672,49 +784,69 @@
       </div>
     </section>
 
-    <!-- =========================== ELIGIBILITY =========================== -->
-    <section class="section">
-      <div class="container split">
-        <div>
+    <section class="eligibility-band">
+      <div class="container">
+        <div class="section-head">
           <span class="eyebrow">Eligibility</span>
           <h2>Eligibility</h2>
-          <ul class="check-list">
-            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></span>A bachelor’s and master’s degree in business administration or a related discipline from a
-              recognized institution for the regular track. Exceptionally qualified applicants holding a bachelor’s
-              degree may be considered for the accelerated track in accordance with AUB regulations.</li>
-            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></span>A minimum GPA of 3.7/4.0, or equivalent, in the most recent degree, subject to AUB and
-              program admissions policies. Exceptional candidates with outstanding research potential may be considered
-              even if they fall slightly below this threshold.</li>
-            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></span>Competitive GMAT or GRE scores obtained within the period accepted by AUB/program
-              regulations.</li>
-            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></span>English-language proficiency meeting AUB requirements.</li>
-            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg></span>Evidence of research potential, intellectual maturity, and strong alignment with the
-              research strengths of OSB.</li>
-          </ul>
         </div>
-        <div class="split-media">
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
-            alt="Prospective doctoral students on campus" loading="lazy">
+
+        <div class="eligibility-row eligibility-row--two">
+          <div class="eligibility-card">
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            <p>A bachelor’s and master’s degree in business administration or a related discipline from a recognized
+              institution for the regular track. Exceptionally qualified applicants holding a bachelor’s degree may be
+              considered for the accelerated track in accordance with AUB regulations.</p>
+          </div>
+
+          <div class="eligibility-card">
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            <p>A minimum GPA of 3.7/4.0, or equivalent, in the most recent degree, subject to AUB and program
+              admissions policies. Exceptional candidates with outstanding research potential may be considered even
+              if they fall slightly below this threshold.</p>
+          </div>
+        </div>
+
+        <div class="eligibility-row eligibility-row--three">
+          <div class="eligibility-card">
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            <p>Competitive GMAT or GRE scores obtained within the period accepted by AUB/program regulations.</p>
+          </div>
+
+          <div class="eligibility-card">
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            <p>English-language proficiency meeting AUB requirements.</p>
+          </div>
+
+          <div class="eligibility-card">
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></span>
+            <p>Evidence of research potential, intellectual maturity, and strong alignment with the research strengths
+              of OSB.</p>
+          </div>
         </div>
       </div>
+    </section>
 
+    <section class="who-should-apply">
       <div class="container">
-        <div class="eligibility-note">
+        <div class="who-should-apply__inner">
+          <span class="eyebrow">Who Should Apply</span>
+          <h2>Who Should Apply</h2>
           <p>
             Applicants may come from business and related fields including economics, finance, accounting, management,
             marketing, business analytics, operations research, engineering, computer science, statistics,
@@ -726,8 +858,7 @@
       </div>
     </section>
 
-    <!-- =========================== APPLICATION MATERIALS =========================== -->
-    <section class="section section--surface">
+    <section class="application-band">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Application</span>
@@ -746,7 +877,10 @@
                 <path d="M9 9h6M9 13h6M9 17h3" />
               </svg>
             </span>
-            <p>Online AUB graduate application.</p>
+            <div class="material-body">
+              <h4>Online Application</h4>
+              <p>Complete the official AUB graduate application form.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -758,7 +892,10 @@
                 <path d="M9 15h6M9 11h2" />
               </svg>
             </span>
-            <p>Official transcripts from all postsecondary institutions attended.</p>
+            <div class="material-body">
+              <h4>Official Transcripts</h4>
+              <p>From all postsecondary institutions attended.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -769,8 +906,11 @@
                 <circle cx="12" cy="7" r="4" />
               </svg>
             </span>
-            <p>Curriculum vitae highlighting education, research experience, publications or presentations, teaching,
-              professional experience, awards, and scholarships.</p>
+            <div class="material-body">
+              <h4>Curriculum Vitae</h4>
+              <p>Highlighting education, research experience, publications or presentations, teaching, professional
+                experience, awards, and scholarships.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -781,8 +921,11 @@
                 <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
               </svg>
             </span>
-            <p>Statement of purpose explaining academic background, research interests, motivation for doctoral study,
-              career goals, and fit with OSB faculty expertise.</p>
+            <div class="material-body">
+              <h4>Statement of Purpose</h4>
+              <p>Explaining academic background, research interests, motivation for doctoral study, career goals, and
+                fit with OSB faculty expertise.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -793,8 +936,11 @@
                 <path d="m21 21-4.3-4.3" />
               </svg>
             </span>
-            <p>Research statement (2-4 pages) describing the proposed research area, its significance, preliminary
-              questions, and potential methodological approach.</p>
+            <div class="material-body">
+              <h4>Research Statement</h4>
+              <p>2–4 pages describing the proposed research area, its significance, preliminary questions, and
+                potential methodological approach.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -805,7 +951,10 @@
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
               </svg>
             </span>
-            <p>Academic writing sample, such as a thesis chapter, research paper, working paper, or publication.</p>
+            <div class="material-body">
+              <h4>Writing Sample</h4>
+              <p>Academic writing sample such as a thesis chapter, research paper, working paper, or publication.</p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -815,8 +964,11 @@
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </span>
-            <p>Three academic letters of recommendation addressing the applicant’s research potential and readiness for
-              doctoral study.</p>
+            <div class="material-body">
+              <h4>Letters of Recommendation</h4>
+              <p>Three academic letters addressing the applicant’s research potential and readiness for doctoral study.
+              </p>
+            </div>
           </div>
 
           <div class="material-card">
@@ -827,38 +979,43 @@
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
             </span>
-            <p>Official GMAT or GRE scores and proof of English-language proficiency, as required.</p>
+            <div class="material-body">
+              <h4>Test Scores</h4>
+              <p>Official GMAT or GRE scores and proof of English-language proficiency, as required.</p>
+            </div>
           </div>
         </div>
 
-        <div class="website-note">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4M12 8h.01" />
-            </svg>
-          </span>
-          <p>Shortlisted applicants will be invited for an interview, during which they will present their proposed
-            research and discuss their academic interests with the admissions committee.</p>
-        </div>
+        <div class="application-notes">
+          <div class="application-note">
+            <span class="application-note-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4M12 8h.01" />
+              </svg>
+            </span>
+            <p><strong>Interview:</strong> Shortlisted applicants will be invited for an interview, during which they
+              will present their proposed research and discuss their academic interests with the admissions committee.
+            </p>
+          </div>
 
-        <div class="website-note" style="margin-top:20px;">
-          <span class="icon-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-            </svg>
-          </span>
-          <p><strong>Website note:</strong> Link the application deadline, English-language requirements, and official
-            application portal directly to AUB Admissions so that time-sensitive university requirements remain
-            current.</p>
+          <div class="application-note">
+            <span class="application-note-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+            </span>
+            <p><strong>Website note:</strong> Link the application deadline, English-language requirements, and
+              official application portal directly to AUB Admissions so that time-sensitive university requirements
+              remain current.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================== FINANCIAL SUPPORT =========================== -->
     <section class="section">
       <div class="container">
         <div class="funding-block">
@@ -885,60 +1042,7 @@
       </div>
     </section>
 
-    <!-- =========================== FACULTY AND RESEARCH =========================== -->
-    <section class="section section--surface">
-      <div class="container">
-        <div class="fit-block">
-          <div>
-            <span class="eyebrow">Faculty &amp; Research</span>
-            <h2>Faculty and Research</h2>
-            <p>
-              The program is supported by OSB faculty whose research spans the three doctoral tracks and a wide range
-              of interdisciplinary topics. The website should allow prospective students to identify potential research
-              fit before applying.
-            </p>
-            <ul class="fit-list" style="margin-top:24px;">
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Filter faculty by doctoral track.
-              </li>
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Display a concise biography, research interests, selected recent publications, and methodological
-                expertise.
-              </li>
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Link to the faculty member’s full AUB profile, Google Scholar/ORCID where appropriate.
-              </li>
-            </ul>
-          </div>
-          <div class="split-media">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
-              alt="Faculty and research fit" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== CTA =========================== -->
     <section class="section" style="padding: 0;">
-      <!-- FULL-WIDTH CTA BAND -->
       <div class="cta-fullwidth">
         <div class="container">
           <div class="cta-band">

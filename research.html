@@ -11,25 +11,87 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Site styles -->
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Shared scripts -->
   <script defer src="js/main.js"></script>
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* =========================================================================
-     RESEARCH PAGE — page-specific styles only.
-     Global components (eyebrow, section, container, page-hero, split-media,
-     btn, cta-fullwidth, etc.) are in css/style.css.
-     ========================================================================= */
+    .research-hero {
+      position: relative;
+      width: 100%;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #1a1a1a;
+      background-image:
+        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
+        url("images/AUB-OSB-PhD-Contact-banner.jpg");
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
 
-    /* -------------------------------------------------------------------------
-     TRACK SECTION — one section per doctoral track
-     ------------------------------------------------------------------------- */
+    .research-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px var(--gutter) 56px;
+    }
+
+    .research-hero .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: 18px;
+    }
+
+    .research-hero .breadcrumb a {
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      transition: color .2s var(--ease);
+    }
+
+    .research-hero .breadcrumb a:hover {
+      color: var(--color-white);
+    }
+
+    .research-hero h1 {
+      color: var(--color-white);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.022em;
+      margin: 0;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
+    }
+
+    @media (max-width: 700px) {
+      .research-hero {
+        min-height: 300px;
+      }
+
+      .research-hero__content {
+        padding: 32px var(--gutter) 40px;
+      }
+    }
+
+    .research-intro {
+      background: var(--color-white);
+      padding: 72px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .research-intro p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      margin: 0;
+    }
+
     .track-section {
       border-top: 1px solid var(--color-border);
       padding-top: 72px;
@@ -42,8 +104,6 @@
       margin-top: 0;
     }
 
-    /* Remove the extra padding when the section already sits in its own
-     .section wrapper (as the current markup does) */
     .section>.container>.track-section {
       padding-top: 0;
       margin-top: 0;
@@ -55,10 +115,6 @@
       border-top: 1px solid var(--color-border);
     }
 
-    /* -------------------------------------------------------------------------
-     TRACK HEAD — 2-column grid (text | image on odd rows,
-     image | text on even rows via .split-media placement)
-     ------------------------------------------------------------------------- */
     .track-head {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -74,12 +130,6 @@
       }
     }
 
-    /* -------------------------------------------------------------------------
-     TRACK-HEAD MEDIA — extends the global .split-media with a second accent
-     block for this page only. The global .split-media already provides the
-     image styling and the left/top accent (::before). Here we add the
-     bottom-right accent (::after) as a page-local enhancement.
-     ------------------------------------------------------------------------- */
     .track-head .split-media img {
       aspect-ratio: 4 / 3;
     }
@@ -98,7 +148,6 @@
       transition: transform .6s var(--ease-out), opacity .4s var(--ease);
     }
 
-    /* Match the hover motion of the global .split-media accents */
     .track-head .split-media:hover::after {
       transform: translate(-6px, 6px);
       opacity: 1;
@@ -110,9 +159,6 @@
       }
     }
 
-    /* -------------------------------------------------------------------------
-     TRACK AREAS — bulleted research-area list (2 columns on desktop)
-     ------------------------------------------------------------------------- */
     .track-areas {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -460,24 +506,27 @@
 
   <main>
 
-    <!-- =========================== PAGE HERO =========================== -->
-<section class="page-hero page-hero--image" style="background-image: linear-gradient(135deg, rgba(106, 19, 44, .65) 0%, rgba(132, 1, 50, .05) 55%, rgba(36, 8, 20, 0.35) 100%),
-  url('images/AUB-OSB-PhD-Contact-banner.jpg');">      <div class="container">
+    <section class="research-hero">
+      <div class="research-hero__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / Research</div>
-        <span class="eyebrow">Research</span>
-        <h1>Research Areas</h1>
-        <p class="lede">
+        <h1>Research</h1>
+      </div>
+    </section>
+
+    <section class="research-intro">
+      <div class="container">
+        <span class="eyebrow">Research Areas</span>
+        <h2>Research Areas</h2>
+        <p>
           The PhD is offered as a PhD in Business Administration. Each student pursues one of three doctoral tracks
           while benefiting from interdisciplinary research opportunities across OSB and the wider university.
         </p>
       </div>
     </section>
 
-    <!-- =========================== TRACKS =========================== -->
     <section class="section">
       <div class="container">
 
-        <!-- Business Analytics -->
         <div class="track-section">
           <div class="track-head">
             <div>
@@ -504,7 +553,6 @@
     </section>
     <section class="section">
       <div class="container">
-        <!-- Finance -->
         <div class="track-section">
           <div class="track-head">
             <div class="split-media">
@@ -531,7 +579,6 @@
     </section>
     <section class="section">
       <div class="container">
-        <!-- Management -->
         <div class="track-section">
           <div class="track-head">
             <div>
@@ -558,9 +605,7 @@
       </div>
     </section>
 
-    <!-- =========================== CTA =========================== -->
     <section class="section" style="padding: 0;">
-      <!-- FULL-WIDTH CTA BAND -->
       <div class="cta-fullwidth">
         <div class="container">
           <div class="cta-band">

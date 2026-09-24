@@ -11,26 +11,115 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Site styles -->
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Shared scripts -->
   <script defer src="js/main.js"></script>
   <script defer src="js/menu.js"></script>
 
   <style>
-    /* =========================================================================
-     PROGRAM PAGE — page-specific styles only.
-     Global components (buttons, cards, icon-feature, accordion, split-media,
-     eyebrow, section-head, placeholder-note, cta-fullwidth, etc.) are in
-     css/style.css.
-     ========================================================================= */
+    .program-hero {
+      position: relative;
+      width: 100%;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #1a1a1a;
+      background-image:
+        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
+        url("images/AUB-OSB-PhD-Contact-banner.jpg");
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
 
-    /* -------------------------------------------------------------------------
-     STAGE TABLE — year-by-year program stages
-     ------------------------------------------------------------------------- */
+    .program-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px var(--gutter) 56px;
+    }
+
+    .program-hero .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: 18px;
+    }
+
+    .program-hero .breadcrumb a {
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      transition: color .2s var(--ease);
+    }
+
+    .program-hero .breadcrumb a:hover {
+      color: var(--color-white);
+    }
+
+    .program-hero h1 {
+      color: var(--color-white);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.022em;
+      margin: 0;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
+    }
+
+    @media (max-width: 700px) {
+      .program-hero {
+        min-height: 300px;
+      }
+
+      .program-hero__content {
+        padding: 32px var(--gutter) 40px;
+      }
+    }
+
+    .program-intro {
+      background: var(--color-white);
+      padding: 72px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .program-intro .section-head {
+      margin-bottom: 28px;
+    }
+
+    .program-intro p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .stages-band {
+      position: relative;
+      background-color: #808080;
+      background-image:
+        linear-gradient(180deg, rgba(128, 128, 128, .94), rgba(128, 128, 128, .94)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      padding: 88px 0;
+      overflow: hidden;
+    }
+
+    .stages-band .section-head h2 {
+      color: var(--color-white);
+    }
+
+    .stages-band .section-head .eyebrow {
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .stages-band .section-head .eyebrow::after {
+      background: rgba(255, 255, 255, .9);
+    }
+
     .stage-table {
       width: 100%;
       border-collapse: collapse;
@@ -44,17 +133,12 @@
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      background: var(--color-primary-tint);
       padding: 16px 20px;
-      border-bottom: 2px solid var(--color-primary-line);
     }
 
     .stage-table td {
       padding: 22px 20px;
-      border-bottom: 1px solid var(--color-border);
       vertical-align: top;
-      color: var(--color-text);
       line-height: 1.65;
       transition: background .3s var(--ease);
     }
@@ -67,94 +151,111 @@
       transition: background .3s var(--ease);
     }
 
-    .stage-table tbody tr:hover {
-      background: var(--color-surface);
-    }
-
     .stage-table .stage-name {
       font-weight: 700;
-      color: var(--color-ink);
       min-width: 180px;
       transition: color .25s var(--ease);
     }
 
-    .stage-table tbody tr:hover .stage-name {
-      color: var(--color-primary);
+    .stages-band .stage-table {
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .4);
     }
 
-    .stage-table .stage-name span {
-      display: block;
-      font-size: .8rem;
-      font-weight: 500;
-      color: var(--color-muted);
-      margin-top: 4px;
+    .stages-band .stage-table th {
+      background: rgba(255, 255, 255, .1);
+      color: var(--color-white);
+      border-bottom: 2px solid rgba(255, 255, 255, .3);
     }
 
-    /* ---- Responsive: turn table into stacked cards ---- */
+    .stages-band .stage-table td {
+      color: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .stages-band .stage-table .stage-name {
+      color: var(--color-white);
+    }
+
+    .stages-band .stage-table tbody tr:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .stages-band .stage-table tbody tr:hover .stage-name {
+      color: var(--color-white);
+    }
+
     @media (max-width: 800px) {
-      .stage-table thead {
+
+      .stages-band .stage-table,
+      .stages-band .stage-table tbody,
+      .stages-band .stage-table tr,
+      .stages-band .stage-table td {
+        background: transparent;
+      }
+
+      .stages-band .stage-table thead {
         display: none;
       }
 
-      .stage-table,
-      .stage-table tbody,
-      .stage-table tr,
-      .stage-table td {
+      .stages-band .stage-table,
+      .stages-band .stage-table tbody,
+      .stages-band .stage-table tr,
+      .stages-band .stage-table td {
         display: block;
         width: 100%;
       }
 
-      .stage-table tr {
+      .stages-band .stage-table tr {
         padding: 20px 0;
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px solid rgba(255, 255, 255, .18);
       }
 
-      .stage-table td {
+      .stages-band .stage-table td {
         border: none;
-        padding: 6px 0;
+        padding: 6px 20px;
       }
 
-      .stage-table .stage-name {
+      .stages-band .stage-table .stage-name {
         margin-bottom: 8px;
       }
 
-      .stage-table td::before {
+      .stages-band .stage-table td::before {
         content: attr(data-label);
         display: block;
         font-size: .72rem;
         font-weight: 700;
         letter-spacing: .08em;
         text-transform: uppercase;
-        color: var(--color-primary);
+        color: rgba(255, 255, 255, .8);
         margin-bottom: 4px;
       }
     }
 
-    /* -------------------------------------------------------------------------
-     DEGREE & CANDIDACY MILESTONES
-     ------------------------------------------------------------------------- */
     .milestones-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 16px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 640px) {
-      .milestones-grid {
-        grid-template-columns: 1fr;
-      }
+      margin-top: 32px;
     }
 
     .milestone-card {
+      flex: 0 0 calc((100% - 32px) / 3);
+      max-width: calc((100% - 32px) / 3);
       position: relative;
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      padding: 22px;
+      padding: 26px 24px;
       overflow: hidden;
       transition:
         border-color .3s var(--ease),
@@ -162,7 +263,6 @@
         transform .4s var(--ease-out);
     }
 
-    /* Animated top accent — matches .track-card / .why-card across the site */
     .milestone-card::before {
       content: "";
       position: absolute;
@@ -177,8 +277,8 @@
     }
 
     .milestone-card:hover {
-      border-color: var(--color-primary-line);
-      box-shadow: var(--shadow-brand);
+      border-color: var(--color-primary);
+      box-shadow: 0 14px 36px rgba(132, 1, 50, .1);
       transform: translateY(-4px);
     }
 
@@ -188,78 +288,330 @@
 
     .milestone-card .milestone-num {
       flex: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--color-primary);
+      color: var(--color-white);
       font-weight: 800;
-      font-size: .9rem;
+      font-size: .95rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition:
-        background .3s var(--ease),
-        color .3s var(--ease),
-        transform .4s var(--ease-spring);
+      transition: transform .4s var(--ease-spring);
     }
 
     .milestone-card:hover .milestone-num {
-      background: var(--color-primary);
-      color: var(--color-white);
-      transform: scale(1.08) rotate(-4deg);
+      transform: rotate(-6deg) scale(1.06);
     }
 
     .milestone-card p {
       margin: 0;
       font-size: .93rem;
       color: var(--color-text);
-      line-height: 1.6;
-      padding-top: 8px;
+      line-height: 1.65;
     }
 
-    /* Accent card — final milestone */
-    .milestone-card--accent {
-      background: var(--color-primary-tint);
-      border-color: var(--color-primary-line);
+    @media (max-width: 900px) {
+      .milestone-card {
+        flex: 0 0 calc((100% - 16px) / 2);
+        max-width: calc((100% - 16px) / 2);
+      }
     }
 
-    .milestone-card--accent .milestone-num {
-      background: var(--color-primary);
+    @media (max-width: 600px) {
+      .milestone-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    .beyond-band {
+      position: relative;
+      background-color: #111;
+      background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .78) 50%, rgba(0, 0, 0, .85) 100%),
+        url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .beyond-band .section-head.center h2 {
       color: var(--color-white);
     }
 
-    .milestone-card--accent p {
-      color: var(--color-ink);
-      font-weight: 500;
+    .beyond-band .section-head.center .eyebrow {
+      color: var(--color-secondary);
     }
 
-    /* -------------------------------------------------------------------------
-     SUPPORT GRID — full-width first card, two equal below
-     (.card and .icon-feature-icon are styled globally.)
-     ------------------------------------------------------------------------- */
-    .support-grid {
+    .beyond-band .section-head.center .eyebrow::after {
+      background: var(--color-secondary);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .beyond-band .support-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--gutter);
+      gap: 20px;
     }
 
-    /* First card spans both columns → full row */
-    .support-card:first-child {
+    .beyond-band .support-card:first-child {
       grid-column: 1 / -1;
     }
 
     @media (max-width: 900px) {
-      .support-grid {
+      .beyond-band .support-grid {
         grid-template-columns: 1fr;
+      }
+
+      .beyond-band {
+        background-attachment: scroll;
       }
     }
 
-    /* NOTE: The old page-local .split-media rules (both ::before and ::after)
-     were removed. The global stylesheet now handles .split-media with a
-     single ::before accent. If you ever need the double-accent variant here,
-     re-add it under a scoped selector like .split-media--double — do NOT
-     redeclare .split-media globally or you'll override the site-wide style. */
+    .beyond-band .card {
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .16);
+      color: rgba(255, 255, 255, .82);
+      transition: all .35s var(--ease-out);
+    }
+
+    .beyond-band .card:hover {
+      background: rgba(255, 255, 255, .14);
+      border-color: var(--color-secondary);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .5);
+    }
+
+    .beyond-band .card h4 {
+      color: var(--color-white);
+    }
+
+    .beyond-band .card p {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .beyond-band .icon-feature-icon {
+      background: var(--color-secondary);
+      color: var(--color-white);
+    }
+
+    .beyond-band .card:hover .icon-feature-icon {
+      background: #9a9a9a;
+      transform: rotate(-6deg) scale(1.06);
+    }
+
+    .fit-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .fit-block {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .fit-block .fit-media {
+      position: relative;
+      border-radius: var(--radius-md);
+    }
+
+    .fit-block .fit-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3.2;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 2;
+      transition: transform .8s var(--ease-out);
+    }
+
+    .fit-block .fit-media:hover img {
+      transform: scale(1.03);
+    }
+
+    .fit-block .fit-media::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      width: 24%;
+      height: 46%;
+      background: var(--color-primary-dark);
+      opacity: .9;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+      transition: transform .6s var(--ease-out);
+    }
+
+    .fit-block .fit-media::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -22px;
+      width: 46%;
+      height: 58%;
+      background: var(--color-primary-dark);
+      opacity: .85;
+      border-radius: var(--radius-sm);
+      z-index: 1;
+      transition: transform .6s var(--ease-out), opacity .4s var(--ease);
+    }
+
+    .fit-block .fit-media:hover::before {
+      transform: translate(6px, -6px);
+    }
+
+    .fit-block .fit-media:hover::after {
+      transform: translate(-6px, 6px);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+
+      .fit-block .fit-media::before,
+      .fit-block .fit-media::after {
+        display: none;
+      }
+    }
+
+    .fit-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .fit-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: .97rem;
+      line-height: 1.65;
+      color: var(--color-text);
+      transition: transform .3s var(--ease-out);
+    }
+
+    .fit-list li:hover {
+      transform: translateX(4px);
+    }
+
+    .fit-list .tick {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      transition:
+        background .3s var(--ease),
+        color .3s var(--ease),
+        transform .35s var(--ease-spring);
+    }
+
+    .fit-list li:hover .tick {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.12);
+    }
+
+    .fit-list .tick svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .fit-block .eyebrow {
+      color: var(--color-primary);
+    }
+
+    .fit-block .eyebrow::after {
+      background: var(--color-primary);
+    }
+
+    .fit-block h2 {
+      color: var(--color-ink);
+    }
+
+    .fit-block p {
+      color: var(--color-text);
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: inherit;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      cursor: pointer;
+      transition: color .2s var(--ease);
+    }
+
+    .faq-question:hover {
+      color: var(--color-primary);
+    }
+
+    .faq-question__icon {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      color: var(--color-primary);
+      transition: transform .35s var(--ease-out);
+    }
+
+    .faq-item.open .faq-question__icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .4s var(--ease-out);
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 28px;
+      max-width: 70ch;
+      font-size: .98rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .3s var(--ease) .08s, transform .3s var(--ease-out) .08s;
+    }
+
+    .faq-item.open .faq-answer-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -449,8 +801,7 @@
                     <li><a href="https://sites.aub.edu.lb/ipark/" target="_blank">iPark</a></li>
                     <li><a href="/k2p">Knowledge to Policy Center</a></li>
                     <li><a href="/masri_institute">The Munib and Angela Masri Institute of Energy
-                        and Natural
-                        Resources</a></li>
+                        and Natural Resources</a></li>
                   </ul>
                 </div>
                 <div class="nav-mega-column">
@@ -565,13 +916,20 @@
 
   <main>
 
-    <!-- =========================== PAGE HERO =========================== -->
-<section class="page-hero page-hero--image" style="background-image: linear-gradient(135deg, rgba(106, 19, 44, .65) 0%, rgba(132, 1, 50, .05) 55%, rgba(36, 8, 20, 0.35) 100%),
-  url('images/AUB-OSB-PhD-Contact-banner.jpg');">      <div class="container">
+    <section class="program-hero">
+      <div class="program-hero__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / The Program</div>
-        <span class="eyebrow">The Program</span>
-        <h1>Program Structure and Doctoral Journey</h1>
-        <p class="lede">
+        <h1>Program Structure</h1>
+      </div>
+    </section>
+
+    <section class="program-intro">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Program Structure and Doctoral Journey</span>
+          <h2>Program Structure and Doctoral Journey</h2>
+        </div>
+        <p>
           The program is designed as a full-time research-intensive doctoral experience. Students entering with a
           master’s degree complete a minimum of 48 credits beyond the master’s degree; exceptionally qualified students
           admitted through the accelerated track from a bachelor’s degree complete a minimum of 78 credits, in
@@ -582,20 +940,19 @@
       </div>
     </section>
 
-    <!-- =========================== STAGE TABLE =========================== -->
-    <section class="section">
+    <section class="stages-band">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Stages</span>
-          <h2>Stage, primary focus, and key milestones</h2>
+          <h2>Stage, Primary Focus, and Key Milestones</h2>
         </div>
 
         <table class="stage-table">
           <thead>
             <tr>
               <th>Stage</th>
-              <th>Primary focus</th>
-              <th>Key milestones</th>
+              <th>Primary Focus</th>
+              <th>Key Milestones</th>
             </tr>
           </thead>
           <tbody>
@@ -651,16 +1008,16 @@
       </div>
     </section>
 
-    <!-- =========================== DEGREE AND CANDIDACY MILESTONES =========================== -->
-    <section class="section section--surface">
+    <section class="section">
       <div class="container">
-        <div>
+        <div class="section-head">
           <span class="eyebrow">Degree &amp; Candidacy</span>
           <h2>Degree and Candidacy Milestones</h2>
           <p style="color: var(--color-muted); font-size: .95rem; margin-top: 8px;">
             Seven required checkpoints guide each doctoral student from entry to graduation.
           </p>
         </div>
+
         <div class="milestones-grid">
           <div class="milestone-card">
             <div class="milestone-num">01</div>
@@ -688,7 +1045,7 @@
             <div class="milestone-num">06</div>
             <p>Successful defense of a dissertation that makes an original scholarly contribution.</p>
           </div>
-          <div class="milestone-card milestone-card--accent">
+          <div class="milestone-card">
             <div class="milestone-num">07</div>
             <p>Completion of AUB-wide doctoral requirements, including teaching preparation and applicable residence,
               academic standing, and graduation requirements.</p>
@@ -697,17 +1054,14 @@
       </div>
     </section>
 
-    <!-- =========================== MENTORING / TEACHING / INTL =========================== -->
-    <section class="section">
+    <section class="beyond-band">
       <div class="container">
         <div class="section-head center">
           <span class="eyebrow">Beyond the Classroom</span>
-          <h2>Mentoring, teaching, and international exposure</h2>
+          <h2>Mentoring, Teaching, and International Exposure</h2>
         </div>
 
-        <!-- support-grid: first card full width, second + third side by side -->
         <div class="support-grid">
-          <!-- CARD 1 – full row -->
           <div class="support-card card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -731,13 +1085,8 @@
               activities, conference participation, and opportunities to present work in progress and receive feedback
               from faculty and peers.
             </p>
-            <p style="margin-top:14px; font-weight:600; color:var(--color-primary); font-size:.88rem;">
-              Suggested website modules: Research Seminar Series | Research Centers and Initiatives | Doctoral Student
-              Research | Recent Faculty Publications | Research Resources at AUB
-            </p>
           </div>
 
-          <!-- CARD 2 – left half of second row -->
           <div class="support-card card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -757,7 +1106,6 @@
             </p>
           </div>
 
-          <!-- CARD 3 – right half of second row -->
           <div class="support-card card">
             <span class="icon-feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -780,96 +1128,122 @@
       </div>
     </section>
 
-    <!-- =========================== FAQ =========================== -->
     <section class="section section--surface">
-      <div class="container container--narrow">
-        <div class="section-head center">
-          <span class="eyebrow">FAQ</span>
-          <h2>Frequently Asked Questions</h2>
+      <div class="container">
+        <div class="fit-block">
+          <div>
+            <span class="eyebrow">Faculty &amp; Research</span>
+            <h2>Faculty and Research</h2>
+            <p>
+              The program is supported by OSB faculty whose research spans the three doctoral tracks and a wide range
+              of interdisciplinary topics. The website should allow prospective students to identify potential research
+              fit before applying.
+            </p>
+            <ul class="fit-list">
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Filter faculty by doctoral track.
+              </li>
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Display a concise biography, research interests, selected recent publications, and methodological
+                expertise.
+              </li>
+              <li>
+                <span class="tick">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                Link to the faculty member’s full AUB profile, Google Scholar/ORCID where appropriate.
+              </li>
+            </ul>
+          </div>
+          <div class="fit-media">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
+              alt="Faculty and research fit" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Questions</span>
+          <h2>Frequently Asked</h2>
         </div>
 
-        <div class="accordion">
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>What degree will I earn?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
-                <p>The degree is a PhD in Business Administration. ...</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
-              <span>What degree will I earn?</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
-                <p>The degree is a PhD in Business Administration. ...</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
-              <span>What degree will I earn?</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
-                <p>The degree is a PhD in Business Administration. ...</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
-              <span>What degree will I earn?</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>The degree is a PhD in Business Administration. Students pursue one of three doctoral tracks:
                   Business Analytics, Finance, or Management.</p>
               </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>Is the program full time?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>Yes. The PhD is designed as a full-time, research-intensive program requiring sustained participation
                   in coursework, research, teaching-related activities, seminars, and dissertation work.</p>
               </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>How long does the program take?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>The regular track is designed around approximately four years of full-time study, although completion
                   time is governed by AUB doctoral regulations and the student’s research progress.</p>
               </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>Do I need the GMAT or GRE?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>The program proposal supports GMAT or GRE scores. The website should state the test policy applicable
                   to the Fall 2027 admission cycle once formally confirmed and link to AUB Admissions for current
                   requirements.</p>
@@ -877,13 +1251,16 @@
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>How should I identify a research fit?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>Applicants should review the three doctoral tracks and faculty research profiles and use the
                   statement of purpose and research statement to explain alignment with relevant OSB faculty expertise.
                 </p>
@@ -891,13 +1268,16 @@
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>Is financial support available?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>The program is planned as fully funded for admitted full-time doctoral students, with tuition support
                   and a monthly stipend linked to teaching and/or research responsibilities, subject to applicable
                   university and program conditions.</p>
@@ -905,26 +1285,32 @@
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>Will I teach during the PhD?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>Doctoral students complete AUB teaching-development requirements and are expected to contribute to
                   teaching as part of their assistantship and professional preparation.</p>
               </div>
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>Can I study or conduct research abroad?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>The program is designed to encourage international research engagement, including conferences,
                   collaboration, and a possible approved semester at a partner institution, subject to academic and
                   funding arrangements.</p>
@@ -932,27 +1318,27 @@
             </div>
           </div>
 
-          <div class="accordion-item">
-            <button type="button" class="accordion-trigger" aria-expanded="false">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
               <span>When can I apply for Fall 2027?</span>
-              <span class="plus" aria-hidden="true"></span>
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
-            <div class="accordion-panel">
-              <div class="accordion-panel-inner">
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
                 <p>Application dates should be published once the Fall 2027 AUB graduate admissions calendar is
                   finalized. The website should link directly to the official AUB graduate admissions portal and
                   deadlines page.</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- =========================== CTA =========================== -->
     <section class="section" style="padding: 0;">
-      <!-- FULL-WIDTH CTA BAND -->
       <div class="cta-fullwidth">
         <div class="container">
           <div class="cta-band">
@@ -973,6 +1359,34 @@
 
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.faq-item');
+        var panel = item.querySelector('.faq-answer');
+        var isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-answer').style.maxHeight = null;
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('open');
+          panel.style.maxHeight = null;
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
