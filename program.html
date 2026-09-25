@@ -485,54 +485,6 @@
       }
     }
 
-    .fit-list {
-      display: grid;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .fit-list li {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-size: .97rem;
-      /* line-height: 1.65; */
-      color: var(--color-text);
-      transition: transform .3s var(--ease-out);
-    }
-
-    .fit-list li:hover {
-      transform: translateX(4px);
-    }
-
-    .fit-list .tick {
-      flex: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 3px;
-      transition:
-        background .3s var(--ease),
-        color .3s var(--ease),
-        transform .35s var(--ease-spring);
-    }
-
-    .fit-list li:hover .tick {
-      background: var(--color-primary);
-      color: var(--color-white);
-      transform: scale(1.12);
-    }
-
-    .fit-list .tick svg {
-      width: 12px;
-      height: 12px;
-    }
-
     .fit-block .eyebrow {
       color: var(--color-primary);
     }
@@ -1142,36 +1094,9 @@
               of interdisciplinary topics. The website should allow prospective students to identify potential research
               fit before applying.
             </p>
-            <ul class="fit-list">
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Filter faculty by doctoral track.
-              </li>
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Display a concise biography, research interests, selected recent publications, and methodological
-                expertise.
-              </li>
-              <li>
-                <span class="tick">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                Link to the faculty member’s full AUB profile, Google Scholar/ORCID where appropriate.
-              </li>
-            </ul>
+            <div class="btn-row">
+              <a href="faculty.html" class="btn btn-primary">View Faculty</a>
+            </div>
           </div>
           <div class="fit-media">
             <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
