@@ -20,6 +20,9 @@
     /* =========================================================================
        HERO — centered, dark neutral overlay, academic stock image
        ========================================================================= */
+    /* =========================================================================
+   MAIN HERO
+   ========================================================================= */
     .main-hero {
       position: relative;
       width: 100%;
@@ -27,36 +30,52 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       background-color: #1a1a1a;
       background-image:
-        linear-gradient(180deg, rgba(12, 12, 12, .78) 0%, rgba(18, 18, 18, .72) 50%, rgba(8, 8, 8, .85) 100%),
+        linear-gradient(180deg,
+          rgba(12, 12, 12, .78) 0%,
+          rgba(18, 18, 18, .72) 50%,
+          rgba(8, 8, 8, .88) 100%),
         url("./images/AUB-OSB-PhD-Main-banner.jpg");
+
       background-size: cover;
       background-position: center;
-      overflow: hidden;
+      overflow: visible;
       text-align: center;
+      /* Space for the overlapping cards */
+      margin-bottom: 100px;
     }
 
+
+    /* =========================================================================
+   HERO CONTENT
+   ========================================================================= */
     .main-hero__content {
       position: relative;
       z-index: 2;
-      max-width: 780px;
-      padding: 100px var(--gutter);
+      width: 100%;
+      max-width: 1000px;
+      padding: 100px var(--gutter) 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .main-hero h1 {
+      max-width: 780px;
+      margin: 0 0 40px;
+      color: var(--color-white);
       font-size: clamp(2.2rem, 1.6rem + 2.6vw, 3.6rem);
       font-weight: 800;
       line-height: 1.06;
       letter-spacing: -.025em;
-      margin-bottom: 40px;
-      color: var(--color-white);
       text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
     }
 
+    /* =========================================================================
+   HERO ACTIONS
+   ========================================================================= */
     .main-hero__actions {
       display: flex;
       flex-wrap: wrap;
@@ -65,6 +84,10 @@
     }
 
     .main-hero__actions .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       padding: 14px 26px;
       border-radius: 999px;
       font-size: .92rem;
@@ -73,7 +96,11 @@
       -webkit-backdrop-filter: blur(8px);
       border: 1.5px solid rgba(255, 255, 255, .32);
       color: var(--color-white);
-      transition: all .3s var(--ease);
+      transition:
+        background .3s var(--ease),
+        border-color .3s var(--ease),
+        transform .3s var(--ease),
+        box-shadow .3s var(--ease);
     }
 
     .main-hero__actions .btn:hover {
@@ -91,7 +118,8 @@
     .main-hero__actions .btn-primary:hover {
       background: var(--color-white);
       color: var(--color-primary-dark);
-      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, .5);
+      box-shadow:
+        0 14px 30px -8px rgba(0, 0, 0, .5);
     }
 
     .main-hero__actions .btn svg {
@@ -100,21 +128,224 @@
       flex: none;
     }
 
-    @media (max-width: 700px) {
+    /* =========================================================================
+   OVERLAPPING INFORMATION CARDS
+   ========================================================================= */
+    .main-hero__cards {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: -62px;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 48px));
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      text-align: left;
+    }
+
+    /* =========================================================================
+   INDIVIDUAL CARD
+   ========================================================================= */
+    .hero-info-card {
+      min-height: 124px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 26px 28px;
+      background: rgba(255, 255, 255, .97);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, .08);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, .14);
+      transition:
+        transform .3s var(--ease),
+        box-shadow .3s var(--ease);
+    }
+
+    /* First card */
+    .hero-info-card:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+
+    /* Last card */
+    .hero-info-card:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* Small overlap / separation between cards */
+    .hero-info-card+.hero-info-card {
+      border-left-color: rgba(0, 0, 0, .04);
+    }
+
+    /* Hover */
+    .hero-info-card:hover {
+      position: relative;
+      z-index: 2;
+      transform: translateY(-5px);
+      box-shadow:
+        0 22px 50px rgba(0, 0, 0, .18);
+    }
+
+    /* =========================================================================
+   CARD ICON
+   ========================================================================= */
+    .hero-info-card__icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--color-primary);
+
+      border-right: 1px solid var(--color-border);
+      padding-right: 14px;
+    }
+
+    .hero-info-card__icon svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 1.8;
+    }
+
+    /* =========================================================================
+   CARD CONTENT
+   ========================================================================= */
+    .hero-info-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .hero-info-card__label {
+      color: var(--color-muted);
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .hero-info-card__content strong {
+      color: #1a1a1a;
+      font-size: .98rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    /* =========================================================================
+   RESPONSIVE — TABLET
+   ========================================================================= */
+    @media (max-width: 900px) {
       .main-hero {
-        min-height: 520px;
+        min-height: 600px;
+        margin-bottom: 180px;
       }
 
       .main-hero__content {
-        padding: 72px var(--gutter);
+        padding-top: 90px;
+        padding-bottom: 180px;
+      }
+
+      .main-hero__cards {
+        width: min(680px, calc(100% - 40px));
+        bottom: -150px;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info-card {
+        min-height: auto;
+      }
+
+      .hero-info-card:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      .hero-info-card:last-child {
+        border-radius: 0 0 12px 12px;
+      }
+
+      .hero-info-card+.hero-info-card {
+        border-top: 0;
+        border-left-color: rgba(0, 0, 0, .08);
+      }
+
+    }
+
+
+    /* =========================================================================
+   RESPONSIVE — MOBILE
+   ========================================================================= */
+
+    @media (max-width: 700px) {
+
+      .main-hero {
+        min-height: 560px;
+        margin-bottom: 190px;
+      }
+
+      .main-hero__content {
+        padding: 72px var(--gutter) 190px;
+      }
+
+      .main-hero h1 {
+        font-size: clamp(2rem, 9vw, 2.7rem);
+        margin-bottom: 32px;
       }
 
       .main-hero__actions {
         flex-direction: column;
         align-items: stretch;
+
         width: 100%;
         max-width: 320px;
       }
+
+      .main-hero__actions .btn {
+        width: 100%;
+      }
+
+      .main-hero__cards {
+        width: calc(100% - 32px);
+        bottom: -158px;
+      }
+
+      .hero-info-card {
+        padding: 22px 20px;
+        gap: 14px;
+      }
+
+      .hero-info-card__icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+      }
+
+      .hero-info-card__content strong {
+        font-size: .9rem;
+      }
+    }
+
+    /* =========================================================================
+   SMALL MOBILE
+   ========================================================================= */
+    @media (max-width: 420px) {
+      .main-hero {
+        min-height: 580px;
+      }
+
+      .main-hero__cards {
+        width: calc(100% - 24px);
+      }
+
+      .hero-info-card {
+        padding: 20px 16px;
+      }
+
     }
 
     /* =========================================================================
@@ -135,7 +366,6 @@
     .hero-followup__row+.hero-followup__row {
       margin-top: 56px;
       padding-top: 56px;
-      border-top: 1px solid var(--color-border);
     }
 
     .hero-followup__text p {
@@ -306,7 +536,7 @@
       position: relative;
       background-color: #808080;
       background-image:
-        linear-gradient(180deg, rgba(128, 128, 128, .94), rgba(128, 128, 128, .94)),
+        linear-gradient(180deg, rgba(50, 50, 50, .81), rgba(50, 50, 50, .88)),
         url("https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1800&q=80");
       background-size: cover;
       background-position: center;
@@ -348,6 +578,7 @@
         background-attachment: scroll;
       }
     }
+
     /* =========================================================================
        WHY OSB — restored, left-aligned title, white bg
        ========================================================================= */
@@ -865,12 +1096,13 @@
   <main>
     <!-- =========================== HERO =========================== -->
     <section class="main-hero" aria-labelledby="hero-title">
+
       <div class="main-hero__content">
         <h1 id="hero-title">Shape The Future Of Business Scholarship.</h1>
         <div class="main-hero__actions">
           <a href="./research.html" class="btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
+              stroke-linejoin="round" aria-hidden="true">
               <path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3" />
               <path d="M7.5 15h9" />
             </svg>
@@ -878,15 +1110,15 @@
           </a>
           <a href="./admissions.html" class="btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2-2V8z" />
               <path d="M14 3v5h5M9 13h6M9 17h6" />
             </svg>
             Admission Requirements
           </a>
           <a href="./faculty.html" class="btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
+              stroke-linejoin="round" aria-hidden="true">
               <circle cx="9" cy="8" r="3.5" />
               <path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.2a6.5 6.5 0 0 1 3.5 5.8" />
             </svg>
@@ -894,12 +1126,62 @@
           </a>
           <a href="#apply" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
+              stroke-linejoin="round" aria-hidden="true">
               <path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" />
             </svg>
             Apply To AUB
           </a>
         </div>
+      </div>
+      <!-- OVERLAPPING HERO CARDS -->
+      <div class="main-hero__cards">
+
+        <div class="hero-info-card">
+          <div class="hero-info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M3 10h18M8 3v4M16 3v4" />
+            </svg>
+          </div>
+
+          <div class="hero-info-card__content">
+            <span class="hero-info-card__label">Planned Launch</span>
+            <strong>Fall 2027</strong>
+          </div>
+        </div>
+
+        <div class="hero-info-card">
+          <div class="hero-info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+          </div>
+
+          <div class="hero-info-card__content">
+            <span class="hero-info-card__label">Program Format</span>
+            <strong>Full-time · Research-intensive</strong>
+          </div>
+        </div>
+
+        <div class="hero-info-card">
+          <div class="hero-info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21h18" />
+              <path d="M5 21V6l7-3 7 3v15" />
+              <path d="M9 21v-5h6v5M8 9h1M15 9h1M8 12h1M15 12h1" />
+            </svg>
+          </div>
+
+          <div class="hero-info-card__content">
+            <span class="hero-info-card__label">Institution</span>
+            <strong>American University of Beirut</strong>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -967,23 +1249,6 @@
               <p>Strategy · Org · Innovation</p>
             </div>
           </a>
-        </div>
-      </div>
-
-      <div class="hero-followup__row">
-        <div class="launch-row">
-          <div>
-            <div class="launch__label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="3" y="5" width="18" height="16" rx="2" />
-                <path d="M3 10h18M8 3v4M16 3v4" />
-              </svg>
-              Planned Launch
-            </div>
-            <div class="launch__date">Fall 2027</div>
-          </div>
-          <p class="launch__meta"><strong>Full-time · Research-intensive</strong>American University of Beirut</p>
         </div>
       </div>
     </section>
@@ -1231,27 +1496,21 @@
     <!-- =========================== CAREER OUTCOMES — white bg =========================== -->
     <section class="section">
       <div class="container">
-        <div class="career-split">
-          <div>
-            <span class="eyebrow">Career Outcomes</span>
-            <h2>Career Outcomes</h2>
-            <p>
-              The program is designed primarily for candidates who aspire to academic and research careers. Graduates
-              will be prepared to compete for tenure-track faculty positions and research appointments at universities
-              and research institutions internationally. The program’s advanced research and analytical training also
-              supports careers in international organizations, government and policy institutions, consulting, and
-              research-intensive industry roles.
-            </p>
-            <p class="placeholder-note" style="margin-top:28px;">
-              Once the first cohorts progress through the program, this section should evolve into a placement page
-              featuring dissertation titles, faculty advisers, publications, awards, first placements, and alumni
-              profiles.
-            </p>
-          </div>
-          <div class="split-media">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
-              alt="Faculty and doctoral students in discussion" loading="lazy">
-          </div>
+        <div>
+          <span class="eyebrow">Career Outcomes</span>
+          <h2>Career Outcomes</h2>
+          <p>
+            The program is designed primarily for candidates who aspire to academic and research careers. Graduates
+            will be prepared to compete for tenure-track faculty positions and research appointments at universities
+            and research institutions internationally. The program’s advanced research and analytical training also
+            supports careers in international organizations, government and policy institutions, consulting, and
+            research-intensive industry roles.
+          </p>
+          <p class="placeholder-note" style="margin-top: 24px;">
+            Once the first cohorts progress through the program, this section should evolve into a placement page
+            featuring dissertation titles, faculty advisers, publications, awards, first placements, and alumni
+            profiles.
+          </p>
         </div>
       </div>
     </section>
