@@ -1,0 +1,48 @@
+/* =========================================================================
+   ABOUT (about.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 0 64px;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(132, 1, 50, .06), transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero h1 {
+  margin-bottom: 14px;
+}
+
+.narrow {
+  max-width: 760px;
+}
+
+.split {
+  align-items: center;
+}
+
+.why-item {
+  display: flex;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.why-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.why-item p {
+  margin: 0;
+}

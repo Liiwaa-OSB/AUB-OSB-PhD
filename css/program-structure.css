@@ -1,0 +1,48 @@
+/* =========================================================================
+   PROGRAM STRUCTURE (program-structure.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Program-Banner.png");
+  background-position: center 14%;
+}
+
+.structure-band {
+  background-image: url("../images/AUB-OSB-PhD-Homepage-Outcome.JPG");
+}
+
+/* Journey cards: year label */
+.journey-year {
+  display: block;
+  margin-bottom: 8px;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--on-dark-accent);
+}
+
+/* International note */
+.global-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 18px 20px;
+  border: 1px solid rgba(132, 1, 50, .22);
+  border-radius: var(--radius-md);
+  background: rgba(132, 1, 50, .04);
+}
+
+.global-note svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.prose-block .global-note p {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}

@@ -10,236 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/style.css">
-
-  <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/research.css">
   <script defer src="js/menu.js"></script>
-
-  <style>
-    /* ---------- HERO ---------- */
-    .research-hero {
-      position: relative;
-      width: 100%;
-      min-height: 380px;
-      display: flex;
-      align-items: flex-end;
-      background-color: #1a1a1a;
-      background-image:
-        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
-        url("images/AUB-OSB-PhD-Research-Banner.jpg");
-      background-size: cover;
-      background-position: center 52%;
-      overflow: hidden;
-    }
-
-    .research-hero__content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 48px var(--gutter) 56px;
-    }
-
-    .research-hero .breadcrumb {
-      font-size: .82rem;
-      color: rgba(255, 255, 255, .72);
-      margin-bottom: 18px;
-    }
-
-    .research-hero .breadcrumb a {
-      color: rgba(255, 255, 255, .9);
-      font-weight: 600;
-      transition: color .2s var(--ease);
-    }
-
-    .research-hero .breadcrumb a:hover {
-      color: var(--color-white);
-    }
-
-    .research-hero h1 {
-      color: var(--color-white);
-      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -.022em;
-      margin: 0;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
-    }
-
-    @media (max-width: 700px) {
-      .research-hero {
-        min-height: 300px;
-      }
-
-      .research-hero__content {
-        padding: 32px var(--gutter) 40px;
-      }
-    }
-
-    /* ---------- INTRO ---------- */
-    .research-intro {
-      background: var(--color-white);
-      padding: 72px 0;
-    }
-
-    .research-intro p {
-      font-size: 1rem;
-      color: var(--color-text);
-      margin: 0;
-    }
-
-    /* ---------- TRACKS ---------- */
-    .research-tracks {
-      background: var(--color-white);
-      padding: 8px 0 88px;
-    }
-
-    .track-section {
-      border-top: 1px solid var(--color-border);
-      padding-top: 72px;
-      margin-top: 72px;
-    }
-
-    .track-section:first-child {
-      border-top: none;
-      padding-top: 0;
-      margin-top: 0;
-    }
-
-    .track-head {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    /* Alternate layout: media first */
-    .track-head--reverse>.split-media {
-      order: -1;
-    }
-
-    @media (max-width: 900px) {
-      .track-head {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .track-head--reverse>.split-media {
-        order: 0;
-      }
-    }
-
-    .track-head .split-media img {
-      aspect-ratio: 4 / 3;
-    }
-
-    .track-head .split-media:hover::after {
-      transform: translate(-6px, 6px);
-      opacity: 1;
-    }
-
-    @media (max-width: 900px) {
-      .track-head .split-media::after {
-        display: none;
-      }
-    }
-
-    .track-head h2 {
-      margin-top: 4px;
-    }
-
-    .track-slogan {
-      font-size: 1.05rem;
-      color: var(--color-text);
-      margin: 0 0 20px;
-    }
-
-    .track-areas-label {
-      font-weight: 600;
-      color: var(--color-ink);
-      margin: 0;
-      font-size: .95rem;
-    }
-
-    .track-areas {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px 32px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 600px) {
-      .track-areas {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .track-areas li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-size: .96rem;
-      color: var(--color-text);
-      padding: 8px 0;
-      transition: transform .3s var(--ease-out), color .25s var(--ease);
-    }
-
-    .track-areas li:hover {
-      transform: translateX(4px);
-      color: var(--color-ink);
-    }
-
-    .track-areas li .dot {
-      flex: none;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      margin-top: 7px;
-      transition: transform .35s var(--ease-spring), box-shadow .3s var(--ease);
-    }
-
-    .track-areas li:hover .dot {
-      transform: scale(1.35);
-      box-shadow: 0 0 0 4px rgba(132, 1, 50, .12);
-    }
-
-    /* ---------- EXPLORE LINK ---------- */
-    .track-explore {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 28px;
-      font-size: .95rem;
-      font-weight: 700;
-      letter-spacing: .01em;
-      color: var(--color-primary);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-      transition: color .25s var(--ease), border-color .25s var(--ease);
-    }
-
-    .track-explore svg {
-      flex: none;
-      transition: transform .3s var(--ease-out);
-    }
-
-    .track-explore:hover,
-    .track-explore:focus-visible {
-      color: var(--color-ink);
-      border-bottom-color: currentColor;
-    }
-
-    .track-explore:hover svg,
-    .track-explore:focus-visible svg {
-      transform: translateX(4px);
-    }
-  </style>
 </head>
 
 <body>
@@ -313,7 +87,7 @@
       <nav aria-label="Mobile navigation">
         <ul class="mobile-nav">
           <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
-          <li><a class="mobile-nav-link is-active" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
+          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
           <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-program-link">The Program</a></li>
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research</a></li>
           <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
@@ -327,15 +101,15 @@
   <main>
 
     <!-- HERO -->
-    <section class="research-hero">
-      <div class="research-hero__content">
+    <section class="page-banner image-band theme-dark">
+      <div class="page-banner__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / Research</div>
         <h1>Research</h1>
       </div>
     </section>
 
     <!-- INTRO -->
-    <section class="research-intro">
+    <section class="section">
       <div class="container">
         <span class="eyebrow">Where will your research take you?</span>
         <h2>What questions do you want your research to answer?</h2>
@@ -347,7 +121,7 @@
     </section>
 
     <!-- TRACKS -->
-    <section class="research-tracks">
+    <section class="section research-tracks">
       <div class="container">
 
         <!-- TRACK 01 — BUSINESS ANALYTICS -->
@@ -356,7 +130,7 @@
             <div>
               <span class="eyebrow">Track 01</span>
               <h2>Business Analytics</h2>
-              <p class="track-slogan">
+              <p class="section-slogan">
                 Turn data into discovery and explore how analytics, AI, and emerging technologies can reshape business
                 decisions.
               </p>
@@ -371,7 +145,7 @@
                 <li><span class="dot"></span>Information Systems and Digital Transformation</li>
                 <li><span class="dot"></span>Stochastic Modeling, Simulation, and Applied Analytics</li>
               </ul>
-              <a class="track-explore" href="faculty.html">
+              <a class="text-link track-explore" href="faculty.html">
                 Explore Business Analytics Faculty &amp; Research
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -380,7 +154,7 @@
                 </svg>
               </a>
             </div>
-            <div class="split-media">
+            <div class="track-media">
               <img src="images/AUB-OSB-PhD-Business-Analytics.jpg" alt="Business analytics and data visualization"
                 loading="lazy">
             </div>
@@ -393,7 +167,7 @@
             <div>
               <span class="eyebrow">Track 02</span>
               <h2>Finance</h2>
-              <p class="track-slogan">
+              <p class="section-slogan">
                 Research the forces shaping financial markets, institutions, and decisions.
               </p>
               <p class="track-areas-label">Research areas include:</p>
@@ -407,7 +181,7 @@
                 <li><span class="dot"></span>Financial Reporting and Capital Markets</li>
                 <li><span class="dot"></span>Risk Management and Emerging Markets</li>
               </ul>
-              <a class="track-explore" href="faculty.html">
+              <a class="text-link track-explore" href="faculty.html">
                 Explore Finance Faculty &amp; Research
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -416,7 +190,7 @@
                 </svg>
               </a>
             </div>
-            <div class="split-media">
+            <div class="track-media">
               <img src="images/AUB-OSB-PhD-Finance.jpg" alt="Financial markets and analysis" loading="lazy">
             </div>
           </div>
@@ -428,7 +202,7 @@
             <div>
               <span class="eyebrow">Track 03</span>
               <h2>Management</h2>
-              <p class="track-slogan">
+              <p class="section-slogan">
                 What makes organizations work? Research it.
               </p>
               <p class="track-areas-label">Research areas include:</p>
@@ -442,7 +216,7 @@
                 <li><span class="dot"></span>International and Cross-Cultural Management</li>
                 <li><span class="dot"></span>Family Business and Small Business Management</li>
               </ul>
-              <a class="track-explore" href="faculty.html">
+              <a class="text-link track-explore" href="faculty.html">
                 Explore Management Faculty &amp; Research
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -451,7 +225,7 @@
                 </svg>
               </a>
             </div>
-            <div class="split-media">
+            <div class="track-media">
               <img src="images/AUB-OSB-PhD-Management.jpg" alt="Management and organizational research" loading="lazy">
             </div>
           </div>
@@ -461,8 +235,8 @@
     </section>
 
     <!-- CTA -->
-    <section class="section" style="padding: 0;">
-      <div class="cta-fullwidth">
+    <section>
+      <div class="cta-fullwidth theme-dark">
         <div class="container">
           <div class="cta-band">
             <div>

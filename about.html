@@ -10,72 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-  <!-- Site styles -->
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    /* ---- Page-specific styles: About ---- */
-
-    .why-grid {
-      margin-top: 8px;
-    }
-
-    .why-item {
-      display: flex;
-      gap: 16px;
-      padding: 22px 0;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .why-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .why-item .num {
-      flex: none;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--color-primary-tint);
-      color: var(--color-primary);
-      font-weight: 900;
-      font-size: .9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .why-item p {
-      margin: 0;
-      color: var(--color-text);
-    }
-
-    .outcomes-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-    }
-
-    @media (max-width:800px) {
-      .outcomes-cols {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .career-note {
-      margin-top: 28px;
-      padding: 20px 24px;
-      border-radius: var(--radius-sm);
-      background: var(--color-surface);
-      border-left: 3px solid var(--color-primary);
-      font-size: .92rem;
-      color: var(--color-muted);
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/about.css">
+  <script defer src="js/menu.js"></script>
 </head>
 
 <body>
@@ -143,7 +81,7 @@
       <nav aria-label="Mobile navigation">
         <ul class="mobile-nav">
           <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
-          <li><a class="mobile-nav-link is-active" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
+          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
           <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-program-link">The Program</a></li>
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research</a></li>
           <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
@@ -173,7 +111,7 @@
 
     <!-- =========================== OVERVIEW COPY =========================== -->
     <section class="section">
-      <div class="container container--narrow">
+      <div class="container narrow">
         <p>
           The PhD in Business Administration is designed to prepare the next
           generation of scholars, educators, and thought leaders in business. Through
@@ -194,9 +132,9 @@
     </section>
 
     <!-- =========================== WHY PURSUE =========================== -->
-    <section class="section section--surface">
+    <section class="section section--muted">
       <div class="container">
-        <div class="split">
+        <div class="grid grid--2 split">
           <div>
             <span class="eyebrow">Why OSB</span>
             <h2>Why pursue a PhD in Business at OSB?</h2>
@@ -206,33 +144,33 @@
             </p>
           </div>
 
-          <div class="why-grid">
+          <div>
             <div class="why-item">
-              <span class="num">1</span>
+              <span class="icon-box icon-box--round icon-box--sm">1</span>
               <p>Research-intensive training grounded in advanced quantitative and qualitative methods.</p>
             </div>
             <div class="why-item">
-              <span class="num">2</span>
+              <span class="icon-box icon-box--round icon-box--sm">2</span>
               <p>Three focused tracks with opportunities for interdisciplinary research across business and related
                 fields.</p>
             </div>
             <div class="why-item">
-              <span class="num">3</span>
+              <span class="icon-box icon-box--round icon-box--sm">3</span>
               <p>Close mentorship and early integration into faculty research and the School's research seminar culture.
               </p>
             </div>
             <div class="why-item">
-              <span class="num">4</span>
+              <span class="icon-box icon-box--round icon-box--sm">4</span>
               <p>A distinctive intellectual vantage point for research on organizations, markets, technology, and
                 societies in the MENA region and beyond.</p>
             </div>
             <div class="why-item">
-              <span class="num">5</span>
+              <span class="icon-box icon-box--round icon-box--sm">5</span>
               <p>Structured preparation for scholarly publication, conference presentation, university teaching, and the
                 academic job market.</p>
             </div>
             <div class="why-item">
-              <span class="num">6</span>
+              <span class="icon-box icon-box--round icon-box--sm">6</span>
               <p>Opportunities for international research exposure and collaboration.</p>
             </div>
           </div>
@@ -249,7 +187,7 @@
           <p class="lede">By graduation, PhD candidates are expected to:</p>
         </div>
 
-        <div class="outcomes-cols">
+        <div class="grid grid--2">
           <ul class="check-list">
             <li>
               <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
@@ -322,8 +260,8 @@
     </section>
 
     <!-- =========================== CAREER OUTCOMES =========================== -->
-    <section class="section section--tint">
-      <div class="container split">
+    <section class="section">
+      <div class="container grid grid--2 split">
         <div>
           <span class="eyebrow">Career Outcomes</span>
           <h2>Preparing scholars for the academic job market</h2>
@@ -341,7 +279,7 @@
         </div>
         <div class="card">
           <h4>A placement page, in progress</h4>
-          <p style="color:var(--color-muted); font-size:.95rem;">
+          <p>
             Once the first cohorts progress through the program, this section will
             evolve into a full placement page featuring dissertation titles, faculty
             advisers, publications, awards, first placements, and alumni profiles.
@@ -351,17 +289,18 @@
     </section>
 
     <!-- =========================== CTA =========================== -->
-    <section class="section">
-      <div class="container">
-        <div class="cta-band">
-          <div>
-            <h2>See how the doctoral journey unfolds</h2>
-            <p>From Year 1 research foundations to your dissertation defense — explore the program structure.</p>
-          </div>
-          <div class="btn-row">
-            <a href="program-structure.html" class="btn btn-primary">Program Structure</a>
-            <a href="research.html" class="btn-outline btn"
-              style="border-color:rgba(255,255,255,.3); color:#fff;">Research Areas</a>
+    <section>
+      <div class="cta-fullwidth theme-dark">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>See how the doctoral journey unfolds</h2>
+              <p>From Year 1 research foundations to your dissertation defense — explore the program structure.</p>
+            </div>
+            <div class="btn-row">
+              <a href="program-structure.html" class="btn btn-primary">Program Structure</a>
+              <a href="research.html" class="btn btn-outline-light">Research Areas</a>
+            </div>
           </div>
         </div>
       </div>

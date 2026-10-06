@@ -9,402 +9,10 @@
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/menu.css" rel="stylesheet" />
-  <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/program-structure.css">
   <script defer src="js/menu.js"></script>
-
-  <style>
-    /* =========================================================================
-       SHARED — PARALLAX BACKGROUNDS
-       ========================================================================= */
-    .parallax {
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-
-    /* =========================================================================
-       SHARED — SINGLE-COLUMN PROSE BLOCK
-       Used by Mentoring / Teaching / Global Reach.
-       ========================================================================= */
-    .prose-block h2 {
-      margin: 14px 0 0;
-      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
-      font-weight: 800;
-      line-height: 1.18;
-      letter-spacing: -.02em;
-      color: var(--color-ink, #1c1c1c);
-    }
-
-    .prose-block p {
-      margin: 0 0 20px;
-      font-size: .98rem;
-      line-height: 1.8;
-    }
-
-    .prose-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* =========================================================================
-       HERO — same as Program Overview
-       ========================================================================= */
-    .program-hero {
-      position: relative;
-      width: 100%;
-      min-height: 380px;
-      display: flex;
-      align-items: flex-end;
-      background-color: #1a1a1a;
-      background-image:
-        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
-        url("images/AUB-OSB-PhD-Program-Banner.png");
-      background-size: cover;
-      background-position: center 14%;
-      overflow: hidden;
-    }
-
-    .program-hero__content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 48px var(--gutter) 56px;
-    }
-
-    .program-hero .breadcrumb {
-      font-size: .82rem;
-      color: rgba(255, 255, 255, .72);
-      margin-bottom: 18px;
-    }
-
-    .program-hero .breadcrumb a {
-      color: rgba(255, 255, 255, .9);
-      font-weight: 600;
-      transition: color .2s var(--ease);
-    }
-
-    .program-hero .breadcrumb a:hover {
-      color: var(--color-white);
-    }
-
-    .program-hero h1 {
-      color: var(--color-white);
-      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -.022em;
-      margin: 0;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
-    }
-
-    .program-hero__lead {
-      max-width: 720px;
-      margin: 18px 0 0;
-      color: rgba(255, 255, 255, .95);
-      font-size: clamp(1rem, .95rem + .35vw, 1.2rem);
-      font-weight: 600;
-      line-height: 1.55;
-      text-shadow: 0 1px 12px rgba(0, 0, 0, .45);
-    }
-
-    /* =========================================================================
-       OVERVIEW — white, plain
-       ========================================================================= */
-    .overview-body {
-      margin-top: 26px;
-    }
-
-    .overview-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* =========================================================================
-       DARK PARALLAX SECTIONS (with gradient overlay)
-       ========================================================================= */
-    .dark-band {
-      position: relative;
-      background-color: #141414;
-      background-image:
-        linear-gradient(180deg,
-          rgba(10, 10, 10, .84) 0%,
-          rgba(20, 20, 20, .8) 50%,
-          rgba(10, 10, 10, .86) 100%),
-        url("images/AUB-OSB-PhD-Homepage-Outcome.JPG");
-      padding: 96px 0;
-      overflow: hidden;
-    }
-
-    .dark-band .section-head h2 {
-      color: var(--color-white);
-    }
-
-    .dark-band .eyebrow {
-      color: var(--color-secondary);
-    }
-
-    .dark-band .eyebrow::after {
-      background: var(--color-secondary);
-    }
-
-    .dark-band .section-head.center .eyebrow::after {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .dark-band p,
-    .dark-band .lede {
-      color: rgba(255, 255, 255, .78);
-    }
-
-    .dark-band .prose-block h2 {
-      color: var(--color-white);
-    }
-
-    .dark-band .prose-block p {
-      color: rgba(255, 255, 255, .78);
-    }
-
-    /* =========================================================================
-       MUTED BAND — soft background
-       ========================================================================= */
-    .muted-band {
-      background: #f7f5f2;
-    }
-
-    /* =========================================================================
-       JOURNEY — glass cards on dark band
-       ========================================================================= */
-    .journey-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 48px;
-      list-style: none;
-      padding: 0;
-    }
-
-    .journey-card {
-      position: relative;
-      background: rgba(255, 255, 255, .08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, .16);
-      border-radius: 12px;
-      padding: 26px 22px;
-      transition:
-        transform .35s var(--ease-out),
-        background .35s var(--ease),
-        border-color .35s var(--ease);
-    }
-
-    .journey-card:hover {
-      background: rgba(255, 255, 255, .14);
-      border-color: var(--color-secondary);
-      transform: translateY(-5px);
-    }
-
-    .journey-card__num {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--color-secondary);
-      color: var(--color-white);
-      font-size: .9rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .journey-card__year {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--color-secondary);
-      font-size: .74rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .journey-card h3 {
-      color: var(--color-white);
-      font-size: 1rem;
-      line-height: 1.4;
-      margin: 0 0 10px;
-    }
-
-    .journey-card p {
-      color: rgba(255, 255, 255, .7);
-      font-size: .87rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* =========================================================================
-       MILESTONES — dedicated card design
-       ========================================================================= */
-    .milestones-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      list-style: none;
-      margin: 48px 0 0;
-      padding: 0;
-    }
-
-    .milestone-card {
-      position: relative;
-      padding: 34px 28px 30px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: var(--color-white);
-      overflow: hidden;
-      transition:
-        transform .4s var(--ease-out),
-        border-color .3s var(--ease),
-        box-shadow .4s var(--ease);
-    }
-
-    .milestone-card::before {
-      content: attr(data-num);
-      position: absolute;
-      top: 6px;
-      right: 18px;
-      font-size: 3.8rem;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -.05em;
-      color: rgba(132, 1, 50, .07);
-      pointer-events: none;
-      transition: color .4s var(--ease);
-    }
-
-    .milestone-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .45s var(--ease-out);
-    }
-
-    .milestone-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-primary);
-      box-shadow: 0 14px 36px rgba(132, 1, 50, .12);
-    }
-
-    .milestone-card:hover::before {
-      color: rgba(132, 1, 50, .14);
-    }
-
-    .milestone-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .milestone-card h4 {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 8px;
-      padding-right: 60px;
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.35;
-      color: var(--color-ink, #1c1c1c);
-      transition: color .25s var(--ease);
-    }
-
-    .milestone-card:hover h4 {
-      color: var(--color-primary);
-    }
-
-    .milestone-card p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      font-size: .9rem;
-      line-height: 1.6;
-      color: var(--color-muted);
-    }
-
-    /* =========================================================================
-       GLOBAL NOTE — inline callout (used inside no-bg global section)
-       ========================================================================= */
-    .global-note {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-top: 26px;
-      padding: 18px 20px;
-      border: 1px solid rgba(132, 1, 50, .22);
-      border-radius: 12px;
-      background: rgba(132, 1, 50, .04);
-    }
-
-    .global-note svg {
-      flex: 0 0 auto;
-      margin-top: 2px;
-    }
-
-    .global-note p {
-      margin: 0;
-      font-size: .88rem;
-      line-height: 1.65;
-      color: var(--color-muted);
-    }
-
-    /* =========================================================================
-       RESPONSIVE
-       ========================================================================= */
-    @media (max-width: 1024px) {
-      .journey-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .milestones-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .parallax {
-        background-attachment: scroll;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .program-hero {
-        min-height: 300px;
-      }
-
-      .program-hero__content {
-        padding: 32px var(--gutter) 40px;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      .journey-grid,
-      .milestones-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .dark-band {
-        padding: 76px 0;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -478,7 +86,7 @@
       <nav aria-label="Mobile navigation">
         <ul class="mobile-nav">
           <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
-          <li><a class="mobile-nav-link is-active" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
+          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
           <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-program-link">The Program</a></li>
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research</a></li>
           <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
@@ -491,11 +99,11 @@
 
   <main>
     <!-- =========================== HERO =========================== -->
-    <section class="program-hero">
-      <div class="program-hero__content">
+    <section class="page-banner image-band theme-dark">
+      <div class="page-banner__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / Program Structure</div>
         <h1>Program Structure</h1>
-        <p class="program-hero__lead">
+        <p class="page-banner__lead">
           Your doctoral journey: from research foundations to an original contribution.
         </p>
       </div>
@@ -535,7 +143,7 @@
     </section>
 
     <!-- =========================== DOCTORAL JOURNEY — dark band, glass cards =========================== -->
-    <section class="dark-band parallax">
+    <section class="image-band parallax theme-dark structure-band">
       <div class="container">
 
         <div class="section-head center">
@@ -547,10 +155,10 @@
           </p>
         </div>
 
-        <ol class="journey-grid">
-          <li class="journey-card">
-            <span class="journey-card__num">01</span>
-            <span class="journey-card__year">Year 1</span>
+        <ol class="grid grid--4">
+          <li class="card card--glass">
+            <span class="icon-box">01</span>
+            <span class="journey-year">Year 1</span>
             <h3>Research Foundations</h3>
             <p>
               Build your methodological and disciplinary foundations, participate in doctoral
@@ -558,9 +166,9 @@
             </p>
           </li>
 
-          <li class="journey-card">
-            <span class="journey-card__num">02</span>
-            <span class="journey-card__year">Year 2</span>
+          <li class="card card--glass">
+            <span class="icon-box">02</span>
+            <span class="journey-year">Year 2</span>
             <h3>Specialization &amp; Candidacy Preparation</h3>
             <p>
               Deepen your specialization, pursue independent research, prepare for teaching,
@@ -569,9 +177,9 @@
             </p>
           </li>
 
-          <li class="journey-card">
-            <span class="journey-card__num">03</span>
-            <span class="journey-card__year">Year 3</span>
+          <li class="card card--glass">
+            <span class="icon-box">03</span>
+            <span class="journey-year">Year 3</span>
             <h3>Dissertation Development</h3>
             <p>
               Develop and defend your dissertation proposal, conduct original research,
@@ -579,9 +187,9 @@
             </p>
           </li>
 
-          <li class="journey-card">
-            <span class="journey-card__num">04</span>
-            <span class="journey-card__year">Year 4</span>
+          <li class="card card--glass">
+            <span class="icon-box">04</span>
+            <span class="journey-year">Year 4</span>
             <h3>Dissertation Completion &amp; Placement</h3>
             <p>
               Complete and defend your dissertation, disseminate your research, develop
@@ -605,33 +213,33 @@
           </p>
         </div>
 
-        <ul class="milestones-grid">
-          <li class="milestone-card">
+        <ul class="grid grid--3">
+          <li class="card card--accent">
             <h4>Advanced coursework</h4>
             <p>In research methods and their chosen specialization.</p>
           </li>
 
-          <li class="milestone-card">
+          <li class="card card--accent">
             <h4>Qualifying Exam Part I</h4>
             <p>Comprehensive examination in the student’s field.</p>
           </li>
 
-          <li class="milestone-card">
+          <li class="card card--accent">
             <h4>Qualifying Exam Part II</h4>
             <p>Oral defense of the doctoral thesis proposal.</p>
           </li>
 
-          <li class="milestone-card">
+          <li class="card card--accent">
             <h4>Original dissertation research</h4>
             <p>Under faculty supervision.</p>
           </li>
 
-          <li class="milestone-card">
+          <li class="card card--accent">
             <h4>Successful dissertation defense</h4>
             <p>Demonstrating an original scholarly contribution.</p>
           </li>
 
-          <li class="milestone-card">
+          <li class="card card--accent">
             <h4>Completion of AUB doctoral degree requirements</h4>
             <p>All remaining program and university requirements successfully met.</p>
           </li>
@@ -641,7 +249,7 @@
     </section>
 
     <!-- =========================== MENTORING — image background (parallax + overlay) =========================== -->
-    <section class="dark-band parallax">
+    <section class="image-band parallax theme-dark structure-band">
       <div class="container">
 
         <div class="prose-block">
@@ -650,7 +258,7 @@
           <p class="section-slogan">
             Your doctoral research develops through close mentorship, collaboration, and scholarly exchange.
           </p>
-          <p style="margin-top:22px;">
+          <p>
             During the early stages of the program, you will receive academic advising to
             develop your program of study and identify potential research directions. As your
             research agenda develops, you will work closely with a thesis adviser and doctoral
@@ -668,7 +276,7 @@
     </section>
 
     <!-- =========================== TEACHING — muted background =========================== -->
-    <section class="section muted-band">
+    <section class="section section--muted">
       <div class="container">
 
         <div class="prose-block">
@@ -677,7 +285,7 @@
           <p class="section-slogan">
             Develop not only as a researcher, but also as an educator and future member of the academic community.
           </p>
-          <p style="margin-top:22px;">
+          <p>
             You will complete AUB’s required preparation in teaching in higher education and
             gain supervised teaching experience and instructional opportunities.
           </p>
@@ -701,7 +309,7 @@
           <p class="section-slogan">
             Build scholarly connections beyond borders.
           </p>
-          <p style="margin-top:22px;">
+          <p>
             You will be encouraged to develop international research networks through
             conferences, collaborative research, and engagement with visiting and partner
             scholars.
@@ -731,8 +339,8 @@
     </section>
 
     <!-- =========================== CTA =========================== -->
-    <section class="section" style="padding: 0;">
-      <div class="cta-fullwidth">
+    <section>
+      <div class="cta-fullwidth theme-dark">
         <div class="container">
           <div class="cta-band">
             <div>

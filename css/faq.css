@@ -1,0 +1,67 @@
+/* =========================================================================
+   FAQ (faq.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Contact-Us-banner.png");
+  background-position: center 68%;
+}
+
+/* -------------------------------------------------------------------------
+   Q&A CARDS  (.card.card--accent.faq-card)
+   ------------------------------------------------------------------------- */
+.faq-card {
+  --card-pad: 30px 34px;
+}
+
+.faq-card .faq-question {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: clamp(1.02rem, .95rem + .25vw, 1.12rem);
+  line-height: 1.4;
+}
+
+.faq-question__mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(132, 1, 50, .08);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: var(--color-primary);
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+
+.faq-card:hover .faq-question__mark {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.faq-card .faq-answer {
+  padding-left: 46px;
+  font-size: .96rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 700px) {
+  .faq-card {
+    --card-pad: 24px 22px;
+  }
+
+  .faq-card .faq-question {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-card .faq-answer {
+    padding-left: 0;
+    margin-top: 4px;
+  }
+}

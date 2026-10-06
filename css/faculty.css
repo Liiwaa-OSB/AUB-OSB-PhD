@@ -1,0 +1,215 @@
+/* =========================================================================
+   FACULTY (faculty.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Faculty-banner.JPG");
+  background-position: center 54%;
+}
+
+/* -------------------------------------------------------------------------
+   FILTER — buttons on desktop, dropdown on mobile
+   ------------------------------------------------------------------------- */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 44px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filter-label {
+  margin-right: 8px;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* shared look for the pill buttons and the dropdown */
+.filter-btn,
+.filter-select select {
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-white);
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--color-text);
+  transition:
+    border-color .25s var(--ease),
+    color .25s var(--ease),
+    background .25s var(--ease),
+    transform .25s var(--ease-out),
+    box-shadow .3s var(--ease);
+}
+
+.filter-btn {
+  padding: 10px 20px;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px -6px rgba(132, 1, 50, .35);
+}
+
+/* Dropdown (hidden on desktop) */
+.filter-select {
+  position: relative;
+  display: none;
+  width: 100%;
+}
+
+.filter-select select {
+  width: 100%;
+  padding: 13px 48px 13px 20px;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter-select select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(132, 1, 50, .15);
+}
+
+.filter-select svg {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+
+  .filter-label {
+    margin-right: 0;
+  }
+
+  .filter-buttons {
+    display: none;
+  }
+
+  .filter-select {
+    display: block;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   FACULTY CARD  (.card.card--accent.faculty-card)
+   ------------------------------------------------------------------------- */
+.faculty-card {
+  --card-pad: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.faculty-photo {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, #f2f2f2 0%, #e8e8e8 100%);
+  color: var(--color-primary);
+  transition: background .4s var(--ease);
+}
+
+.faculty-card:hover .faculty-photo {
+  background: linear-gradient(160deg, #f4e5ea 0%, #edd8df 100%);
+}
+
+.faculty-photo svg {
+  width: 52px;
+  height: 52px;
+  transition: transform .45s var(--ease-spring);
+}
+
+.faculty-card:hover .faculty-photo svg {
+  transform: scale(1.1);
+}
+
+.faculty-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 26px;
+}
+
+.faculty-track {
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f7e9ed;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.faculty-card h4 {
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+}
+
+.faculty-role {
+  margin-bottom: 14px;
+  font-size: .85rem;
+  color: var(--color-muted);
+}
+
+.faculty-card .faculty-bio {
+  flex: 1;
+  margin-bottom: 14px;
+  color: var(--color-text);
+}
+
+.faculty-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  font-size: .82rem;
+}
+
+.faculty-empty {
+  grid-column: 1 / -1;
+  padding: 60px 0;
+  text-align: center;
+  color: var(--color-muted);
+}

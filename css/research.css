@@ -1,0 +1,135 @@
+/* =========================================================================
+   RESEARCH (research.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Research-Banner.jpg");
+  background-position: center 52%;
+}
+
+/* -------------------------------------------------------------------------
+   TRACKS
+   ------------------------------------------------------------------------- */
+.research-tracks {
+  padding-top: 0;
+}
+
+.track-section + .track-section {
+  margin-top: 72px;
+  padding-top: 72px;
+  border-top: 1px solid var(--color-border);
+}
+
+.track-head {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* alternate layout: image first */
+.track-head--reverse > .track-media {
+  order: -1;
+}
+
+.track-areas-label {
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.track-areas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 32px;
+  margin-top: 16px;
+}
+
+.track-areas li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: .96rem;
+  transition: transform .3s var(--ease-out), color .25s var(--ease);
+}
+
+.track-areas li:hover {
+  transform: translateX(4px);
+  color: var(--color-ink);
+}
+
+.track-areas .dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transition: transform .35s var(--ease-spring), box-shadow .3s var(--ease);
+}
+
+.track-areas li:hover .dot {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px rgba(132, 1, 50, .12);
+}
+
+.track-explore {
+  margin-top: 28px;
+}
+
+/* Track image with burgundy accent block */
+.track-media {
+  position: relative;
+}
+
+.track-media img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform .8s var(--ease-out);
+}
+
+.track-media:hover img {
+  transform: scale(1.03);
+}
+
+.track-media::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  z-index: 1;
+  width: 24%;
+  height: 46%;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-dark);
+  opacity: .85;
+  transition: transform .6s var(--ease-out);
+}
+
+.track-media:hover::before {
+  transform: translate(6px, -6px);
+}
+
+@media (max-width: 900px) {
+  .track-head {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .track-head--reverse > .track-media {
+    order: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .track-areas {
+    grid-template-columns: 1fr;
+  }
+}

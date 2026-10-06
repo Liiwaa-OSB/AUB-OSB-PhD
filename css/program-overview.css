@@ -1,0 +1,39 @@
+/* =========================================================================
+   PROGRAM OVERVIEW (program-overview.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Program-Banner.png");
+  background-position: center 14%;
+}
+
+.photo-strip {
+  min-height: 460px;
+  background-color: #141414;
+  background-image: url("../images/AUB-OSB-PhD-Homepage-Outcome.JPG");
+}
+
+.outcomes-band {
+  background-image: url("../images/library-image.jpg");
+}
+
+/* Copy widths */
+.career-outcomes__content {
+  max-width: 900px;
+}
+
+.career-pathways .section-head {
+  max-width: 800px;
+}
+
+.career-path-card h4 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+}
+
+@media (max-width: 700px) {
+  .photo-strip {
+    min-height: 260px;
+  }
+}

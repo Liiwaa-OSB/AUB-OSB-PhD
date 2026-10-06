@@ -122,7 +122,7 @@
       const href = link.getAttribute("href");
       if (!href) return;
 
-      /* Skip external links entirely (e.g. About OSB -> aub.edu.lb) */
+      /* Skip external links (e.g. About OSB -> aub.edu.lb) */
       if (/^(https?:)?\/\//i.test(href)) return;
 
       const url = new URL(href, window.location.href);

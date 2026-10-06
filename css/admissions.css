@@ -1,0 +1,18 @@
+/* =========================================================================
+   ADMISSIONS (admissions.html) — page styles. Requires css/main.css
+   ========================================================================= */
+
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Admissions-Banner.jpg");
+  background-position: center 47%;
+}
+
+.eligibility-band {
+  background-image: url("../images/AUB-OSB-PhP-Admission-Eligibility.JPG");
+}
+
+.application-band {
+  background-image: url("../images/AUB-OSB-PhD-Banner-1.jpg");
+  background-position: center bottom;
+}
