@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Structure | PhD in Business Administration | Olayan School of Business, AUB</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="images/logos/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/menu.css" rel="stylesheet" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/menu.js"></script>
+
+  <style>
+    /* =========================================================================
+       SHARED — PARALLAX BACKGROUNDS
+       ========================================================================= */
+    .parallax {
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* =========================================================================
+       SHARED — SINGLE-COLUMN PROSE BLOCK
+       Used by Mentoring / Teaching / Global Reach.
+       ========================================================================= */
+    .prose-block h2 {
+      margin: 14px 0 0;
+      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -.02em;
+      color: var(--color-ink, #1c1c1c);
+    }
+
+    .prose-block p {
+      margin: 0 0 20px;
+      font-size: .98rem;
+      line-height: 1.8;
+    }
+
+    .prose-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================================
+       HERO — same as Program Overview
+       ========================================================================= */
+    .program-hero {
+      position: relative;
+      width: 100%;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #1a1a1a;
+      background-image:
+        linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
+        url("images/AUB-OSB-PhD-Program-Banner.png");
+      background-size: cover;
+      background-position: center 14%;
+      overflow: hidden;
+    }
+
+    .program-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 48px var(--gutter) 56px;
+    }
+
+    .program-hero .breadcrumb {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: 18px;
+    }
+
+    .program-hero .breadcrumb a {
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      transition: color .2s var(--ease);
+    }
+
+    .program-hero .breadcrumb a:hover {
+      color: var(--color-white);
+    }
+
+    .program-hero h1 {
+      color: var(--color-white);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.022em;
+      margin: 0;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .4);
+    }
+
+    .program-hero__lead {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, .95);
+      font-size: clamp(1rem, .95rem + .35vw, 1.2rem);
+      font-weight: 600;
+      line-height: 1.55;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, .45);
+    }
+
+    /* =========================================================================
+       OVERVIEW — white, plain
+       ========================================================================= */
+    .overview-body {
+      margin-top: 26px;
+    }
+
+    .overview-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================================
+       DARK PARALLAX SECTIONS (with gradient overlay)
+       ========================================================================= */
+    .dark-band {
+      position: relative;
+      background-color: #141414;
+      background-image:
+        linear-gradient(180deg,
+          rgba(10, 10, 10, .84) 0%,
+          rgba(20, 20, 20, .8) 50%,
+          rgba(10, 10, 10, .86) 100%),
+        url("images/AUB-OSB-PhD-Homepage-Outcome.JPG");
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .dark-band .section-head h2 {
+      color: var(--color-white);
+    }
+
+    .dark-band .eyebrow {
+      color: var(--color-secondary);
+    }
+
+    .dark-band .eyebrow::after {
+      background: var(--color-secondary);
+    }
+
+    .dark-band .section-head.center .eyebrow::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dark-band p,
+    .dark-band .lede {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .dark-band .prose-block h2 {
+      color: var(--color-white);
+    }
+
+    .dark-band .prose-block p {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    /* =========================================================================
+       MUTED BAND — soft background
+       ========================================================================= */
+    .muted-band {
+      background: #f7f5f2;
+    }
+
+    /* =========================================================================
+       JOURNEY — glass cards on dark band
+       ========================================================================= */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 48px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .journey-card {
+      position: relative;
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 12px;
+      padding: 26px 22px;
+      transition:
+        transform .35s var(--ease-out),
+        background .35s var(--ease),
+        border-color .35s var(--ease);
+    }
+
+    .journey-card:hover {
+      background: rgba(255, 255, 255, .14);
+      border-color: var(--color-secondary);
+      transform: translateY(-5px);
+    }
+
+    .journey-card__num {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--color-secondary);
+      color: var(--color-white);
+      font-size: .9rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .journey-card__year {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-secondary);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .journey-card h3 {
+      color: var(--color-white);
+      font-size: 1rem;
+      line-height: 1.4;
+      margin: 0 0 10px;
+    }
+
+    .journey-card p {
+      color: rgba(255, 255, 255, .7);
+      font-size: .87rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =========================================================================
+       MILESTONES — dedicated card design
+       ========================================================================= */
+    .milestones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      list-style: none;
+      margin: 48px 0 0;
+      padding: 0;
+    }
+
+    .milestone-card {
+      position: relative;
+      padding: 34px 28px 30px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-white);
+      overflow: hidden;
+      transition:
+        transform .4s var(--ease-out),
+        border-color .3s var(--ease),
+        box-shadow .4s var(--ease);
+    }
+
+    .milestone-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 6px;
+      right: 18px;
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -.05em;
+      color: rgba(132, 1, 50, .07);
+      pointer-events: none;
+      transition: color .4s var(--ease);
+    }
+
+    .milestone-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .45s var(--ease-out);
+    }
+
+    .milestone-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-primary);
+      box-shadow: 0 14px 36px rgba(132, 1, 50, .12);
+    }
+
+    .milestone-card:hover::before {
+      color: rgba(132, 1, 50, .14);
+    }
+
+    .milestone-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .milestone-card h4 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 8px;
+      padding-right: 60px;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--color-ink, #1c1c1c);
+      transition: color .25s var(--ease);
+    }
+
+    .milestone-card:hover h4 {
+      color: var(--color-primary);
+    }
+
+    .milestone-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--color-muted);
+    }
+
+    /* =========================================================================
+       GLOBAL NOTE — inline callout (used inside no-bg global section)
+       ========================================================================= */
+    .global-note {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 26px;
+      padding: 18px 20px;
+      border: 1px solid rgba(132, 1, 50, .22);
+      border-radius: 12px;
+      background: rgba(132, 1, 50, .04);
+    }
+
+    .global-note svg {
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    .global-note p {
+      margin: 0;
+      font-size: .88rem;
+      line-height: 1.65;
+      color: var(--color-muted);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 1024px) {
+      .journey-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .milestones-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .parallax {
+        background-attachment: scroll;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .program-hero {
+        min-height: 300px;
+      }
+
+      .program-hero__content {
+        padding: 32px var(--gutter) 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .journey-grid,
+      .milestones-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .dark-band {
+        padding: 76px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="nav-main-header">
+    <div class="nav-main-container">
+
+      <!-- LOGO -->
+      <div class="nav-logo">
+        <a href="https://www.aub.edu.lb/osb/Pages/default.aspx">
+          <img src="images/logos/AUB+OSB-Merged-Logo-white.png" alt="AUB OSB Logo" />
+        </a>
+      </div>
+
+      <!-- DESKTOP NAVIGATION -->
+      <nav class="nav-osb-links" aria-label="Main navigation">
+        <ul class="osb-nav">
+          <li class="osb-nav-item mba-nav-item">
+            <a href="https://www.aub.edu.lb/osb" id="about-osb-link">About OSB</a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="index.html" id="phd-homepage-link">PhD Homepage</a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="program-overview.html" id="phd-program-link">Program Overview </a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="research.html" id="phd-research-link">Research Areas</a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="program-structure.html" id="phd-program-link">Program Structure</a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="admissions.html" id="phd-admissions-link">Admissions & Financial Support </a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="faculty.html" id="phd-faculty-link">Faculty & Research </a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="faq.html" id="phd-faculty-link">FAQs</a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="contact.html" id="phd-contact-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button class="mobile-burger-inline" id="mobileBurgerBtn" type="button" aria-label="Open menu"
+        aria-controls="mobileOverlay" aria-expanded="false">
+        <svg fill="none" height="28" width="28" viewBox="0 0 24 24" stroke="white" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Main menu"
+    aria-hidden="true" inert>
+    <div class="mobile-overlay-content">
+      <button class="mobile-close" id="closeOverlayBtn" type="button" aria-label="Close menu">
+        <svg fill="none" height="28" width="28" viewBox="0 0 24 24" stroke="white" stroke-width="2" aria-hidden="true">
+          <line x1="5" y1="5" x2="19" y2="19"></line>
+          <line x1="19" y1="5" x2="5" y2="19"></line>
+        </svg>
+      </button>
+      <nav aria-label="Mobile navigation">
+        <ul class="mobile-nav">
+          <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
+          <li><a class="mobile-nav-link is-active" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
+          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-program-link">The Program</a></li>
+          <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research</a></li>
+          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
+          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admissions</a></li>
+          <li><a class="mobile-nav-link" href="contact.html" id="mobile-phd-contact-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- =========================== HERO =========================== -->
+    <section class="program-hero">
+      <div class="program-hero__content">
+        <div class="breadcrumb"><a href="index.html">Home</a> / Program Structure</div>
+        <h1>Program Structure</h1>
+        <p class="program-hero__lead">
+          Your doctoral journey: from research foundations to an original contribution.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================== OVERVIEW =========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow">doctoral experience</span>
+          <h2>Lorem Ipsum</h2>
+
+          <p class="section-slogan">
+            Your doctoral journey: from research foundations to an original contribution.
+          </p>
+          <p class="section-slogan">
+            From your first doctoral seminar to your dissertation defense, each stage is designed to help you become
+            an independent scholar.
+          </p>
+        </div>
+
+        <div class="overview-body">
+          <p>
+            The program is designed as a full-time research-intensive doctoral experience.
+            Individual programs of study are developed with faculty advisers and integrate
+            research-methods training, doctoral seminars, specialization courses, qualifying
+            examinations, and dissertation research.
+          </p>
+          <p>
+            Students entering with a master’s degree complete a minimum of 48 credits beyond
+            the master’s degree.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================== DOCTORAL JOURNEY — dark band, glass cards =========================== -->
+    <section class="dark-band parallax">
+      <div class="container">
+
+        <div class="section-head center">
+          <span class="eyebrow">Doctoral Journey</span>
+          <h2>Four years, four stages of becoming a scholar</h2>
+          <p class="section-slogan">
+            Each year of the program builds deliberately on the last — from methodological foundations, through
+            specialization and candidacy, to original research and placement.
+          </p>
+        </div>
+
+        <ol class="journey-grid">
+          <li class="journey-card">
+            <span class="journey-card__num">01</span>
+            <span class="journey-card__year">Year 1</span>
+            <h3>Research Foundations</h3>
+            <p>
+              Build your methodological and disciplinary foundations, participate in doctoral
+              seminars, begin working with faculty, and start defining your research interests.
+            </p>
+          </li>
+
+          <li class="journey-card">
+            <span class="journey-card__num">02</span>
+            <span class="journey-card__year">Year 2</span>
+            <h3>Specialization &amp; Candidacy Preparation</h3>
+            <p>
+              Deepen your specialization, pursue independent research, prepare for teaching,
+              complete Qualifying Exam Part I/comprehensive examination, and begin defining your
+              thesis direction.
+            </p>
+          </li>
+
+          <li class="journey-card">
+            <span class="journey-card__num">03</span>
+            <span class="journey-card__year">Year 3</span>
+            <h3>Dissertation Development</h3>
+            <p>
+              Develop and defend your dissertation proposal, conduct original research,
+              participate in conferences, and begin developing manuscripts for publication.
+            </p>
+          </li>
+
+          <li class="journey-card">
+            <span class="journey-card__num">04</span>
+            <span class="journey-card__year">Year 4</span>
+            <h3>Dissertation Completion &amp; Placement</h3>
+            <p>
+              Complete and defend your dissertation, disseminate your research, develop
+              publications, and prepare for the academic job market.
+            </p>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- =========================== PROGRAM MILESTONES =========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow">Milestones</span>
+          <h2>Key academic milestones</h2>
+          <p>
+            Students progress through key academic milestones, including:
+          </p>
+        </div>
+
+        <ul class="milestones-grid">
+          <li class="milestone-card">
+            <h4>Advanced coursework</h4>
+            <p>In research methods and their chosen specialization.</p>
+          </li>
+
+          <li class="milestone-card">
+            <h4>Qualifying Exam Part I</h4>
+            <p>Comprehensive examination in the student’s field.</p>
+          </li>
+
+          <li class="milestone-card">
+            <h4>Qualifying Exam Part II</h4>
+            <p>Oral defense of the doctoral thesis proposal.</p>
+          </li>
+
+          <li class="milestone-card">
+            <h4>Original dissertation research</h4>
+            <p>Under faculty supervision.</p>
+          </li>
+
+          <li class="milestone-card">
+            <h4>Successful dissertation defense</h4>
+            <p>Demonstrating an original scholarly contribution.</p>
+          </li>
+
+          <li class="milestone-card">
+            <h4>Completion of AUB doctoral degree requirements</h4>
+            <p>All remaining program and university requirements successfully met.</p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- =========================== MENTORING — image background (parallax + overlay) =========================== -->
+    <section class="dark-band parallax">
+      <div class="container">
+
+        <div class="prose-block">
+          <span class="eyebrow">Mentoring</span>
+          <h2>Research Mentoring &amp; Scholarly Community</h2>
+          <p class="section-slogan">
+            Your doctoral research develops through close mentorship, collaboration, and scholarly exchange.
+          </p>
+          <p style="margin-top:22px;">
+            During the early stages of the program, you will receive academic advising to
+            develop your program of study and identify potential research directions. As your
+            research agenda develops, you will work closely with a thesis adviser and doctoral
+            thesis committee.
+          </p>
+          <p>
+            You will also be an active member of OSB’s scholarly community through faculty
+            research collaboration, research seminars, workshops, visiting-scholar activities,
+            conferences, and opportunities to present work in progress and receive feedback
+            from faculty and peers.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================== TEACHING — muted background =========================== -->
+    <section class="section muted-band">
+      <div class="container">
+
+        <div class="prose-block">
+          <span class="eyebrow">Teaching</span>
+          <h2>Teaching &amp; Academic Career Development</h2>
+          <p class="section-slogan">
+            Develop not only as a researcher, but also as an educator and future member of the academic community.
+          </p>
+          <p style="margin-top:22px;">
+            You will complete AUB’s required preparation in teaching in higher education and
+            gain supervised teaching experience and instructional opportunities.
+          </p>
+          <p>
+            Professional development will also include scholarly writing, conference
+            presentations, publication training, research ethics, networking, and preparation
+            for the international academic job market.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================== INTERNATIONAL — no background =========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="prose-block">
+          <span class="eyebrow">Global Reach</span>
+          <h2>International Research Exposure</h2>
+          <p class="section-slogan">
+            Build scholarly connections beyond borders.
+          </p>
+          <p style="margin-top:22px;">
+            You will be encouraged to develop international research networks through
+            conferences, collaborative research, and engagement with visiting and partner
+            scholars.
+          </p>
+          <p>
+            Subject to academic approval and partnership arrangements, opportunities may
+            include spending a semester at an international partner institution, taking
+            approved courses, and/or advancing your research under complementary academic
+            mentorship.
+          </p>
+
+          <div class="global-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#840132" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"></path>
+            </svg>
+            <p>
+              International placements are subject to academic approval and existing
+              partnership arrangements.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================== CTA =========================== -->
+    <section class="section" style="padding: 0;">
+      <div class="cta-fullwidth">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <h2>Begin Your Doctoral Journey?</h2>
+              <p>From your first doctoral seminar to your dissertation defense, each stage is designed to help you
+                become an independent scholar.</p>
+            </div>
+            <div class="btn-row">
+              <a href="program-overview.html" class="btn btn-primary">Program Overview</a>
+              <a href="admissions.html" class="btn btn-outline-light">Admissions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
+</body>
+
+</html>

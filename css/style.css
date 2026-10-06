@@ -1803,3 +1803,30 @@ p:last-child {
 .reveal-stagger.in-view>*:nth-child(6) {
   transition-delay: .4s;
 }
+
+
+
+/* Slogan */
+
+
+    /* =========================================================================
+       SHARED — SECTION SLOGAN
+       Replaces the former .why-slogan / .outcomes-slogan / .career-outcomes__slogan
+       ========================================================================= */
+    .section-slogan {
+      margin: 18px 0 0;
+      color: var(--color-primary);
+      font-size: clamp(1.1rem, 1rem + .4vw, 1.35rem);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* breathing room when a slogan introduces body copy */
+    .section-slogan+p {
+      margin-top: 22px;
+    }
+.outcomes-revamped .section-slogan {
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-white);
+    }

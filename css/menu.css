@@ -94,7 +94,7 @@
    LOGO GETS ITS OWN ROW, MENU GETS A SECOND ROW
    ========================================================= */
 
-@media (min-width: 1024px) and (max-width: 1250px) {
+@media (min-width: 1170px)  {
 
     .nav-main-container {
         flex-wrap: wrap;
@@ -137,7 +137,7 @@
     line-height: 0;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1170px) {
 
     .nav-main-container {
         justify-content: space-between;
@@ -252,7 +252,7 @@ body.menu-open {
 }
 
 /* Overlay is mobile-only */
-@media (min-width: 1024px) {
+@media (min-width: 1170px) {
     .mobile-overlay {
         display: none;
     }

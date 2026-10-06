@@ -19,6 +19,32 @@
   <script defer src="js/menu.js"></script>
 
   <style>
+
+    /* =========================================================================
+       SHARED — PROSE BLOCK
+       ========================================================================= */
+    .prose-block h2 {
+      margin: 14px 0 0;
+      font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -.02em;
+      color: var(--color-ink, #1c1c1c);
+    }
+
+    .prose-block p {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .prose-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================================
+       HERO
+       ========================================================================= */
     .faculty-hero {
       position: relative;
       width: 100%;
@@ -28,9 +54,9 @@
       background-color: #1a1a1a;
       background-image:
         linear-gradient(180deg, rgba(12, 12, 12, .28) 0%, rgba(18, 18, 18, .32) 50%, rgba(8, 8, 8, .38) 100%),
-        url("images/AUB-OSB-PhD-Homepage-Overview.jpg");
+        url("images/AUB-OSB-PhD-Faculty-banner.JPG");
       background-size: cover;
-      background-position: center 83%;
+      background-position: center 54%;
       overflow: hidden;
     }
 
@@ -79,35 +105,38 @@
       }
     }
 
+    /* =========================================================================
+       INTRO — white
+       ========================================================================= */
     .faculty-intro {
       background: var(--color-white);
-      padding: 72px 0;
-      border-bottom: 1px solid var(--color-border);
     }
 
-    .faculty-intro p {
-      font-size: 1rem;
-      /* line-height: 1.8; */
-      color: var(--color-text);
-      margin: 0 0 18px;
-    }
-
-    .faculty-intro p:last-child {
-      margin-bottom: 0;
-    }
-
+    /* =========================================================================
+       FACULTY GRID SECTION
+       ========================================================================= */
     .faculty-section {
-      background: var(--color-surface);
-      padding: 88px 0 96px;
+      background: var(--color-surface, #f7f5f2);
+      padding: 72px 0 96px;
     }
 
     .filter-row {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 10px;
       margin-bottom: 44px;
       padding-bottom: 32px;
       border-bottom: 1px solid var(--color-border);
+    }
+
+    .filter-label {
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-right: 8px;
     }
 
     .filter-btn {
@@ -156,7 +185,7 @@
 
     @media (max-width: 640px) {
       .faculty-grid {
-        grid-template-columns:  repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -230,7 +259,7 @@
     .faculty-photo svg {
       width: 52px;
       height: 52px;
-      transition: transform .45s var(--ease-spring);
+      transition: transform .45s var(--ease-spring, cubic-bezier(.34, 1.56, .64, 1));
       position: relative;
       z-index: 1;
     }
@@ -280,7 +309,7 @@
     .faculty-bio {
       font-size: .92rem;
       color: var(--color-text);
-      /* line-height: 1.65; */
+      line-height: 1.65;
       margin: 0 0 18px;
       flex: 1;
     }
@@ -331,7 +360,6 @@
 </head>
 
 <body>
-  
   <!-- Navigation -->
   <header class="nav-main-header">
     <div class="nav-main-container">
@@ -353,16 +381,22 @@
             <a href="index.html" id="phd-homepage-link">PhD Homepage</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="program.html" id="phd-program-link">The Program</a>
+            <a href="program-overview.html" id="phd-program-link">Program Overview </a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="research.html" id="phd-research-link">Research</a>
+            <a href="research.html" id="phd-research-link">Research Areas</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="faculty.html" id="phd-faculty-link">Faculty</a>
+            <a href="program-structure.html" id="phd-program-link">Program Structure</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="admissions.html" id="phd-admissions-link">Admissions</a>
+            <a href="admissions.html" id="phd-admissions-link">Admissions & Financial Support </a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="faculty.html" id="phd-faculty-link">Faculty & Research </a>
+          </li>
+          <li class="osb-nav-item phd-nav-item">
+            <a href="faq.html" id="phd-faculty-link">FAQs</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
             <a href="contact.html" id="phd-contact-link">Contact</a>
@@ -396,10 +430,10 @@
       <nav aria-label="Mobile navigation">
         <ul class="mobile-nav">
           <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
-          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
-          <li><a class="mobile-nav-link" href="program.html" id="mobile-phd-program-link">The Program</a></li>
+          <li><a class="mobile-nav-link is-active" href="index.html" id="mobile-phd-homepage-link">PhD Homepage</a></li>
+          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-program-link">The Program</a></li>
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research</a></li>
-          <li><a class="mobile-nav-link is-active" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
+          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">Faculty</a></li>
           <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admissions</a></li>
           <li><a class="mobile-nav-link" href="contact.html" id="mobile-phd-contact-link">Contact</a></li>
         </ul>
@@ -409,6 +443,7 @@
 
   <main>
 
+    <!-- =========================== HERO =========================== -->
     <section class="faculty-hero">
       <div class="faculty-hero__content">
         <div class="breadcrumb"><a href="index.html">Home</a> / Faculty</div>
@@ -416,28 +451,38 @@
       </div>
     </section>
 
-    <section class="faculty-intro">
+    <!-- =========================== INTRO =========================== -->
+    <section class="section faculty-intro">
       <div class="container">
-        <span class="eyebrow">Faculty</span>
-        <h2>Faculty and Research Mentorship</h2>
-        <p>
-          The PhD in Business Administration is supported by OSB faculty whose research spans the three doctoral
-          tracks and a wide range of interdisciplinary topics. Faculty members mentor doctoral students from the
-          beginning of the program, guiding their research training, dissertation work, and professional
-          development.
-        </p>
-        <p>
-          Use the filter below to explore faculty by doctoral track, then reach out to potential advisers whose
-          research aligns with your interests. Faculty profiles include research areas, methodological expertise,
-          recent publications, and links to full AUB profiles.
-        </p>
+
+        <div class="prose-block">
+          <span class="eyebrow">Faculty &amp; Research Mentorship</span>
+          <h2>Find the faculty whose research connects with your interests and discover where your ideas could take
+            you.</h2>
+
+          <p style="margin-top:22px;">
+            OSB faculty conduct research across the program’s three doctoral tracks and a broad range of
+            interdisciplinary areas.
+          </p>
+          <p>
+            Prospective students are encouraged to explore faculty profiles to identify potential research alignment
+            before applying.
+          </p>
+          <p>
+            Faculty profiles should highlight research interests, selected recent publications, methodological
+            expertise, and links to full AUB faculty profiles and relevant scholarly profiles.
+          </p>
+        </div>
+
       </div>
     </section>
 
+    <!-- =========================== FACULTY GRID =========================== -->
     <section class="faculty-section">
       <div class="container">
 
         <div class="filter-row">
+          <span class="filter-label">Explore by:</span>
           <button type="button" class="filter-btn active" data-filter="all">All Faculty</button>
           <button type="button" class="filter-btn" data-filter="analytics">Business Analytics</button>
           <button type="button" class="filter-btn" data-filter="finance">Finance</button>
@@ -767,6 +812,7 @@
       </div>
     </section>
 
+    <!-- =========================== CTA =========================== -->
     <section class="section" style="padding: 0;">
       <div class="cta-fullwidth">
         <div class="container">
@@ -813,11 +859,7 @@
             }
           });
 
-          if (visibleCount === 0) {
-            empty.style.display = 'block';
-          } else {
-            empty.style.display = 'none';
-          }
+          empty.style.display = visibleCount === 0 ? 'block' : 'none';
         });
       });
     })();
