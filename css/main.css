@@ -684,6 +684,7 @@ p:last-child {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  margin-top: 2rem;
 }
 
 /* Text link with optional trailing arrow icon */

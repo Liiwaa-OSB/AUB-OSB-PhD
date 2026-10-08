@@ -170,13 +170,8 @@
 }
 
 /* -------------------------------------------------------------------------
-   FOLLOW-UP — intro text + track cards
+   SHARED ROW LABEL (used above "The Journey" and "The Doctoral Experience")
    ------------------------------------------------------------------------- */
-.hero-followup .container + .container {
-  margin-top: 56px;
-  padding-top: 56px;
-}
-
 .tracks-row__label {
   display: flex;
   align-items: center;
@@ -194,20 +189,90 @@
   height: 18px;
 }
 
-.info-track {
-  --card-pad: 20px 22px;
-  align-items: center;
+/* -------------------------------------------------------------------------
+   SECTION BAND — Explore Your Research Area (photo + dark overlay)
+   Mirrors the Learning Outcomes band on program-overview.html.
+   Swap the image for your preferred research-area photo.
+   ------------------------------------------------------------------------- */
+.research-areas-band {
+  background-image: url("../images/library-image.jpg");
+  background-position: center;
 }
 
-.info-track h3 {
-  margin-bottom: 2px;
+/* -------------------------------------------------------------------------
+   YOUR DOCTORAL JOURNEY — Year 1 → 4 steps + experience row
+   ------------------------------------------------------------------------- */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap);
 }
 
-.info-track p {
+.journey-step {
+  position: relative;
+  padding: 26px 24px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform .4s var(--ease-out),
+    box-shadow .4s var(--ease),
+    border-color .3s var(--ease);
+}
+
+.journey-step:hover {
+  transform: translateY(var(--card-lift));
+  box-shadow: var(--card-shadow-hover);
+}
+
+.journey-step__year {
+  display: block;
+  margin-bottom: 10px;
   font-size: .72rem;
-  font-weight: 500;
-  letter-spacing: .1em;
+  font-weight: 700;
+  letter-spacing: .16em;
   text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.journey-step h4 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.journey-experience {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid var(--color-border);
+}
+
+.journey-experience .lede {
+  max-width: 62em;
+}
+
+/* Consistency: the "Explore the Doctoral Journey" button sits under the block */
+.section--muted .btn-row {
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .journey-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-experience {
+    margin-top: 40px;
+    padding-top: 40px;
+  }
 }
 
 /* -------------------------------------------------------------------------
@@ -243,4 +308,43 @@
   .main-hero__cards {
     grid-template-columns: 1fr;
   }
+}
+
+/* -------------------------------------------------------------------------
+   HOMEPAGE — SHARED CTA PIECES
+   ------------------------------------------------------------------------- */
+
+/* Whole-card link used by track teasers */
+.track-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  --card-pad: 32px 28px;
+}
+
+.track-teaser .text-link {
+  margin-top: auto;
+  padding-top: 18px;
+  align-self: flex-start;
+}
+
+.track-teaser .text-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Secondary (outline) button — for light sections */
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 10px 22px rgba(132, 1, 50, .25);
 }
