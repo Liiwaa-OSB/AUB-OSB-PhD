@@ -21,7 +21,6 @@
   gap: 16px;
   margin-bottom: 12px;
   font-size: clamp(1.02rem, .95rem + .25vw, 1.12rem);
-  line-height: 1.4;
 }
 
 .faq-question__mark {
@@ -47,7 +46,6 @@
 .faq-card .faq-answer {
   padding-left: 46px;
   font-size: .96rem;
-  line-height: 1.75;
 }
 
 @media (max-width: 700px) {

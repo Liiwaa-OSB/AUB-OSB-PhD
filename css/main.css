@@ -45,9 +45,9 @@
 
   /* Text on dark backgrounds */
   --on-dark-heading: #ffffff;
-  --on-dark-text: rgba(255, 255, 255, .78);
+  --on-dark-text: rgba(255, 255, 255, .9);
   --on-dark-accent: var(--color-secondary);
-  /* eyebrows, small labels */
+  /* small labels */
 
   /* Photo overlays — one place to change every band's darkness */
   --overlay-dark: linear-gradient(180deg, rgba(10, 10, 10, .84) 0%, rgba(20, 20, 20, .80) 50%, rgba(10, 10, 10, .86) 100%);
@@ -71,13 +71,13 @@
   /* Typography */
   --font-base: "Roboto", sans-serif;
   --lh-tight: 1.15;
-  --lh-normal: 1.7;
+  --lh-normal: 1.35;
 
   /* Layout */
   --container: 1280px;
   --gutter: 24px;
   --grid-gap: 24px;
-  --section-pad: 88px;
+  --section-pad: 78px;
   --radius-sm: 4px;
   --radius-md: 10px;
 
@@ -94,7 +94,7 @@
 
 @media (max-width: 600px) {
   :root {
-    --section-pad: 64px;
+    --section-pad: 58px;
   }
 }
 
@@ -244,51 +244,20 @@ p:last-child {
   margin-bottom: 0;
 }
 
+.case-sensitive {
+  text-transform: none;
+}
+
 .lede {
-  max-width: 46em;
   font-size: 1.125rem;
-  line-height: 1.65;
   color: var(--color-text);
 }
 
-.eyebrow {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 12px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.eyebrow::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  margin-top: 10px;
-  border-radius: 2px;
-  background: currentColor;
-  transition: width .4s var(--ease-out);
-}
-
 .section-head {
-  margin-bottom: 44px;
-}
-
-.section-head:hover .eyebrow::after {
-  width: 48px;
+  margin-bottom: 16px;
 }
 
 .section-head.center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.section-head.center .eyebrow::after,
-.section-head.center .lede {
   margin-left: auto;
   margin-right: auto;
 }
@@ -332,6 +301,7 @@ p:last-child {
   --cols: 1;
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  margin-top: var(--grid-gap);
   gap: var(--grid-gap);
 }
 
@@ -380,7 +350,7 @@ p:last-child {
 /* -------------------------------------------------------------------------
    5. DARK THEME
    Add .theme-dark to any section with a dark background.
-   Headings, copy, eyebrows, links, cards, icons and slogans adapt.
+   Headings, copy, links, cards, icons and slogans adapt.
    (:where keeps these rules light so components can still refine them.)
    ------------------------------------------------------------------------- */
 .theme-dark {
@@ -398,10 +368,6 @@ p:last-child {
 
 .theme-dark :where(p, .lede) {
   color: var(--on-dark-text);
-}
-
-.theme-dark .eyebrow {
-  color: var(--on-dark-accent);
 }
 
 .theme-dark .breadcrumb {
@@ -818,7 +784,6 @@ p:last-child {
   margin: 18px 0 0;
   font-size: clamp(1rem, .95rem + .35vw, 1.2rem);
   font-weight: 600;
-  line-height: 1.55;
   text-shadow: 0 1px 12px rgba(0, 0, 0, .45);
 }
 
@@ -868,7 +833,6 @@ p:last-child {
 .card :where(h3, h4) {
   margin: 0 0 8px;
   font-size: 1rem;
-  line-height: 1.35;
   transition: color .25s var(--ease);
 }
 
@@ -879,7 +843,6 @@ p:last-child {
 .card :where(p) {
   margin: 0;
   font-size: .9rem;
-  line-height: 1.6;
   color: var(--color-muted);
 }
 
@@ -903,25 +866,113 @@ p:last-child {
 }
 
 /* Glass */
+/* =========================================================================
+   GLASS CARD COMPONENT
+   -------------------------------------------------------------------------
+   Adapts to its parent context:
+   - Default (light):   white glass, dark text, brand hover
+   - .theme-dark parent: dark glass, light text, grey hover
+
+   Usage:
+     <li class="card card--glass">…</li>              → light glass
+     <section class="theme-dark">
+       <li class="card card--glass">…</li>            → dark glass
+     </section>
+   ========================================================================= */
+
+/* ---------- LIGHT MODE (default) ---------- */
 .card--glass {
+  /* local tokens — override per section if needed */
+  --glass-card-bg: rgba(255, 255, 255, .72);
+  --glass-card-bg-hover: rgba(255, 255, 255, .92);
+  --glass-card-border: var(--color-border);
+  --glass-card-border-hover: var(--color-primary);
+  --glass-card-shadow: 0 4px 24px rgba(36, 31, 34, .06);
+  --glass-card-shadow-hover: 0 14px 36px rgba(132, 1, 50, .12);
+
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-card-border);
+  box-shadow: var(--glass-card-shadow);
+
+  transition:
+    transform .4s var(--ease-out),
+    background .3s var(--ease),
+    border-color .3s var(--ease),
+    box-shadow .4s var(--ease);
+}
+
+.card--glass:hover {
+  background: var(--glass-card-bg-hover);
+  border-color: var(--glass-card-border-hover);
+  box-shadow: var(--glass-card-shadow-hover);
+  transform: translateY(var(--card-lift));
+}
+
+/* Light mode text colours */
+.card--glass :where(h3, h4) {
+  color: var(--color-ink);
+  transition: color .25s var(--ease);
+}
+
+.card--glass:hover :where(h3, h4) {
+  color: var(--color-primary);
+}
+
+.card--glass :where(p) {
+  color: var(--color-muted);
+}
+
+/* Light mode icon box */
+.card--glass .icon-box {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.card--glass:hover .icon-box {
+  background: var(--color-primary-dark);
+}
+
+
+/* ---------- DARK MODE (inside .theme-dark) ---------- */
+.theme-dark .card--glass {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border-color: var(--glass-border);
+  box-shadow: none;
 }
 
-.card--glass:hover {
+.theme-dark .card--glass:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   box-shadow: var(--glass-shadow-hover);
+  transform: translateY(var(--card-lift));
 }
 
-.card--glass :where(p) {
+/* Dark mode text colours */
+.theme-dark .card--glass :where(h3, h4) {
+  color: var(--on-dark-heading);
+}
+
+.theme-dark .card--glass:hover :where(h3, h4) {
+  color: var(--on-dark-heading);
+}
+
+.theme-dark .card--glass :where(p) {
   color: var(--on-dark-text);
 }
 
-.card--glass:hover :where(h3, h4) {
-  color: var(--on-dark-heading);
+/* Dark mode icon box */
+.theme-dark .card--glass .icon-box {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.theme-dark .card--glass:hover .icon-box {
+  background: var(--color-white);
+  color: var(--color-primary);
 }
 
 /* Row layout */
@@ -1029,21 +1080,15 @@ p:last-child {
 /* -------------------------------------------------------------------------
    11. PROSE & SECTION COPY
    ------------------------------------------------------------------------- */
-.overview-body {
-  margin-top: 26px;
-}
-
 .prose-block h2 {
   margin: 14px 0 0;
   font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
-  line-height: 1.18;
   letter-spacing: -.02em;
 }
 
 .prose-block p {
   margin: 0 0 20px;
   font-size: 1rem;
-  line-height: 1.8;
 }
 
 .prose-block p:last-child {
@@ -1067,7 +1112,6 @@ p:last-child {
   font-size: clamp(1.1rem, 1rem + .4vw, 1.35rem) !important;
   font-weight: 600 !important;
   font-style: normal !important;
-  line-height: 1.5 !important;
   letter-spacing: normal !important;
   text-transform: none !important;
 }
@@ -1376,7 +1420,6 @@ p:last-child {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: .02em;
-  line-height: 1;
 
   color: var(--on-dark-heading);
   background: rgba(20, 16, 18, .92);

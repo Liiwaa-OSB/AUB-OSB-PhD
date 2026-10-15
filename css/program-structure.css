@@ -12,17 +12,6 @@
   background-image: url("../images/AUB-OSB-PhD-Homepage-Outcome.JPG");
 }
 
-/* Journey cards: year label */
-.journey-year {
-  display: block;
-  margin-bottom: 8px;
-  font-size: .74rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--on-dark-accent);
-}
-
 /* International note */
 .global-note {
   display: flex;
@@ -43,6 +32,5 @@
 .prose-block .global-note p {
   margin: 0;
   font-size: .88rem;
-  line-height: 1.65;
   color: var(--color-muted);
 }

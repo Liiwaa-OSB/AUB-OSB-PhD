@@ -18,11 +18,6 @@
   background-image: url("../images/library-image.jpg");
 }
 
-/* Copy widths */
-.career-outcomes__content {
-  max-width: 900px;
-}
-
 .career-pathways .section-head {
   max-width: 800px;
 }
