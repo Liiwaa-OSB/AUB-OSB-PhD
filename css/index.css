@@ -3,7 +3,7 @@
    ========================================================================= */
 
 /* -------------------------------------------------------------------------
-   MAIN HERO  (.main-hero.image-band)
+   MAIN HERO  (.main-hero.image-band — overlay comes from --overlay-hero)
    ------------------------------------------------------------------------- */
 .main-hero {
   --band-overlay: var(--overlay-hero);
@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 100px; /* room for the overlapping cards */
   padding: 0;
   overflow: visible;
   text-align: center;
@@ -30,19 +30,11 @@
 }
 
 .main-hero__eyebrow {
-  display: inline-block;
-  margin: 0 0 22px;
-  padding: 8px 18px;
-  font-size: .72rem;
+  margin: 0 0 18px;
+  font-size: .82rem;
   font-weight: 700;
-  letter-spacing: .18em;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .95);
-  border: 1px solid rgba(255, 255, 255, .35);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .06);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 
 .main-hero h1 {
@@ -63,6 +55,7 @@
   text-transform: uppercase;
 }
 
+/* Pill buttons */
 .main-hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -172,325 +165,114 @@
 }
 
 /* -------------------------------------------------------------------------
-   DISCOVER THE PhD — narrative + facts panel
+   SHARED ROW LABEL (used above "The Journey" and "The Doctoral Experience")
    ------------------------------------------------------------------------- */
-.discover-section {
-  padding-top: calc(var(--section-pad) + 20px);
-}
-
-.discover-main h2 {
-  margin: 0 0 24px;
-  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.35rem);
-  letter-spacing: -.02em;
-}
-
-.discover-lede {
-  margin: 0 0 36px;
-  font-size: 1.05rem;
-  color: var(--color-text);
-}
-
-/* Facts panel — quiet, tabular, no cards */
-.discover-facts {
-  margin: 6px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 22px;
-}
-
-.discover-fact {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.discover-fact:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.discover-fact dt {
-  font-size: .72rem;
+.tracks-row__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  font-size: .78rem;
   font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-primary);
 }
 
-.discover-fact dd {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  letter-spacing: -.005em;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .discover-split {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .discover-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 40px;
-  }
-
-  .discover-fact {
-    padding-bottom: 18px;
-  }
-
-  .discover-fact:nth-last-child(-n+2) {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-}
-
-@media (max-width: 560px) {
-  .discover-facts {
-    grid-template-columns: 1fr;
-  }
-
-  .discover-fact,
-  .discover-fact:nth-last-child(-n+2) {
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .discover-fact:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
+.tracks-row__label svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* -------------------------------------------------------------------------
-   RESEARCH AREAS BAND
+   SECTION BAND — Explore Your Research Area (photo + dark overlay)
+   Mirrors the Learning Outcomes band on program-overview.html.
+   Swap the image for your preferred research-area photo.
    ------------------------------------------------------------------------- */
 .research-areas-band {
   background-image: url("../images/AUB-OSB-PhD-Homepage-explore.jpg");
   background-position: center;
 }
 
-.track-teaser {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  --card-pad: 32px 28px;
-}
-
-.track-teaser .text-link {
-  margin-top: auto;
-  padding-top: 18px;
-  align-self: flex-start;
-}
-
-.track-teaser .text-link svg {
-  width: 14px;
-  height: 14px;
-}
-
 /* -------------------------------------------------------------------------
-   YOUR PATH — timeline band
+   YOUR DOCTORAL JOURNEY — Year 1 → 4 steps + experience row
    ------------------------------------------------------------------------- */
-.path-section {
-  position: relative;
-  background:
-    radial-gradient(1200px 500px at 50% -10%, rgba(132, 1, 50, .045), transparent 60%),
-    var(--color-white);
-}
-
-.path-timeline {
-  position: relative;
+.journey-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(20px, 3vw, 40px);
-  margin: clamp(40px, 5vw, 64px) 0 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap);
 }
 
-/* the horizontal spine */
-.path-timeline::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30px;
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--color-border) 8%,
-      var(--color-border) 92%,
-      transparent 100%);
-  z-index: 0;
-}
-
-.path-step {
+.journey-step {
   position: relative;
-  z-index: 1;
-  padding: 0 8px;
-}
-
-.path-step__num {
-  display: inline-grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 22px;
-  border-radius: 50%;
-  background: var(--color-white);
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: .04em;
-  box-shadow: 0 0 0 8px var(--color-white);
-  transition: background .3s var(--ease), color .3s var(--ease), transform .4s var(--ease-spring);
-}
-
-.path-step:hover .path-step__num {
-  background: var(--color-primary);
-  color: var(--color-white);
-  transform: translateY(-3px);
-}
-
-.path-step h3 {
-  margin: 0 0 12px;
-  font-size: 1.15rem;
-}
-
-.path-step p {
-  margin: 0 0 18px;
-  font-size: .95rem;
-  color: var(--color-text);
-}
-
-.path-step__links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-}
-
-.path-step__links .text-link {
-  font-size: .9rem;
-}
-
-/* -------------------------------------------------------------------------
-   FACULTY VOICE — pull quote on light muted band
-   ------------------------------------------------------------------------- */
-.faculty-quote {
-  position: relative;
-  max-width: 880px;
-  margin: 0 auto;
-  padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 56px) clamp(28px, 4vw, 44px);
+  padding: 26px 24px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-primary);
+  border-top: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  text-align: left;
-  transition: transform .4s var(--ease-out), box-shadow .4s var(--ease);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform .4s var(--ease-out),
+    box-shadow .4s var(--ease),
+    border-color .3s var(--ease);
 }
 
-.faculty-quote:hover {
+.journey-step:hover {
   transform: translateY(var(--card-lift));
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--card-shadow-hover);
 }
 
-.faculty-quote__mark {
-  width: 42px;
-  height: 42px;
+.journey-step__year {
+  display: block;
+  margin-bottom: 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
   color: var(--color-primary);
-  opacity: .18;
-  margin-bottom: 18px;
 }
 
-.faculty-quote blockquote {
-  margin: 0 0 26px;
-  padding: 0;
-}
-
-.faculty-quote blockquote p {
+.journey-step h4 {
   margin: 0;
-  color: var(--color-ink);
-  font-size: clamp(1.1rem, 1rem + .55vw, 1.4rem);
-  font-weight: 600;
-  letter-spacing: -.005em;
+  font-size: 1rem;
 }
 
-.faculty-quote__cite {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-top: 22px;
+.journey-experience {
+  margin-top: 56px;
+  padding-top: 56px;
   border-top: 1px solid var(--color-border);
 }
 
-.faculty-quote__avatar {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-white);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .04em;
+.journey-experience .lede {
+  max-width: 62em;
 }
 
-.faculty-quote__cite strong {
-  display: block;
-  color: var(--color-ink);
-  font-size: .95rem;
+/* Consistency: the "Explore the Doctoral Journey" button sits under the block */
+.section--muted .btn-row {
+  margin-top: 40px;
 }
 
-.faculty-quote__cite em {
-  display: block;
-  font-style: normal;
-  font-size: .85rem;
-  color: var(--color-muted);
-  margin-top: 2px;
-}
-
-/* -------------------------------------------------------------------------
-   CTA — secondary FAQ link
-   ------------------------------------------------------------------------- */
-.cta-secondary {
-  margin: 28px 0 8px;
-  text-align: center;
-  font-size: .95rem;
-  color: rgba(255, 255, 255, .85);
-}
-
-.cta-secondary .text-link {
-  color: var(--color-white);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.cta-secondary .text-link:hover {
-  color: var(--color-white);
-  text-decoration-color: var(--color-secondary);
-}
-
-/* -------------------------------------------------------------------------
-   RESPONSIVE
-   ------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .discover-split {
-    grid-template-columns: 1fr;
-    gap: 40px;
+@media (max-width: 900px) {
+  .journey-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (max-width: 560px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-experience {
+    margin-top: 40px;
+    padding-top: 40px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE — on tablets/phones the info cards sit inside the hero
+   instead of overlapping (four columns don't fit).
+   ------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .main-hero {
     flex-direction: column;
@@ -514,40 +296,49 @@
   .hero-info-card:last-child {
     border-radius: 5px;
   }
-
-  .path-timeline {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .path-timeline::before {
-    display: none;
-  }
-
-  .path-step {
-    padding-left: 84px;
-    position: relative;
-  }
-
-  .path-step__num {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-bottom: 0;
-    box-shadow: none;
-  }
 }
 
 @media (max-width: 560px) {
   .main-hero__cards {
     grid-template-columns: 1fr;
   }
+}
 
-  .discover-stat {
-    grid-template-columns: auto auto;
-  }
+/* -------------------------------------------------------------------------
+   HOMEPAGE — SHARED CTA PIECES
+   ------------------------------------------------------------------------- */
 
-  .discover-stat__label {
-    grid-column: 1 / -1;
-  }
+/* Whole-card link used by track teasers */
+.track-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  --card-pad: 32px 28px;
+}
+
+.track-teaser .text-link {
+  margin-top: auto;
+  padding-top: 18px;
+  align-self: flex-start;
+}
+
+.track-teaser .text-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Secondary (outline) button — for light sections */
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 10px 22px rgba(132, 1, 50, .25);
 }
