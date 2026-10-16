@@ -8,6 +8,15 @@
   background-position: center 54%;
 }
 
+/* Author display rules (.faculty-card / .grid set display, which would
+   otherwise override the [hidden] attribute and break filtering) */
+.faculty-card[hidden],
+.faculty-loading[hidden],
+.faculty-empty[hidden],
+#facultyGrid[hidden] {
+  display: none !important;
+}
+
 /* -------------------------------------------------------------------------
    FILTER — buttons on desktop, dropdown on mobile
    ------------------------------------------------------------------------- */
@@ -57,12 +66,18 @@
 
 .filter-btn {
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .filter-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
   transform: translateY(-2px);
+}
+
+.filter-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(132, 1, 50, .2);
 }
 
 .filter-btn.active {
@@ -124,6 +139,23 @@
   .filter-select {
     display: block;
   }
+}
+
+/* -------------------------------------------------------------------------
+   LOADING / EMPTY STATES
+   ------------------------------------------------------------------------- */
+.faculty-loading {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: .95rem;
+  letter-spacing: .04em;
+}
+
+.faculty-empty {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--color-muted);
 }
 
 /* -------------------------------------------------------------------------
@@ -202,14 +234,23 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--color-border);
   font-size: .82rem;
 }
 
-.faculty-empty {
-  grid-column: 1 / -1;
-  padding: 60px 0;
-  text-align: center;
-  color: var(--color-muted);
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .filter-btn,
+  .filter-select select,
+  .faculty-photo,
+  .faculty-photo svg {
+    transition: none;
+  }
+
+  .filter-btn:hover,
+  .faculty-card:hover .faculty-photo svg {
+    transform: none;
+  }
 }

@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/faculty.css">
   <script defer src="js/menu.js"></script>
+  <!-- Data MUST load before faculty.js (defer scripts run in document order) -->
+  <script defer src="js/faculty-data.js"></script>
   <script defer src="js/faculty.js"></script>
 </head>
 
@@ -39,25 +41,25 @@
             <a href="index.html" id="phd-homepage-link"><span class="case-sensitive">PhD</span>&nbsp;Homepage</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="program-overview.html" id="phd-program-link">Program Overview</a>
+            <a href="program-overview.html" id="phd-overview-link">Program Overview</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
             <a href="research.html" id="phd-research-link">Research Areas</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="program-structure.html" id="phd-program-link">Program Structure</a>
+            <a href="program-structure.html" id="phd-structure-link">Program Structure</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
             <a href="admissions.html" id="phd-admissions-link">Admission Requirements</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="financial-support.html" id="phd-admissions-link">Financial Support</a>
+            <a href="financial-support.html" id="phd-financial-link">Financial Support</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="faculty.html" id="phd-faculty-link">Faculty</a>
+            <a href="faculty.html" id="phd-faculty-link" aria-current="page">Faculty</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="faq.html" id="phd-faculty-link">FAQs</a>
+            <a href="faq.html" id="phd-faq-link">FAQs</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
             <a href="contact.html" id="phd-contact-link">Contact</a>
@@ -89,37 +91,17 @@
       </button>
       <nav aria-label="Mobile navigation">
         <ul class="mobile-nav">
-          <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">
-              About OSB
-            </a></li>
-          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link">
-              <span class="case-sensitive">PhD</span>&nbsp;Homepage
-            </a></li>
-          <li><a class="mobile-nav-link" href="program-overview.html" id="mobile-phd-program-link">
-              Program Overview
-            </a>
-          </li>
-          <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research Areas
-            </a></li>
-          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-research-link">
-              Program
-              Structure
-            </a></li>
-          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">
-              Admission Requirements
-            </a></li>
-          <li><a class="mobile-nav-link" href="financial-support.html" id="mobile-phd-admissions-link">
-              Financial Support
-            </a></li>
-          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link">
-              Faculty
-            </a></li>
-          <li><a class="mobile-nav-link" href="faq.html" id="mobile-phd-faculty-link">
-              FAQs
-            </a></li>
-          <li><a class="mobile-nav-link" href="contact.html" id="mobile-phd-contact-link">
-              Contact
-            </a></li>
+          <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
+          <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link"><span
+                class="case-sensitive">PhD</span>&nbsp;Homepage</a></li>
+          <li><a class="mobile-nav-link" href="program-overview.html" id="mobile-phd-overview-link">Program Overview</a></li>
+          <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research Areas</a></li>
+          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-structure-link">Program Structure</a></li>
+          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admission Requirements</a></li>
+          <li><a class="mobile-nav-link" href="financial-support.html" id="mobile-phd-financial-link">Financial Support</a></li>
+          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link" aria-current="page">Faculty</a></li>
+          <li><a class="mobile-nav-link" href="faq.html" id="mobile-phd-faq-link">FAQs</a></li>
+          <li><a class="mobile-nav-link" href="contact.html" id="mobile-phd-contact-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -144,10 +126,8 @@
 
           <p>
             OSB faculty conduct research across the program’s three doctoral tracks and a broad range of
-            interdisciplinary areas.
-          
-            Prospective students are encouraged to explore faculty profiles to identify potential research alignment
-            before applying.
+            interdisciplinary areas. Prospective students are encouraged to explore faculty profiles to identify
+            potential research alignment before applying.
           </p>
         </div>
 
@@ -159,10 +139,10 @@
       <div class="container">
 
         <div class="filter-row">
-          <label class="filter-label" for="facultyFilter">Explore by:</label>
+          <span class="filter-label" id="filterLabel">Explore by:</span>
 
           <!-- Desktop: buttons -->
-          <div class="filter-buttons" role="group" aria-label="Filter faculty by track">
+          <div class="filter-buttons" role="group" aria-labelledby="filterLabel">
             <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Faculty</button>
             <button type="button" class="filter-btn" data-filter="analytics" aria-pressed="false">Business Analytics</button>
             <button type="button" class="filter-btn" data-filter="finance" aria-pressed="false">Finance</button>
@@ -171,7 +151,7 @@
 
           <!-- Mobile: dropdown -->
           <div class="filter-select">
-            <select id="facultyFilter">
+            <select id="facultyFilter" aria-labelledby="filterLabel">
               <option value="all">All Faculty</option>
               <option value="analytics">Business Analytics</option>
               <option value="finance">Finance</option>
@@ -184,325 +164,19 @@
           </div>
         </div>
 
-        <div class="grid grid--4" id="facultyGrid">
+        <!-- Loading indicator -->
+        <div class="faculty-loading" id="facultyLoading">Loading faculty…</div>
 
-          <article class="card card--accent faculty-card" data-track="analytics">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Business Analytics</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Associate Professor of Operations Management</div>
-              <p class="faculty-bio">
-                Research on optimization, decision analytics, and supply chain management, with emphasis on
-                applications in emerging markets and humanitarian operations.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
+        <!-- Grid is populated by js/faculty.js from js/faculty-data.js -->
+        <div class="grid grid--4" id="facultyGrid" hidden></div>
 
-          <article class="card card--accent faculty-card" data-track="analytics">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Business Analytics</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Assistant Professor of Information Systems</div>
-              <p class="faculty-bio">
-                Research on digital transformation, AI and machine learning in organizations, and the economics of
-                information systems.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="analytics">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Business Analytics</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Professor of Decision Sciences</div>
-              <p class="faculty-bio">
-                Research on stochastic modeling, revenue management, and applied analytics for service and
-                health-care operations.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="finance">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Finance</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Professor of Finance</div>
-              <p class="faculty-bio">
-                Research on asset pricing, financial econometrics, and the behavior of emerging financial markets.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="finance">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Finance</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Associate Professor of Finance</div>
-              <p class="faculty-bio">
-                Research on corporate finance, governance, and banking with a focus on the MENA region and family
-                firms.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="finance">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Finance</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Assistant Professor of Finance</div>
-              <p class="faculty-bio">
-                Research on financial markets, fintech, and sustainable finance in emerging economies.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="management">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Management</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Professor of Organizational Behavior</div>
-              <p class="faculty-bio">
-                Research on leadership, team dynamics, and organizational change, with attention to cross-cultural
-                and MENA-context studies.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="management">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Management</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Associate Professor of Strategy</div>
-              <p class="faculty-bio">
-                Research on strategy, innovation, and entrepreneurship in emerging markets and family businesses.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--accent faculty-card" data-track="management">
-            <div class="faculty-photo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="faculty-body">
-              <span class="faculty-track">Management</span>
-              <h4>Faculty Name</h4>
-              <div class="faculty-role">Assistant Professor of Management</div>
-              <p class="faculty-bio">
-                Research on sustainability, business ethics, and the role of organizations in society, with a focus
-                on gender and diversity.
-              </p>
-              <div class="faculty-links">
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  AUB Profile
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-                <a class="text-link" href="#" target="_blank" rel="noopener">
-                  Scholar
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M7 17 17 7M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="faculty-empty" id="facultyEmpty" hidden>
+        <div class="faculty-empty" id="facultyEmpty" role="status" hidden>
           No faculty match the selected track.
         </div>
+
+        <noscript>
+          <p class="faculty-empty">Please enable JavaScript to view the faculty directory.</p>
+        </noscript>
 
       </div>
     </section>
