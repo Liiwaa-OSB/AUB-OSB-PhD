@@ -1,18 +1,22 @@
 /* =========================================================================
    HOME (index.html) — page styles. Requires css/main.css
+   Only page LAYOUT lives here. All typography, colours, weights, buttons,
+   cards, icon boxes, text links, CTA band, footer and floating actions
+   come from main.css untouched.
    ========================================================================= */
 
 /* -------------------------------------------------------------------------
-   MAIN HERO  (.main-hero.image-band — overlay comes from --overlay-hero)
+   1. MAIN HERO  (.main-hero.image-band — overlay from --overlay-hero)
+   Page-specific: full-bleed hero sizing and the overlapping info strip.
    ------------------------------------------------------------------------- */
 .main-hero {
   --band-overlay: var(--overlay-hero);
   --band-bg: #1a1a1a;
-  min-height: 640px;
+  min-height: 680px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px; /* room for the overlapping cards */
+  margin-bottom: 100px; /* room for the overlapping info strip */
   padding: 0;
   overflow: visible;
   text-align: center;
@@ -22,13 +26,14 @@
 .main-hero__content {
   width: 100%;
   max-width: 1000px;
-  padding: 100px var(--gutter) 150px;
+  padding: 110px var(--gutter) 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: var(--color-white);
 }
 
+/* Programme name as a solid maroon badge — shape only, typography from main */
 .main-hero__eyebrow {
   margin: 0 0 18px;
   font-size: .82rem;
@@ -37,6 +42,7 @@
   text-transform: uppercase;
 }
 
+/* Whitespace only — no font-size, weight, line-height, colour, shadow */
 .main-hero h1 {
   max-width: 780px;
   margin: 0 0 22px;
@@ -98,7 +104,6 @@
   height: 16px;
 }
 
-/* Overlapping information cards */
 .main-hero__cards {
   position: absolute;
   z-index: 5;
@@ -164,115 +169,6 @@
   color: #1a1a1a;
 }
 
-/* -------------------------------------------------------------------------
-   SHARED ROW LABEL (used above "The Journey" and "The Doctoral Experience")
-   ------------------------------------------------------------------------- */
-.tracks-row__label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 22px;
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.tracks-row__label svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* -------------------------------------------------------------------------
-   SECTION BAND — Explore Your Research Area (photo + dark overlay)
-   Mirrors the Learning Outcomes band on program-overview.html.
-   Swap the image for your preferred research-area photo.
-   ------------------------------------------------------------------------- */
-.research-areas-band {
-  background-image: url("../images/AUB-OSB-PhD-Homepage-explore.jpg");
-  background-position: center;
-}
-
-/* -------------------------------------------------------------------------
-   YOUR DOCTORAL JOURNEY — Year 1 → 4 steps + experience row
-   ------------------------------------------------------------------------- */
-.journey-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--grid-gap);
-}
-
-.journey-step {
-  position: relative;
-  padding: 26px 24px;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform .4s var(--ease-out),
-    box-shadow .4s var(--ease),
-    border-color .3s var(--ease);
-}
-
-.journey-step:hover {
-  transform: translateY(var(--card-lift));
-  box-shadow: var(--card-shadow-hover);
-}
-
-.journey-step__year {
-  display: block;
-  margin-bottom: 10px;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.journey-step h4 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.journey-experience {
-  margin-top: 56px;
-  padding-top: 56px;
-  border-top: 1px solid var(--color-border);
-}
-
-.journey-experience .lede {
-  max-width: 62em;
-}
-
-/* Consistency: the "Explore the Doctoral Journey" button sits under the block */
-.section--muted .btn-row {
-  margin-top: 40px;
-}
-
-@media (max-width: 900px) {
-  .journey-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .journey-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .journey-experience {
-    margin-top: 40px;
-    padding-top: 40px;
-  }
-}
-
-/* -------------------------------------------------------------------------
-   RESPONSIVE — on tablets/phones the info cards sit inside the hero
-   instead of overlapping (four columns don't fit).
-   ------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .main-hero {
     flex-direction: column;
@@ -290,12 +186,6 @@
     width: calc(100% - 2 * var(--gutter));
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .hero-info-card,
-  .hero-info-card:first-child,
-  .hero-info-card:last-child {
-    border-radius: 5px;
-  }
 }
 
 @media (max-width: 560px) {
@@ -305,10 +195,102 @@
 }
 
 /* -------------------------------------------------------------------------
-   HOMEPAGE — SHARED CTA PIECES
+   2. DISCOVER THE PhD — simple editorial block
+   ------------------------------------------------------------------------- */
+.discover__content .btn-row {
+  margin-top: 32px;
+}
+
+/* -------------------------------------------------------------------------
+   3. RESEARCH AREAS BAND — photo + three track cards
+   ------------------------------------------------------------------------- */
+.research-areas-band {
+  background-image: url("../images/AUB-OSB-PhD-Homepage-explore.jpg");
+  background-position: center;
+  padding: 100px 0;
+}
+
+.research-areas-band .section-head {
+  margin-bottom: 40px;
+}
+
+.research-areas-band .grid {
+  margin-top: 0;
+}
+
+.research-areas-band .track-teaser {
+  --card-pad: 36px 30px;
+}
+
+/* -------------------------------------------------------------------------
+   4. PROGRAM STRUCTURE — statement block (layout only)
+   ------------------------------------------------------------------------- */
+.statement .section-head {
+  max-width: 900px;
+}
+
+.statement .section-head p {
+  margin-top: 16px;
+  color: var(--color-text);
+}
+
+.statement .btn-row {
+  margin-top: 32px;
+}
+
+/* -------------------------------------------------------------------------
+   5. ADMISSION + FINANCIAL SUPPORT — two wide icon cards side by side
+   ------------------------------------------------------------------------- */
+.pair {
+  margin-top: 0;
+}
+
+.pair-card {
+  --card-pad: 40px 36px;
+  gap: 28px;
+}
+
+.pair-card__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pair-card .btn-row {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+@media (max-width: 1024px) {
+  .pair {
+    --cols: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .pair-card {
+    flex-direction: column;
+    --card-pad: 32px 26px;
+  }
+
+  .pair-card .btn {
+    white-space: normal;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   6. FACULTY · FAQ · CONTACT — three whole-card links (layout only)
+   ------------------------------------------------------------------------- */
+.tiles {
+  margin-top: 0;
+}
+
+/* -------------------------------------------------------------------------
+   SHARED PIECES — layout only
    ------------------------------------------------------------------------- */
 
-/* Whole-card link used by track teasers */
+/* Whole-card link */
 .track-teaser {
   display: flex;
   flex-direction: column;
@@ -324,21 +306,26 @@
   align-self: flex-start;
 }
 
-.track-teaser .text-link svg {
-  width: 14px;
-  height: 14px;
-}
+@media (max-width: 800px) {
+  .research-areas-band {
+    padding: 72px 0;
+  }
 
-/* Secondary (outline) button — for light sections */
-.btn-outline {
-  background: transparent;
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
+  .discover {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 
-.btn-outline:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
-  box-shadow: 0 10px 22px rgba(132, 1, 50, .25);
+  .discover__title {
+    min-height: 240px;
+    padding: 32px 28px;
+  }
+
+  .statement .section-head {
+    padding-left: 22px;
+  }
+
+  .statement .btn-row {
+    padding-left: 28px;
+  }
 }
