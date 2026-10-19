@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faculty | PhD in Business Administration | OSB, AUB</title>
   <meta name="description"
-    content="Meet the faculty of the PhD in Business Administration at OSB, AUB. Filter by doctoral track: Business Analytics, Finance, and Management.">
+    content="Meet the faculty of the PhD in Business Administration at OSB, AUB. Filter by doctoral track: Business Information & Decision Systems, Finance, Accounting & Managerial Economics, and Management, Marketing & Entrepreneurship.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
   <!-- Navigation -->
   <header class="nav-main-header">
     <div class="nav-main-container">
@@ -94,19 +95,23 @@
           <li><a class="mobile-nav-link" href="https://www.aub.edu.lb/osb" id="mobile-about-osb-link">About OSB</a></li>
           <li><a class="mobile-nav-link" href="index.html" id="mobile-phd-homepage-link"><span
                 class="case-sensitive">PhD</span>&nbsp;Homepage</a></li>
-          <li><a class="mobile-nav-link" href="program-overview.html" id="mobile-phd-overview-link">Program Overview</a></li>
+          <li><a class="mobile-nav-link" href="program-overview.html" id="mobile-phd-overview-link">Program Overview</a>
+          </li>
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research Areas</a></li>
-          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-structure-link">Program Structure</a></li>
-          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admission Requirements</a></li>
-          <li><a class="mobile-nav-link" href="financial-support.html" id="mobile-phd-financial-link">Financial Support</a></li>
-          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link" aria-current="page">Faculty</a></li>
+          <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-structure-link">Program
+              Structure</a></li>
+          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admission
+              Requirements</a></li>
+          <li><a class="mobile-nav-link" href="financial-support.html" id="mobile-phd-financial-link">Financial
+              Support</a></li>
+          <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link"
+              aria-current="page">Faculty</a></li>
           <li><a class="mobile-nav-link" href="faq.html" id="mobile-phd-faq-link">FAQs</a></li>
           <li><a class="mobile-nav-link" href="contact.html" id="mobile-phd-contact-link">Contact</a></li>
         </ul>
       </nav>
     </div>
   </div>
-
   <main>
 
     <!-- =========================== HERO =========================== -->
@@ -144,18 +149,21 @@
           <!-- Desktop: buttons -->
           <div class="filter-buttons" role="group" aria-labelledby="filterLabel">
             <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Faculty</button>
-            <button type="button" class="filter-btn" data-filter="analytics" aria-pressed="false">Business Analytics</button>
-            <button type="button" class="filter-btn" data-filter="finance" aria-pressed="false">Finance</button>
-            <button type="button" class="filter-btn" data-filter="management" aria-pressed="false">Management</button>
+            <button type="button" class="filter-btn" data-filter="bids" aria-pressed="false">Business Information &amp;
+              Decision Systems</button>
+            <button type="button" class="filter-btn" data-filter="fame" aria-pressed="false">Finance, Accounting &amp;
+              Managerial Economics</button>
+            <button type="button" class="filter-btn" data-filter="mme" aria-pressed="false">Management, Marketing &amp;
+              Entrepreneurship</button>
           </div>
 
           <!-- Mobile: dropdown -->
           <div class="filter-select">
             <select id="facultyFilter" aria-labelledby="filterLabel">
               <option value="all">All Faculty</option>
-              <option value="analytics">Business Analytics</option>
-              <option value="finance">Finance</option>
-              <option value="management">Management</option>
+              <option value="bids">Business Information &amp; Decision Systems</option>
+              <option value="fame">Finance, Accounting &amp; Managerial Economics</option>
+              <option value="mme">Management, Marketing &amp; Entrepreneurship</option>
             </select>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" aria-hidden="true">
@@ -168,7 +176,7 @@
         <div class="faculty-loading" id="facultyLoading">Loading faculty…</div>
 
         <!-- Grid is populated by js/faculty.js from js/faculty-data.js -->
-        <div class="grid grid--4" id="facultyGrid" hidden></div>
+        <div class="faculty-grid" id="facultyGrid"></div>
 
         <div class="faculty-empty" id="facultyEmpty" role="status" hidden>
           No faculty match the selected track.
@@ -199,7 +207,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="footer-placeholder"></div>

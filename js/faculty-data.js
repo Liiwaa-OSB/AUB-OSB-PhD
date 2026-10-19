@@ -1,461 +1,299 @@
 window.FACULTY_DATA = [
-  // {
-  //   name: "Amine Abi Aad",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Strategic management, emerging economies, competitiveness, informal economy, institutional economics, cultural intelligence, and international business.",
-  //   email: "aa502@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mirna Abou Mjahed",
-  //   role: "Visiting Assistant Professor",
-  //   track: "analytics",
-  //   bio: "Business Information & Decision Systems. Research interests in operations and decision analytics.",
-  //   email: "ma624@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Barbara Abou Tanos",
-  //   role: "Assistant Professor",
-  //   track: "finance",
-  //   bio: "Financial Markets, Institutional Investors, Portfolio Management, Behavioral Finance, Risk Management, Information Asymmetry.",
-  //   email: "ba93@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Fida Afiouni",
-  //   role: "Professor",
-  //   track: "management",
-  //   bio: "Inclusive HRM Systems, Gender Equality Plans, Critical feminism, Social justice, Qualitative research.",
-  //   email: "fa16@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Victor Araman",
-  //   role: "Professor",
-  //   track: "analytics",
-  //   bio: "Stochastic modeling with focus on operations and pricing analytics issues. Including queueing systems, dynamic pricing, machine learning and experimentation.",
-  //   email: "va03@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Bijan Azad",
-  //   role: "Professor & Director of the Darwazah Center for Innovation Management and Entrepreneurship",
-  //   track: "analytics",
-  //   bio: "Organization-technology change; information technology; innovation; startups/scale-ups.",
-  //   email: "ba20@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Henry Azzam",
-  //   role: "Senior Lecturer",
-  //   track: "finance",
-  //   bio: "MENA Financial Markets, Fintech, Banking, Central bank digital currency.",
-  //   email: "ha138@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Imad Bou Hamad",
-  //   role: "Associate Professor",
-  //   track: "analytics",
-  //   bio: "Statistical Modeling & Predictive Analytics with Application to Consumer/Human Behavior, Organizational Performance, Public Opinion.",
-  //   email: "ib12@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Alejandro Centeno",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Management, Marketing & Entrepreneurship.",
-  //   email: "ar96@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Jihad Dagher",
-  //   role: "Associate Professor",
-  //   track: "finance",
-  //   bio: "Finance, Accounting & Managerial Economics.",
-  //   email: "jd76@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Alain Daou",
-  //   role: "Associate Professor",
-  //   track: "management",
-  //   bio: "Entrepreneurship, social entrepreneurship, sustainable entrepreneurship, intellectual capital, (sustainable) business models, organizing in times of grand challenges.",
-  //   email: "ad73@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Wassim Dbouk",
-  //   role: "Associate Professor & Director of the Investment Management Program",
-  //   track: "finance",
-  //   bio: "Banking and Debt Markets, Banking, Supply Chain Finance, Economic Uncertainty, Investments, Valuation.",
-  //   email: "wd08@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Riad Dimechkie",
-  //   role: "Senior Lecturer",
-  //   track: "management",
-  //   bio: "Strategic Management, Judgment and Decision Making, Influence and Persuasion.",
-  //   email: "rd28@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Ziad El Awad",
-  //   role: "Assistant Professor & MME Track Convener",
-  //   track: "management",
-  //   bio: "Management, Marketing & Entrepreneurship.",
-  //   email: "ze44@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Rola El Chami-Malaeb",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Talent management, HR practices, organizational support, employees' well-being, quality of work life, turnover intention, and quantitative research.",
-  //   email: "ra440@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Ahmad El Hajj",
-  //   role: "Senior Lecturer & MSBA Director",
-  //   track: "analytics",
-  //   bio: "Business Information & Decision Systems.",
-  //   email: "ae37@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Amr El Kebbi",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Entrepreneurship, Strategy, and Business Ethics.",
-  //   email: "ae177@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Said Elfakhani",
-  //   role: "Professor & Interim Director of Executive Education",
-  //   track: "finance",
-  //   bio: "Corporate finance, International finance, Investment and derivative securities; Emerging markets, Dividend policy; Islamic finance.",
-  //   email: "se01@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mohamad Faour",
-  //   role: "Assistant Professor",
-  //   track: "finance",
-  //   bio: "Finance, Accounting & Managerial Economics.",
-  //   email: "mf132@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Krzysztof Fleszar",
-  //   role: "Associate Dean of Programs & BIDS Track Convener",
-  //   track: "analytics",
-  //   bio: "Deterministic Operations research; heuristics.",
-  //   email: "kf09@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Roula Gerges Abou Rjeily",
-  //   role: "Senior Lecturer",
-  //   track: "management",
-  //   bio: "Management, Marketing & Entrepreneurship.",
-  //   email: "rg52@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Rita Geutcherian",
-  //   role: "Senior Lecturer",
-  //   track: "analytics",
-  //   bio: "Business Statistics.",
-  //   email: "rg00@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Abdel Jalil Ghanem",
-  //   role: "Senior Lecturer",
-  //   track: "finance",
-  //   bio: "Financial Accounting & reporting, Management Accounting, Audit/Tax.",
-  //   email: "ag10@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Malak Hamade",
-  //   role: "Senior Lecturer",
-  //   track: "finance",
-  //   bio: "Finance, Accounting & Managerial Economics.",
-  //   email: "mh394@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mostafa Harakeh",
-  //   role: "Associate Professor and Research Director of the Rami F. Makhzoumi Corporate Governance Initiative (RMCGI)",
-  //   track: "finance",
-  //   bio: "Financial reporting, corporate finance, capital market accounting research, and financial reporting.",
-  //   email: "mh371@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Bassima Hout",
-  //   role: "Senior Lecturer",
-  //   track: "finance",
-  //   bio: "Auditing, Consulting.",
-  //   email: "bh03@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Ahmad Ismail",
-  //   role: "Associate Professor & FAME Track Convener",
-  //   track: "finance",
-  //   bio: "Mergers and Acquisitions, SEOs, Corporate Governance, Emerging Markets.",
-  //   email: "ai05@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mona Itani",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Entrepreneurship (high-growth, high-tech, youth, women), Entrepreneurial ecosystems, Social entrepreneurship, Social innovation, Innovative teaching in the 21st century.",
-  //   email: "mi34@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Ibrahim Jamali",
-  //   role: "Associate Professor & Executive MBA Director",
-  //   track: "finance",
-  //   bio: "Futures Markets, Predictability in Asset Markets, Financial Econometrics, Empirical Asset Pricing, Commodities.",
-  //   email: "ij08@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mahdi Jammal",
-  //   role: "Lecturer",
-  //   track: "analytics",
-  //   bio: "Business Information & Decision Systems.",
-  //   email: "mj118@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Michael Kfouri",
-  //   role: "Instructor",
-  //   track: "management",
-  //   bio: "Marketing Management, Marketing Communication, Consumer Behavior and International Marketing.",
-  //   email: "mk47@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Jessy Kfoury",
-  //   role: "Senior Lecturer",
-  //   track: "management",
-  //   bio: "Consumer behavior, social media, digital marketing, purchasing decisions, brand perceptions, and online landscape.",
-  //   email: "jk112@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Leila Khauli",
-  //   role: "Senior Lecturer and MBA Director",
-  //   track: "management",
-  //   bio: "Social Media strategy, Social Media in Digital Business, Branding Strategy, Business Communication Skills.",
-  //   email: "lk02@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Wael Khreich",
-  //   role: "Assistant Professor",
-  //   track: "analytics",
-  //   bio: "Gender Bias & Discrimination in AI; Hate Speech Recognition; Ethical AI; Machine Learning; Natural Language Processing.",
-  //   email: "wk47@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Yasmeen Makarem",
-  //   role: "Assistant Professor & MHRM Coordinator",
-  //   track: "management",
-  //   bio: "Human Resource Development/Management; Careers of women and other gender minorities, STEM, Critical management studies.",
-  //   email: "ym13@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Elie Majdalani",
-  //   role: "Senior Lecturer, Director of Career Readiness Program",
-  //   track: "analytics",
-  //   bio: "Operations management; Information Technology.",
-  //   email: "em12@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mohamad Mazboudi",
-  //   role: "Associate Professor",
-  //   track: "finance",
-  //   bio: "Financial Reporting, Auditing, Corporate Governance.",
-  //   email: "mm137@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Mohamad-Amir Merhabi",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Management, Marketing & Entrepreneurship.",
-  //   email: "mm392@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Lama Moussawi",
-  //   role: "Professor & Associate Dean for Research and Faculty Development",
-  //   track: "analytics",
-  //   bio: "Stochastic Modeling; Revenue Management; Inventory & Supply Chain Management; Data Analytics.",
-  //   email: "lm34@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Walid Nasr",
-  //   role: "Associate Professor",
-  //   track: "analytics",
-  //   bio: "Queueing Theory, Stochastic Processes, Computational Probability, Mathematical Modeling and Analysis, Inventory and Supply Chain Management, Simulation Methodology.",
-  //   email: "wn12@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Hagop Panossian",
-  //   role: "Senior Lecturer & International Case Competition Director",
-  //   track: "management",
-  //   bio: "Strategic management; Management; Economics.",
-  //   email: "hp01@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Nathalie Saade",
-  //   role: "Assistant Professor",
-  //   track: "management",
-  //   bio: "Human Resource Management, Organizational Behavior, Future of Work, Work Organization, Workplace Well-being, Attendance dynamics, Work-life Balance.",
-  //   email: "ns91@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Assem Safieddine",
-  //   role: "Professor & MFIN Director",
-  //   track: "finance",
-  //   bio: "Private equity, Capital acquisition, Mergers and acquisition, Corporate governance, Equity issuance.",
-  //   email: "as57@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Randa Salamoun",
-  //   role: "Assistant Professor & The Case Hub Director",
-  //   track: "analytics",
-  //   bio: "Information technology; connectivity; disruption; ICT; information systems.",
-  //   email: "rs55@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Georges Samara",
-  //   role: "Associate Professor",
-  //   track: "management",
-  //   bio: "Management, Marketing & Entrepreneurship.",
-  //   email: "gs50@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Yusuf Sidani",
-  //   role: "Dean & Professor",
-  //   track: "management",
-  //   bio: "Business ethics; Gender & diversity; Work values.",
-  //   email: "ys01@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Sirine Taleb",
-  //   role: "Assistant Professor",
-  //   track: "analytics",
-  //   bio: "Business Information & Decision Systems.",
-  //   email: "st60@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Lina Tannir",
-  //   role: "Senior Lecturer",
-  //   track: "finance",
-  //   bio: "Microfinance, Entrepreneurship, Social development.",
-  //   email: "lt01@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Rania Uwaydah Mardini",
-  //   role: "Senior Lecturer, Director of Corporate Engagement",
-  //   track: "finance",
-  //   bio: "Financial reporting, Public financial management, Management accounting, Audit, Governance, Fraud, Anti-corruption.",
-  //   email: "ru00@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Marwan Wahbi",
-  //   role: "Senior Lecturer",
-  //   track: "management",
-  //   bio: "Theory of Planned Behavior, Diffusion of Innovation Theory, Technology Acceptance Models, Unified Theory of Acceptance, Use of Technology, Digital Marketing Communications, Augmented Reality, and Artificial Intelligence.",
-  //   email: "mw37@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // },
-  // {
-  //   name: "Fouad Zablith",
-  //   role: "Associate Professor & Associate Dean for Online Learning and Program Development",
-  //   track: "analytics",
-  //   bio: "Knowledge Graphs; Ontologies; Semantic Web; Text and Sentiment Mining; Learning Environments; Data Visualization; Open Data; Meta Data.",
-  //   email: "fz13@aub.edu.lb",
-  //   profile: "#",
-  //   scholar: "#"
-  // }
+  {
+    "name": "Amine Abi Aad",
+    "role": "Assistant Professor",
+    "email": "aa502@aub.edu.lb",
+    "interests": "Strategic management, emerging economies, competitiveness, informal economy, institutional economics, cultural intelligence, and international business.",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Amin%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=aa502"
+  },
+  {
+    "name": "Barbara Abou Tanos",
+    "role": "Assistant Professor",
+    "email": "ba93@aub.edu.lb",
+    "interests": "Financial Markets, Institutional Investors, Portfolio Management, Behavioral Finance, Risk Management, Information Asymmetry",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/barbara%20updated.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ba93"
+  },
+  {
+    "name": "Fida Afiouni",
+    "role": "Professor",
+    "email": "fa16@aub.edu.lb",
+    "interests": "Inclusive HRM Systems, Gender Equality Plans, Critical feminism, Social justice, Qualitative research",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Fida%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=fa16"
+  },
+  {
+    "name": "Victor Araman",
+    "role": "Professor",
+    "email": "va03@aub.edu.lb",
+    "interests": "Stochastic modeling with focus on operations and pricing analytics issues. Including queueing systems, dynamic pricing, machine learning and experimentation",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Victor.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=va03"
+  },
+  {
+    "name": "Bijan Azad",
+    "role": "Professor & Director of the Darwazah Center for Innovation Management and Entrepreneurship",
+    "email": "ba20@aub.edu.lb",
+    "interests": "Organization-technology change; information technology; innovation; startups/scale-ups",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Bijan.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ba20"
+  },
+  {
+    "name": "Imad Bou Hamad",
+    "role": "Associate Professor",
+    "email": "ib12@aub.edu.lb",
+    "interests": "Statistical Modeling & Predictive Analytics with Application to Consumer/Human Behavior, Organizational Performance, Public Opinion",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/PublishingImages/Imad%20Bou%20Hamad.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ib12"
+  },
+  {
+    "name": "Alejandro Centeno",
+    "role": "Assistant Professor",
+    "email": "ar96@aub.edu.lb",
+    "interests": "organizational studies; ethics and diversity; display work, interpretive methods",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/PublishingImages/ar96.JPG",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ar96"
+  },
+  {
+    "name": "Jihad Dagher",
+    "role": "Associate Professor",
+    "email": "jd76@aub.edu.lb",
+    "interests": "financial economics, financial intermediation, financial regulation, and political economy",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/PublishingImages/_Jihad%20Dagher.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=jd76"
+  },
+  {
+    "name": "Alain Daou",
+    "role": "Associate Professor",
+    "email": "ad73@aub.edu.lb",
+    "interests": "Entrepreneurship, social entrepreneurship, sustainable entrepreneurship, intellectual capital, (sustainable) business models, organizing in times of grand challenges.",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Alain.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ad73"
+  },
+  {
+    "name": "Wassim Dbouk",
+    "role": "Associate Professor & Director of the Investment Management Program",
+    "email": "wd08@aub.edu.lb",
+    "interests": "Banking and Debt Markets, Banking, Supply Chain Finance, Economic Uncertainty, Investments, Valuation",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/DSC08470%20-%20Copy.JPG",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=wd08"
+  },
+  {
+    "name": "Ziad El Awad",
+    "role": "Assistant Professor & MME Track Convener",
+    "email": "ze44@aub.edu.lb",
+    "interests": "entrepreneurship; entrepreneurial learning; entrepreneurial ecosytems; institutional theory",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Ziad%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ze44"
+  },
+  {
+    "name": "Rola El Chami-Malaeb",
+    "role": "Assistant Professor",
+    "email": "ra440@aub.edu.lb",
+    "interests": "Talent management, HR practices, organizational support, employees' well-being, quality of work life, turnover intention, and quantitative research.",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/rola%20chami%20updated%20.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ra440"
+  },
+  {
+    "name": "Ahmad El Hajj",
+    "role": "Senior Lecturer and Director, Master of Science in Business Analytics",
+    "email": "ae37@aub.edu.lb",
+    "interests": "AI, Machine Learning, and Analytics",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/ahmad%20hajj.jpeg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ae37"
+  },
+  {
+    "name": "Amr El Kebbi",
+    "role": "Assistant Professor",
+    "email": "ae177@aub.edu.lb",
+    "interests": "Entrepreneurship, Strategy, and Business Ethics",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/amr%20kebbi%20updated.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ae177"
+  },
+  {
+    "name": "Mohamad Faour",
+    "role": "Assistant Professor",
+    "email": "mf132@aub.edu.lb",
+    "interests": "financial misconduct, bank risk-taking, corporate payout policy and the investment behavior of sovereign wealth funds",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/PublishingImages/Lists/Mohammad-Faour.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=mf132"
+  },
+  {
+    "name": "Krzysztof Fleszar",
+    "role": "Professor, Associate Dean of Programs & BIDS Track Convener",
+    "email": "kf09@aub.edu.lb",
+    "interests": "Determinsitic Operations research; heuristics",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Fleszar.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=kf09"
+  },
+  {
+    "name": "Rola Gergess",
+    "role": "Senior lecturer",
+    "email": "rg52@aub.edu.lb",
+    "interests": "Entrepreneurship; diversity and inclusion;",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Roula%.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=rg52"
+  },
+  {
+    "name": "Mostafa Harakeh",
+    "role": "Associate Professor and Research Director of the Rami F. Makhzoumi Corporate Governance Initiative (RMCGI)",
+    "email": "mh371@aub.edu.lb",
+    "interests": "Financial reporting, corporate finance, capital market accounting research, and financial reporting.",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Mostafa%20Harakeh.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=mh371"
+  },
+  {
+    "name": "Ahmad Ismail",
+    "role": "Associate Professor & FAME Track Convener",
+    "email": "ai05@aub.edu.lb",
+    "interests": "Mergers and Acquisitions, SEOs, Corporate Governance, Emerging Markets",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Ismail%20-%20Copy.JPG",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ai05"
+  },
+  {
+    "name": "Mona Itani",
+    "role": "Assistant Professor",
+    "email": "mi34@aub.edu.lb",
+    "interests": "Entrepreneurship (high-growth, high-tech, youth, women), Entrepreneurial ecosystems, Social entrepreneurship, Social innovation, Innovative teaching in the 21st century.",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Mona%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=mi34"
+  },
+  {
+    "name": "Ibrahim Jamali",
+    "role": "Associate Professor & Executive MBA Director",
+    "email": "ij08@aub.edu.lb",
+    "interests": "Futures Markets, Predictability in Asset Markets, Financial Econometrics, Empirical Asset Pricing, Commodities",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/GetFMISFile.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ij08"
+  },
+  {
+    "name": "Wael Khreich",
+    "role": "Assistant Professor",
+    "email": "wk47@aub.edu.lb",
+    "interests": "Gender Bias & Discrimination in AI; Hate Speech Recognition; Ethical AI; Machine Learning; Natural Language Processing",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/AUB-Faculty.JPG",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=wk47"
+  },
+  {
+    "name": "Yasmeen Makarem",
+    "role": "Assistant Professor & MHRM Coordinator",
+    "email": "ym?@aub.edu.lb",
+    "interests": "Human Resource Development/Management; Careers of women and other gender minorities, STEM, Critical management studies",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Yasmeen%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ym13"
+  },
+  {
+    "name": "Mohamad Mazboudi",
+    "role": "Associate Professor",
+    "email": "mm137@aub.edu.lb",
+    "interests": "Financial Reporting, Auditing, Corporate Governance",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/M.Mazboudi_jpg.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=mm137"
+  },
+  {
+    "name": "Mohamad-Amir Merhabi",
+    "role": "Assistant Professor",
+    "email": "mm392@aub.edu.lb",
+    "interests": "strategic brand management; consumer behavior; stakeholder experience optimization",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Mohammad%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=mm392"
+  },
+  {
+    "name": "Lama Moussawi",
+    "role": "Professor & Associate Dean for Research and Faculty Development",
+    "email": "lm34@aub.edu.lb",
+    "interests": "Stochastic Modeling; Revenue Management; Inventory & Supply Chain Management; Data Analytics",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Lama%20-%20Copy.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=lm34"
+  },
+  {
+    "name": "Walid Nasr",
+    "role": "Associate Professor",
+    "email": "wn12@aub.edu.lb",
+    "interests": "Queueing Theory, Stochastic Processes, Computational Probability, Mathematical Modeling and Analysis, Inventory and Supply Chain Management, Simulation Methodology",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Walid%20Nasr%20copy.jpg?Height=384",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=wn12"
+  },
+  {
+    "name": "Nathalie Saade",
+    "role": "Assistant Professor",
+    "email": "ns91@aub.edu.lb",
+    "interests": "Human Resource Management, Organizational Behavior, Future of Work, Work Organization, Workplace Well-being, Attendance dynamics, Work-life Balance",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Nathalie%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=ns91"
+  },
+  {
+    "name": "Assem Safieddine",
+    "role": "Professor & Master in Finance program Director",
+    "email": "as57@aub.edu.lb",
+    "interests": "Private equity, Capital acquisition, Mergers and acquisition, Corporate governance, Equity issuance",
+    "track": "fame",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/assem%20updated.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=as57"
+  },
+  {
+    "name": "Georges Samara",
+    "role": "Associate Professor",
+    "email": "gs50@aub.edu.lb",
+    "interests": "Family business; corporate social responsibility",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Georges%20MME.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=gs50"
+  },
+  {
+    "name": "Yusuf Sidani",
+    "role": "Dean & Professor",
+    "email": "ys01@aub.edu.lb",
+    "interests": "Business ethics; Gender & diversity; Work values",
+    "track": "mme",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Sidani.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ys01"
+  },
+  {
+    "name": "Sirine Taleb",
+    "role": "Assistant Professor",
+    "email": "st60@aub.edu.lb",
+    "interests": "",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/334.png",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=st60"
+  },
+  {
+    "name": "Fouad Zablith",
+    "role": "Associate Professor & Associate Dean for Online Learning and Program Development",
+    "email": "fz13@aub.edu.lb",
+    "interests": "Knowledge Graphs; Ontologies; Semantic Web; Text and Sentiment Mining; Learning Environments; Data Visualization; Open Data; Meta Data",
+    "track": "bids",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Zablith.jpg",
+    "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=fz13"
+  }
 ];

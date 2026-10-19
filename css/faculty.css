@@ -1,42 +1,25 @@
 /* =========================================================================
-   FACULTY (faculty.html) — page styles. Requires css/main.css
+   OSB — PhD in Business Administration
+   FACULTY PAGE  (css/faculty.css)
+   Loads after css/main.css and uses its tokens (colours, radius, shadows,
+   easing), so it follows any change made in main.css section 1.
    ========================================================================= */
 
-/* Section photos */
-.page-banner {
-  background-image: url("../images/AUB-OSB-PhD-Faculty-banner.JPG");
-  background-position: center 54%;
-}
-
-/* Author display rules (.faculty-card / .grid set display, which would
-   otherwise override the [hidden] attribute and break filtering) */
-.faculty-card[hidden],
-.faculty-loading[hidden],
-.faculty-empty[hidden],
-#facultyGrid[hidden] {
-  display: none !important;
-}
-
 /* -------------------------------------------------------------------------
-   FILTER — buttons on desktop, dropdown on mobile
+   Filter row — buttons on desktop, dropdown on mobile
    ------------------------------------------------------------------------- */
 .filter-row {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 44px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-bottom: 40px;
 }
 
 .filter-label {
-  margin-right: 8px;
-  font-size: .82rem;
+  font-size: .95rem;
   font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-ink);
 }
 
 .filter-buttons {
@@ -45,74 +28,64 @@
   gap: 10px;
 }
 
-/* shared look for the pill buttons and the dropdown */
-.filter-btn,
-.filter-select select {
+.filter-btn {
+  padding: 10px 18px;
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: var(--color-white);
   border: 1.5px solid var(--color-border);
   border-radius: 999px;
-  background: var(--color-white);
-  font-family: inherit;
-  font-size: .88rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: var(--color-text);
   transition:
-    border-color .25s var(--ease),
-    color .25s var(--ease),
     background .25s var(--ease),
-    transform .25s var(--ease-out),
-    box-shadow .3s var(--ease);
-}
-
-.filter-btn {
-  padding: 10px 20px;
-  cursor: pointer;
+    color .25s var(--ease),
+    border-color .25s var(--ease),
+    box-shadow .25s var(--ease);
 }
 
 .filter-btn:hover {
-  border-color: var(--color-primary);
   color: var(--color-primary);
-  transform: translateY(-2px);
-}
-
-.filter-btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(132, 1, 50, .2);
-}
-
-.filter-btn.active {
   border-color: var(--color-primary);
-  background: var(--color-primary);
-  color: var(--color-white);
-  box-shadow: 0 8px 20px -6px rgba(132, 1, 50, .35);
 }
 
-/* Dropdown (hidden on desktop) */
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
+  color: var(--color-white);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 16px rgba(132, 1, 50, .22);
+}
+
 .filter-select {
-  position: relative;
   display: none;
-  width: 100%;
+  position: relative;
+  flex: 1 1 100%;
 }
 
 .filter-select select {
   width: 100%;
-  padding: 13px 48px 13px 20px;
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  cursor: pointer;
-  -webkit-appearance: none;
+  padding: 12px 44px 12px 16px;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
   appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
 
 .filter-select select:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(132, 1, 50, .15);
+  border-color: var(--color-primary);
 }
 
 .filter-select svg {
   position: absolute;
   top: 50%;
-  right: 18px;
+  right: 14px;
   width: 18px;
   height: 18px;
   color: var(--color-primary);
@@ -120,18 +93,7 @@
   pointer-events: none;
 }
 
-@media (max-width: 700px) {
-  .filter-row {
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 32px;
-    padding-bottom: 24px;
-  }
-
-  .filter-label {
-    margin-right: 0;
-  }
-
+@media (max-width: 900px) {
   .filter-buttons {
     display: none;
   }
@@ -142,115 +104,171 @@
 }
 
 /* -------------------------------------------------------------------------
-   LOADING / EMPTY STATES
+   Faculty grid
    ------------------------------------------------------------------------- */
-.faculty-loading {
-  padding: 60px 0;
-  text-align: center;
-  color: var(--color-muted);
-  font-size: .95rem;
-  letter-spacing: .04em;
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--grid-gap);
 }
 
-.faculty-empty {
-  padding: 60px 0;
-  text-align: center;
-  color: var(--color-muted);
-}
-
-/* -------------------------------------------------------------------------
-   FACULTY CARD  (.card.card--accent.faculty-card)
-   ------------------------------------------------------------------------- */
+/* Whole card is a link */
 .faculty-card {
-  --card-pad: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.faculty-photo {
   position: relative;
-  aspect-ratio: 4 / 3.4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(160deg, #f2f2f2 0%, #e8e8e8 100%);
-  color: var(--color-primary);
-  transition: background .4s var(--ease);
-}
-
-.faculty-card:hover .faculty-photo {
-  background: linear-gradient(160deg, #f4e5ea 0%, #edd8df 100%);
-}
-
-.faculty-photo svg {
-  width: 52px;
-  height: 52px;
-  transition: transform .45s var(--ease-spring);
-}
-
-.faculty-card:hover .faculty-photo svg {
-  transform: scale(1.1);
-}
-
-.faculty-body {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 24px 24px 26px;
+  align-items: center;
+  padding: 32px 24px 28px;
+  text-align: center;
+  color: inherit;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition:
+    transform .4s var(--ease-out),
+    border-color .3s var(--ease),
+    box-shadow .4s var(--ease);
 }
 
-.faculty-track {
-  align-self: flex-start;
-  margin-bottom: 12px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #f7e9ed;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--color-primary);
+/* Accent bar, same behaviour as .card--accent in main.css */
+.faculty-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent-bar);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s var(--ease-out);
 }
 
-.faculty-card h4 {
-  margin-bottom: 4px;
+.faculty-card:hover,
+.faculty-card:focus-visible {
+  transform: translateY(var(--card-lift));
+  border-color: var(--color-primary);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.faculty-card:hover::before,
+.faculty-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* Circular photo: fixed square box + cover = never stretched or squashed */
+.faculty-photo {
+  display: block;
+  flex: none;
+  width: 140px;
+  height: 140px;
+  aspect-ratio: 1 / 1;
+  margin: 0 0 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--color-surface);
+  border: 3px solid var(--color-white);
+  box-shadow: 0 0 0 1px var(--color-border), var(--shadow-md);
+  transition: box-shadow .3s var(--ease);
+}
+
+.faculty-card:hover .faculty-photo,
+.faculty-card:focus-visible .faculty-photo {
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
+}
+
+.faculty-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.faculty-name {
+  margin: 0 0 6px;
   font-size: 1.1rem;
+  line-height: var(--lh-tight);
+  transition: color .25s var(--ease);
+}
+
+.faculty-card:hover .faculty-name,
+.faculty-card:focus-visible .faculty-name {
+  color: var(--color-primary);
 }
 
 .faculty-role {
-  margin-bottom: 14px;
-  font-size: .85rem;
-  color: var(--color-muted);
-}
-
-.faculty-card .faculty-bio {
-  flex: 1;
-  margin-bottom: 14px;
+  margin: 0 0 10px;
+  font-size: .9rem;
+  font-weight: 500;
   color: var(--color-text);
 }
 
-.faculty-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid var(--color-border);
-  font-size: .82rem;
+.faculty-email {
+  margin: 0 0 12px;
+  max-width: 100%;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  overflow-wrap: anywhere;
 }
 
-/* Respect users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .filter-btn,
-  .filter-select select,
-  .faculty-photo,
-  .faculty-photo svg {
-    transition: none;
+.faculty-interests {
+  margin: 0;
+  padding-top: 12px;
+  width: 100%;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Loading / empty states
+   ------------------------------------------------------------------------- */
+.faculty-loading,
+.faculty-empty {
+  padding: 48px 16px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+.faculty-loading::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 14px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: faculty-spin .8s linear infinite;
+}
+
+@keyframes faculty-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .faculty-grid {
+    grid-template-columns: 1fr;
   }
 
-  .filter-btn:hover,
-  .faculty-card:hover .faculty-photo svg {
-    transform: none;
+  .faculty-card {
+    padding: 28px 20px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faculty-loading::before {
+    animation: none;
   }
 }
