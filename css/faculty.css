@@ -4,6 +4,11 @@
    Loads after css/main.css and uses its tokens (colours, radius, shadows,
    easing), so it follows any change made in main.css section 1.
    ========================================================================= */
+/* Section photos */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Faculty-banner.JPG");
+  background-position: center 54%;
+}
 
 /* -------------------------------------------------------------------------
    Filter row — buttons on desktop, dropdown on mobile
