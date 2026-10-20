@@ -268,5 +268,22 @@
 }
 
 /* -------------------------------------------------------------------------
-   6. REDUCED MOTION
+   5. RESPONSIVE — consolidated
    ------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .additional-support-card {
+    padding: 28px 22px;
+  }
+
+  .additional-support-content h4 {
+    font-size: 1.15rem;
+  }
+
+  .additional-support-content p {
+    font-size: 1rem;
+  }
+}
