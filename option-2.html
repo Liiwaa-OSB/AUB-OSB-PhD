@@ -346,14 +346,12 @@
 
           <a class="card card--accent path-card" href="program-structure.html">
             <div class="path-card__media">
-              <img src="images/AUB-OSB-PhD-Home-structure.jpg" alt="Doctoral students collaborating on research"
+              <img src="images/AUB-OSB-PhD-Home-structure.JPG" alt="Doctoral students collaborating on research"
                 loading="lazy" width="800" height="500">
             </div>
             <div class="path-card__body">
               <h3>Program Structure</h3>
-              <p>Explore your doctoral journey, from foundational coursework to original research and your dissertation.
-                While developing your methodological and disciplinary expertise, you will advance your academic career
-                and gain international research exposure.</p>
+              <p>Explore your doctoral journey, from foundational coursework to original research and dissertation.</p>
               <span class="text-link">Explore the Program Structure
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" aria-hidden="true">
@@ -384,7 +382,7 @@
 
           <a class="card card--accent path-card" href="financial-support.html">
             <div class="path-card__media">
-              <img src="images/AUB-OSB-PhD-Home-funding.jpg" alt="Student studying on the AUB campus" loading="lazy"
+              <img src="images/AUB-OSB-PhD-Home-funding.JPG" alt="Student studying on the AUB campus" loading="lazy"
                 width="800" height="500">
             </div>
             <div class="path-card__body">
@@ -406,6 +404,108 @@
 
       </div>
     </section>
+
+    <!-- =========================== FAQ =========================== -->
+    <section class="section section--muted">
+      <div class="container">
+
+        <div class="section-head center">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Quick answers to the questions prospective students ask most. For full details, visit the FAQs page.
+          </p>
+        </div>
+
+        <div class="faq" data-faq>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-1"
+              id="faq-question-1">
+              <span class="faq__text">What degree will I earn?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq__answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden>
+              <p>
+                The degree is a <span class="case-sensitive">PhD</span> in Business Administration. Students pursue one
+                of
+                three doctoral tracks: Business Analytics, Finance, or Management.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-2"
+              id="faq-question-2">
+              <span class="faq__text">Is the program full time?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq__answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden>
+              <p>
+                Yes. The <span class="case-sensitive">PhD</span> is designed as a full-time, research-intensive program
+                requiring sustained participation in coursework, research, teaching-related activities, seminars, and
+                dissertation work.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-3"
+              id="faq-question-3">
+              <span class="faq__text">How long does the program take?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq__answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden>
+              <p>
+                The regular track is designed around approximately four years of full-time study, although completion
+                time is
+                governed by AUB doctoral regulations and the student's research progress.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="btn-row faq__cta">
+          <a href="faq.html" class="btn btn-primary">
+            View All FAQs
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        document.querySelectorAll('[data-faq] .faq__question').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            var answer = document.getElementById(btn.getAttribute('aria-controls'));
+
+            // Close all others in the same group (single-open accordion)
+            var group = btn.closest('[data-faq]');
+            group.querySelectorAll('.faq__question').forEach(function (other) {
+              if (other !== btn) {
+                other.setAttribute('aria-expanded', 'false');
+                var a = document.getElementById(other.getAttribute('aria-controls'));
+                if (a) a.hidden = true;
+              }
+            });
+
+            btn.setAttribute('aria-expanded', String(!expanded));
+            answer.hidden = expanded;
+          });
+        });
+      })();
+    </script>
 
     <!-- =========================== CTA =========================== -->
     <section>
