@@ -149,7 +149,7 @@ window.FACULTY_DATA = [
     "email": "rg52@aub.edu.lb",
     "interests": "Entrepreneurship; diversity and inclusion;",
     "track": "mme",
-    "photo": "",
+    "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/rola%20chami%20updated%20.png",
     "profile": "https://www.aub.edu.lb/pages/profile.aspx?MemberId=rg52"
   },
   {

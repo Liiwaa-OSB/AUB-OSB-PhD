@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/program-structure.css">
   <script defer src="js/menu.js"></script>
+
+
+
+
+  <style>
+    
+  </style>
 </head>
 
 <body>
@@ -46,10 +53,7 @@
             <a href="program-structure.html" id="phd-structure-link">Program Structure</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
-            <a href="admissions.html" id="phd-admissions-link">Admission Requirements</a>
-          </li>
-          <li class="osb-nav-item phd-nav-item">
-            <a href="financial-support.html" id="phd-financial-link">Financial Support</a>
+            <a href="admissions.html" id="phd-admissions-link">Admissions</a>
           </li>
           <li class="osb-nav-item phd-nav-item">
             <a href="faculty.html" id="phd-faculty-link" aria-current="page">Faculty</a>
@@ -95,10 +99,7 @@
           <li><a class="mobile-nav-link" href="research.html" id="mobile-phd-research-link">Research Areas</a></li>
           <li><a class="mobile-nav-link" href="program-structure.html" id="mobile-phd-structure-link">Program
               Structure</a></li>
-          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admission
-              Requirements</a></li>
-          <li><a class="mobile-nav-link" href="financial-support.html" id="mobile-phd-financial-link">Financial
-              Support</a></li>
+          <li><a class="mobile-nav-link" href="admissions.html" id="mobile-phd-admissions-link">Admissions</a></li>
           <li><a class="mobile-nav-link" href="faculty.html" id="mobile-phd-faculty-link"
               aria-current="page">Faculty</a></li>
           <li><a class="mobile-nav-link" href="faq.html" id="mobile-phd-faq-link">FAQs</a></li>
@@ -193,22 +194,14 @@
       <div class="container">
 
         <div class="section-head">
-          <h2>Key milestones</h2>
-          <p>Students progress through key milestones, including:</p>
+          <h2>Program Requirements</h2>
         </div>
 
         <ul class="bullet-list">
           <li class="bullet-list__item">
-            <span class="tick">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </span>
-            <p>A program of study tailored to the student’s track and research interests.</p>
-          </li>
-          <li class="bullet-list__item">
-            <span class="tick">
+            <!-- original tick span removed from view (style .tick {display:none} above) 
+             but kept for minimal DOM change. You can also delete it completely if you prefer. -->
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -217,7 +210,7 @@
             <p>Advanced coursework in research methods and the chosen specialization.</p>
           </li>
           <li class="bullet-list__item">
-            <span class="tick">
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -227,7 +220,7 @@
               knowledge in the student’s field and related areas.</p>
           </li>
           <li class="bullet-list__item">
-            <span class="tick">
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -237,7 +230,7 @@
               proposal.</p>
           </li>
           <li class="bullet-list__item">
-            <span class="tick">
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -247,7 +240,7 @@
               by a doctoral thesis committee.</p>
           </li>
           <li class="bullet-list__item">
-            <span class="tick">
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -257,7 +250,7 @@
               contribution.</p>
           </li>
           <li class="bullet-list__item">
-            <span class="tick">
+            <span class="tick" style="display: none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -358,7 +351,7 @@
                 PhD in Business Administration.</p>
             </div>
             <div class="btn-row">
-              <a href="admissions.html" class="btn btn-primary">Admissions Requirements</a>
+              <a href="admissions.html" class="btn btn-primary">Admissions</a>
               <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
             </div>
           </div>
@@ -366,6 +359,45 @@
       </div>
     </section>
   </main>
+  <!-- Sticky action buttons -->
+  <div class="sticky-cta">
+    <!-- <a aria-label="Download Brochure" class="sticky-cta__btn"
+            href="#">
+            <svg aria-hidden="true" class="sticky-cta__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M7 5.222V0h2v5.193l1.107-1.107L11.52 5.5 7.986 9.036 4.45 5.5l1.414-1.414L7 5.222zM16 11v5H0v-5h2v3h12v-3h2z">
+                </path>
+            </svg>
+            <span class="sticky-cta__label">Download Brochure</span>
+        </a> -->
+    <a aria-label="Apply Now" target="_blank" class="sticky-cta__btn" href="https://join.aub.edu.lb/apply/">
+      <svg aria-hidden="true" class="sticky-cta__icon" viewBox="0 -0.5 21 21" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M384,209.210475 L384,219 L363,219 L363,199.42095 L373.5,199.42095 L373.5,201.378855 L365.1,201.378855 L365.1,217.042095 L381.9,217.042095 L381.9,209.210475 L384,209.210475 Z M370.35,209.51395 L378.7731,201.64513 L380.4048,203.643172 L371.88195,212.147332 L370.35,212.147332 L370.35,209.51395 Z M368.25,214.105237 L372.7818,214.105237 L383.18415,203.64513 L378.8298,199 L368.25,208.687714 L368.25,214.105237 Z"
+          transform="translate(-363 -199)"></path>
+      </svg>
+      <span class="sticky-cta__label">Apply Now</span>
+    </a>
+    <a aria-label="FAQs" class="sticky-cta__btn" href="./faq.html">
+      <svg aria-hidden="true" class="sticky-cta__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2.8">
+          <path d="M1 2 H23 V18 H13 L7 23 V18 H1 Z"></path>
+          <polyline points="9 8 9 6 15 6 15 9 12 10.2 12 11.5"></polyline>
+          <line x1="12" y1="13.6" x2="12" y2="14.8"></line>
+        </g>
+      </svg>
+      <span class="sticky-cta__label">FAQs</span>
+    </a>
+    <a aria-label="Contact Us" class="sticky-cta__btn" href="./contact.html">
+      <svg aria-hidden="true" class="sticky-cta__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2.8">
+          <rect height="16" width="22" x="1" y="4"></rect>
+          <polyline points="1 4 12 13 23 4"></polyline>
+        </g>
+      </svg>
+      <span class="sticky-cta__label">Contact Us</span>
+    </a>
+  </div>
 
   <div id="footer-placeholder"></div>
   <script src="https://liiwaa-osb.github.io/AUB-OSB-shared-components/footer-load-V.js"></script>
