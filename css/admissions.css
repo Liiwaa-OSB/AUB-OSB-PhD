@@ -14,52 +14,6 @@
   background-image: url("../images/AUB-OSB-PhP-Admission-Eligibility.JPG");
 }
 
-/* -------------------------------------------------------------------------
-   2. BULLET LIST — shared by Eligibility & Application Materials
-   Adapts automatically to light/dark via the existing .tick tokens.
-   Markup:
-     <ul class="bullet-list">
-       <li class="bullet-list__item">
-         <span class="tick">…</span>
-         <p>…</p>
-       </li>
-     </ul>
-   ------------------------------------------------------------------------- */
-.bullet-list {
-  display: grid;
-  gap: 18px;
-  margin-top: 28px;
-  max-width: 60em;
-}
-
-.bullet-list__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  transition: transform .3s var(--ease-out);
-}
-
-.bullet-list__item:hover {
-  transform: translateX(4px);
-}
-
-/* Align the tick with the first line of text */
-.bullet-list__item .tick {
-  flex: none;
-  margin-top: 2px;
-}
-
-.bullet-list__item p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--color-text);
-}
-
-/* Dark theme — the .tick already flips via tokens; only text needs this */
-.theme-dark .bullet-list__item p {
-  color: var(--on-dark-text);
-}
 
 /* -------------------------------------------------------------------------
    3. WHO SHOULD APPLY — text block appended to a bullet list
@@ -180,18 +134,6 @@
    5. RESPONSIVE — consolidated
    ------------------------------------------------------------------------- */
 @media (max-width: 600px) {
-  .bullet-list {
-    gap: 16px;
-  }
-
-  .bullet-list__item {
-    gap: 12px;
-  }
-
-  .bullet-list__item p {
-    font-size: 0.95rem;
-  }
-
   .interview-note {
     flex-direction: column;
     gap: 16px;
@@ -220,17 +162,3 @@
 /* -------------------------------------------------------------------------
    6. REDUCED MOTION
    ------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-
-  .bullet-list__item,
-  .interview-note,
-  .interview-note__icon {
-    transition: none;
-  }
-
-  .bullet-list__item:hover,
-  .interview-note:hover,
-  .interview-note:hover .interview-note__icon {
-    transform: none;
-  }
-}

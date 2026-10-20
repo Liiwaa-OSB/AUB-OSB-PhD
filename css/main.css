@@ -278,6 +278,81 @@ p:last-child {
   color: var(--color-primary-dark);
 }
 
+.year {
+  color: var(--color-text);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2;
+  margin-bottom: 1rem !important;
+}
+
+/* Bullet list*/
+
+.bullet-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.bullet-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform .3s var(--ease-out);
+}
+
+.bullet-list__item:hover {
+  transform: translateX(4px);
+}
+
+/* Align the tick with the first line of text */
+.bullet-list__item .tick {
+  flex: none;
+  margin-top: 2px;
+}
+
+.bullet-list__item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+/* Dark theme — the .tick already flips via tokens; only text needs this */
+.theme-dark .bullet-list__item p {
+  color: var(--on-dark-text);
+}
+@media (max-width: 600px) {
+  .bullet-list {
+    gap: 16px;
+  }
+
+  .bullet-list__item {
+    gap: 12px;
+  }
+
+  .bullet-list__item p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .bullet-list__item,
+  .interview-note,
+  .interview-note__icon {
+    transition: none;
+  }
+
+  .bullet-list__item:hover,
+  .interview-note:hover,
+  .interview-note:hover .interview-note__icon {
+    transform: none;
+  }
+}
+/* End Bullet list*/
+
 /* -------------------------------------------------------------------------
    4. LAYOUT
    ------------------------------------------------------------------------- */
@@ -1027,10 +1102,6 @@ p:last-child {
 
 .card--row .icon-box {
   margin-bottom: 0;
-}
-
-.card:hover .icon-box {
-  transform: rotate(-6deg) scale(1.06);
 }
 
 /* Round check mark */

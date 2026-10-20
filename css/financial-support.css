@@ -95,7 +95,6 @@
 }
 
 .additional-support-card:hover .additional-support-icon {
-  transform: rotate(-6deg) scale(1.08);
   background: var(--color-primary-dark);
 }
 
