@@ -846,7 +846,7 @@ p:last-child {
 }
 
 /* Accent bar */
-.card--accent::before {
+/* .card--accent::before {
   content: "";
   position: absolute;
   top: 0;
@@ -862,7 +862,7 @@ p:last-child {
 
 .card--accent:hover::before {
   transform: scaleX(1);
-}
+} */
 
 /* Glass */
 /* =========================================================================
@@ -1308,182 +1308,91 @@ p:last-child {
   }
 }
 
-/* ---------- Wrapper: pinned bottom-right, stacked vertically ---------- */
-.floating-actions {
+/*********************
+* Sticky Buttons
+**********************/
+/* ===== STICKY CTA BUTTONS ===== */
+.sticky-cta {
   position: fixed;
-  right: clamp(16px, 3vw, 32px);
-  bottom: clamp(16px, 3vw, 32px);
-  z-index: 9999;
-
+  bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+  right: calc(30px + env(safe-area-inset-right, 0px));
+  z-index: 1000;
   display: flex;
-  flex-direction: column;   /* vertical stack */
-  gap: 14px;
-  pointer-events: none;     /* let the buttons own the clicks */
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* ---------- Circular button ---------- */
-.fab {
-  /* local tokens */
-  --fab-size: 58px;
-  --fab-bg: var(--color-primary);
-  --fab-bg-dark: var(--color-primary-dark);
-  --fab-ring: rgba(132, 1, 50, .45);
-
-  pointer-events: auto;
-  position: relative;
-
-  display: inline-flex;
+.sticky-cta__btn {
+  display: flex;
   align-items: center;
   justify-content: center;
-
-  width: var(--fab-size);
-  height: var(--fab-size);
-  border-radius: 50%;       /* circular */
-  flex: 0 0 auto;
-
-  color: var(--on-dark-heading);
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-
-  /* brand → black diagonal shading */
-  background-image: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--fab-bg) 92%, #000) 0%,
-    color-mix(in srgb, var(--fab-bg) 70%, #000) 48%,
-    var(--fab-bg-dark) 100%
-  );
-  background-color: var(--fab-bg); /* fallback for no color-mix() */
-
-  border: 1px solid rgba(255, 255, 255, .10);
-
-  box-shadow:
-    0 10px 22px -8px rgba(0, 0, 0, .55),
-    0 3px 8px rgba(0, 0, 0, .28),
-    inset 0 1px 0 rgba(255, 255, 255, .16);
-
-  transition:
-    transform .3s var(--ease-spring),
-    box-shadow .3s var(--ease),
-    background-image .3s var(--ease),
-    border-color .3s var(--ease);
-}
-
-/* ---------- Icon ---------- */
-.fab svg {
-  width: 24px;
-  height: 24px;
-  display: block;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform .3s var(--ease-spring);
-}
-
-/* ---------- Hover / focus ---------- */
-.fab:hover,
-.fab:focus-visible {
-  transform: translateY(-4px) scale(1.06);
-  border-color: rgba(255, 255, 255, .22);
-  box-shadow:
-    0 18px 34px -10px rgba(0, 0, 0, .6),
-    0 0 0 6px var(--fab-ring),
-    inset 0 1px 0 rgba(255, 255, 255, .22);
-}
-
-.fab:hover svg,
-.fab:focus-visible svg {
-  transform: scale(1.08);
-}
-
-.fab:active {
-  transform: translateY(-1px) scale(.97);
-  transition-duration: .08s;
-}
-
-.fab:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 3px;
-}
-
-/* ---------- Tooltip (label on the left) ---------- */
-.fab__tip {
-  position: absolute;
-  right: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%) translateX(6px);
-
-  white-space: nowrap;
-  font-family: var(--font-base);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .02em;
-
-  color: var(--on-dark-heading);
-  background: rgba(20, 16, 18, .92);
-  border: 1px solid rgba(255, 255, 255, .10);
-  border-radius: var(--radius-sm);
-  padding: 9px 12px;
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  box-shadow: var(--shadow-lg);
-  transition:
-    opacity .22s var(--ease),
-    transform .22s var(--ease-out),
-    visibility .22s;
-}
-
-/* little arrow */
-.fab__tip::after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 6px solid transparent;
-  border-left-color: rgba(20, 16, 18, .92);
-}
-
-.fab:hover .fab__tip,
-.fab:focus-visible .fab__tip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(0);
-}
-
-/* ---------- Gentle attention pulse on the primary (Apply) ---------- */
-.fab--apply::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  width: 45px;
+  height: 45px;
+  background-color: var(--color-primary);
   border-radius: 50%;
-  border: 1px solid var(--color-primary);
-  animation: fab-pulse 2.8s var(--ease-out) infinite;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.sticky-cta__btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.05);
+}
+
+.sticky-cta__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  stroke: currentColor;
+  display: block;
+}
+
+.sticky-cta__label {
+  position: absolute;
+  right: 100%;
+  margin-right: 12px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fab-pulse {
-  0%   { transform: scale(1);    opacity: .55; }
-  70%  { transform: scale(1.55); opacity: 0; }
-  100% { transform: scale(1.55); opacity: 0; }
+.sticky-cta__btn:hover .sticky-cta__label {
+  opacity: 1;
 }
 
-/* ---------- Small screens ---------- */
-@media (max-width: 480px) {
-  .fab { --fab-size: 52px; }
-  .fab svg { width: 21px; height: 21px; }
-  .fab__tip { display: none; }   /* no hover on touch */
+@media (hover: none) {
+  .sticky-cta__label {
+    display: none;
+  }
 }
 
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .fab,
-  .fab svg,
-  .fab__tip { transition: none; }
-  .fab--apply::before { animation: none; display: none; }
-  .fab:hover { transform: none; }
+@media (max-width: 640px) {
+  .sticky-cta {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: calc(16px + env(safe-area-inset-right, 0px));
+    gap: 10px;
+  }
+
+  .sticky-cta__btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .sticky-cta__icon {
+    width: 18px;
+    height: 18px;
+  }
 }

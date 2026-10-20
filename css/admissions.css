@@ -65,8 +65,8 @@
    3. WHO SHOULD APPLY — text block appended to a bullet list
    ------------------------------------------------------------------------- */
 .who-should-apply {
-  margin-top: 56px;
-  padding-top: 40px;
+  margin-top: 40px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, .15);
   max-width: 60em;
 }
@@ -95,7 +95,7 @@
   padding: 32px 36px;
 
   background: var(--color-surface);
-  border-left: 5px solid var(--color-primary);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: 0 4px 20px rgba(36, 31, 34, .06);
 
@@ -108,7 +108,6 @@
 .interview-note:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(132, 1, 50, .12);
-  border-left-color: var(--color-primary-dark);
 }
 
 .interview-note__icon {
@@ -213,8 +212,8 @@
 
 @media (max-width: 480px) {
   .who-should-apply {
-    margin-top: 40px;
-    padding-top: 32px;
+    margin-top: 32px;
+    padding-top: 15px;
   }
 }
 
@@ -222,11 +221,13 @@
    6. REDUCED MOTION
    ------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+
   .bullet-list__item,
   .interview-note,
   .interview-note__icon {
     transition: none;
   }
+
   .bullet-list__item:hover,
   .interview-note:hover,
   .interview-note:hover .interview-note__icon {

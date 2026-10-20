@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.dataset.tracks = tracksOf(m).join(" ");
 
     card.innerHTML = `
-      <img class="faculty-photo" src="${esc(m.photo)}" alt="${esc(m.name)}" width="140" height="140" loading="lazy" />
+      <img class="faculty-photo" src="${esc(m.photo || './images/faculty/placeholder.webp')}" width="140" height="140" loading="lazy" />
       <div class="faculty-info">
         <h3 class="faculty-name">${esc(m.name)}</h3>
         <p class="faculty-role">${esc(m.role)}</p>
