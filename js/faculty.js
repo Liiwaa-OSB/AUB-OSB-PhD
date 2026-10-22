@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3 class="faculty-name">${esc(m.name)}</h3>
         <p class="faculty-role">${esc(m.role)}</p>
         <p class="faculty-email">${esc(m.email)}</p>
-        ${m.interests ? `<p class="faculty-interests">${esc(m.interests)}</p>` : ""}
+        ${m.interests ? `<p class="faculty-interests" data-full="${esc(m.interests)}">${esc(m.interests)}</p>` : ""}
       </div>
     `;
     grid.appendChild(card);

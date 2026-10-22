@@ -194,58 +194,6 @@
   background-position: center;
 }
 
-/* -------------------------------------------------------------------------
-   YOUR DOCTORAL JOURNEY — Year 1 → 4 steps + experience row
-   ------------------------------------------------------------------------- */
-.journey-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--grid-gap);
-}
-
-.journey-step {
-  position: relative;
-  padding: 26px 24px;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform .4s var(--ease-out),
-    box-shadow .4s var(--ease),
-    border-color .3s var(--ease);
-}
-
-.journey-step:hover {
-  transform: translateY(var(--card-lift));
-  box-shadow: var(--card-shadow-hover);
-}
-
-.journey-step__year {
-  display: block;
-  margin-bottom: 10px;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.journey-step h4 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.journey-experience {
-  margin-top: 56px;
-  padding-top: 56px;
-  border-top: 1px solid var(--color-border);
-}
-
-.journey-experience .lede {
-  max-width: 62em;
-}
 
 /* Consistency: the "Explore the Doctoral Journey" button sits under the block */
 .section--muted .btn-row {
@@ -261,11 +209,6 @@
 @media (max-width: 560px) {
   .journey-grid {
     grid-template-columns: 1fr;
-  }
-
-  .journey-experience {
-    margin-top: 40px;
-    padding-top: 40px;
   }
 }
 

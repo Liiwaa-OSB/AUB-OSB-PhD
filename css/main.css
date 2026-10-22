@@ -125,6 +125,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   text-wrap: pretty;
+
+
+
+}
+
+.text-justify {
+    text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 body.menu-open {
@@ -249,7 +258,7 @@ p:last-child {
 }
 
 .lede {
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   color: var(--color-text);
 }
 
@@ -323,6 +332,7 @@ p:last-child {
 .theme-dark .bullet-list__item p {
   color: var(--on-dark-text);
 }
+
 @media (max-width: 600px) {
   .bullet-list {
     gap: 16px;
@@ -351,6 +361,7 @@ p:last-child {
     transform: none;
   }
 }
+
 /* End Bullet list*/
 
 /* -------------------------------------------------------------------------
