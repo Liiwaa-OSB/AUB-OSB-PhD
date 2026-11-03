@@ -273,7 +273,7 @@ window.FACULTY_DATA = [
     "name": "Yusuf Sidani",
     "role": "Dean & Professor",
     "email": "ys01@aub.edu.lb",
-    "interests": "Business ethics; Gender & diversity; Work values",
+    "interests": "Business ethics, Leadership, Global Talent Management",
     "track": "mme",
     "photo": "https://www.aub.edu.lb/osb/Faculty%20Pictures/Sidani.jpg",
     "profile": "https://www.aub.edu.lb/pages/profile.aspx?memberId=ys01"
