@@ -155,6 +155,11 @@ a {
   transition: color .2s var(--ease);
 }
 
+a.primary-color {
+  text-decoration: underline;
+  font-weight: 800;
+}
+
 ul,
 ol {
   margin: 0;
@@ -309,10 +314,6 @@ p:last-child {
   align-items: flex-start;
   gap: 16px;
   transition: transform .3s var(--ease-out);
-}
-
-.bullet-list__item:hover {
-  transform: translateX(4px);
 }
 
 /* Align the tick with the first line of text */
