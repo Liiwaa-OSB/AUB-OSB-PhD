@@ -1,0 +1,171 @@
+/* =========================================================================
+   OSB — PhD in Business Administration
+   LEADERSHIP PAGE  (css/leadership.css)
+   Loads after css/main.css and uses its tokens (colours, radius, shadows,
+   easing). Self-contained: no dependency on faculty.css.
+   ========================================================================= */
+
+/* Banner image */
+.page-banner {
+  background-image: url("../images/AUB-OSB-PhD-Faculty-banner.JPG");
+  background-position: center 54%;
+}
+
+/* -------------------------------------------------------------------------
+   Card
+   ------------------------------------------------------------------------- */
+.faculty-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 28px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    transform .4s var(--ease-out),
+    border-color .3s var(--ease),
+    box-shadow .4s var(--ease);
+}
+
+.faculty-card:is(:hover, :focus-visible) {
+  transform: translateY(var(--card-lift));
+  border-color: var(--color-primary);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Non-link card (administration): normal cursor */
+.faculty-card--static {
+  cursor: default;
+}
+
+/* -------------------------------------------------------------------------
+   Photo (circular) and initials fallback
+   ------------------------------------------------------------------------- */
+.faculty-photo {
+  display: block;
+  flex: none;
+  width: 140px;
+  height: 140px;
+  margin: 0 0 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--color-surface);
+  border: 3px solid var(--color-white);
+  box-shadow: 0 0 0 1px var(--color-border), var(--shadow-md);
+  transition: box-shadow .3s var(--ease);
+}
+
+.faculty-card:is(:hover, :focus-visible) .faculty-photo {
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
+}
+
+.faculty-photo--initials {
+  display: grid;
+  place-items: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--color-primary);
+  background: #f3e6eb;
+}
+
+.faculty-photo--initials::before {
+  content: attr(data-initials);
+}
+
+/* -------------------------------------------------------------------------
+   Text
+   ------------------------------------------------------------------------- */
+.faculty-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.faculty-name {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  line-height: var(--lh-tight);
+  transition: color .25s var(--ease);
+}
+
+.faculty-card:is(:hover, :focus-visible) .faculty-name {
+  color: var(--color-primary);
+}
+
+.faculty-role {
+  margin: 0 0 10px;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.faculty-email {
+  margin: 0 0 12px;
+  max-width: 100%;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  overflow-wrap: anywhere;
+}
+
+.faculty-email a {
+  color: inherit;
+}
+
+.faculty-email a:hover {
+  text-decoration: underline;
+}
+
+.faculty-phd-role {
+  margin: 0 0 10px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Program Director: wide horizontal feature card
+   ------------------------------------------------------------------------- */
+.leadership-director-card {
+  flex-direction: row;
+  gap: 36px;
+  padding: 36px 40px;
+}
+
+.leadership-director-card .faculty-photo {
+  width: 180px;
+  height: 180px;
+  margin: 0;
+}
+
+.leadership-director-card .faculty-info {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.leadership-director-card .faculty-name {
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .leadership-director-card {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .leadership-director-card .faculty-info {
+    align-items: center;
+    text-align: center;
+  }
+}
