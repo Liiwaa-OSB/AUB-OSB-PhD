@@ -22,6 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const tracksOf = (m) =>
     [].concat(m.tracks ?? m.track ?? []).map((t) => String(t).toLowerCase());
 
+  // Valid filter values come from the buttons already in the HTML
+  const VALID_FILTERS = new Set(["all", ...Array.from(buttons, (b) => b.dataset.filter)]);
+
+  // Read ?track=bids|fame|mme from the URL (falls back to "all")
+  const filterFromUrl = () => {
+    const v = (new URLSearchParams(window.location.search).get("track") || "").toLowerCase();
+    return VALID_FILTERS.has(v) ? v : "all";
+  };
+
   const cards = FACULTY_DATA.map((m) => {
     const card = document.createElement("a");
     card.className = "faculty-card";
@@ -58,11 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
       b.setAttribute("aria-pressed", String(on));
     });
     if (select) select.value = value;
+    // Reflect the filter in the URL without adding history entries
+    try {
+      const url = new URL(window.location.href);
+      if (value === "all") url.searchParams.delete("track");
+      else url.searchParams.set("track", value);
+      window.history.replaceState(null, "", url);
+    } catch (e) { /* ignore (e.g. file:// previews) */ }
   }
 
   buttons.forEach((b) => b.addEventListener("click", () => applyFilter(b.dataset.filter)));
   if (select) select.addEventListener("change", () => applyFilter(select.value));
 
   hideLoading();
-  applyFilter("all");
+  applyFilter(filterFromUrl());
 });
